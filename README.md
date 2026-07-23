@@ -11,6 +11,19 @@ The project ships two self-contained, interactive HTML views built on the same u
 
 A lightweight **[landing page](index.html)** links to both.
 
+## Coverage snapshot
+
+Last updated **23 July 2026**.
+
+| Venue family | Challenges tracked |
+|---|---:|
+| MICCAI | 21 |
+| ISBI | 7 |
+| Standalone | 4 |
+| CVPR | 3 |
+| RSNA | 2 |
+| **Total** | **37** |
+
 ## Live pages
 
 If GitHub Pages is enabled for this repository (Settings → Pages → deploy from `main`, root), the views are served at:
