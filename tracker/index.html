@@ -177,7 +177,7 @@
     <div class="title">
       <h1><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg> Medical Image Challenge Tracker</h1>
       <p>Segmentation, classification &amp; beyond — live benchmarks, open competitions and upcoming calls across MICCAI, CVPR, ISBI, RSNA &amp; Grand Challenge, with prize &amp; venue tags plus rough GPU-requirement estimates.</p>
-      <div class="updated">Last updated <b id="updated-date">23 July 2026</b> · 28 challenges · auto-refresh bi-weekly</div>
+      <div class="updated">Last updated <b id="updated-date">23 July 2026</b> · 31 challenges · source-reviewed bi-weekly</div>
     </div>
     <div class="head-actions">
       <a class="btn primary" href="timeline.html"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Timeline view</a>
@@ -257,6 +257,7 @@
       <div class="chip" data-filter="task" data-val="registration">Registration</div>
       <div class="chip" data-filter="task" data-val="reconstruction">Reconstruction</div>
       <div class="chip" data-filter="task" data-val="report-generation">Report gen</div>
+      <div class="chip" data-filter="task" data-val="treatment-planning">Treatment planning</div>
     </div>
     <div class="row"><span class="filters-label">Modality</span>
       <div class="chip" data-filter="mod" data-val="MRI">MRI</div>
@@ -265,6 +266,8 @@
       <div class="chip" data-filter="mod" data-val="Histopathology">Pathology / WSI</div>
       <div class="chip" data-filter="mod" data-val="X-ray">X-ray</div>
       <div class="chip" data-filter="mod" data-val="Ultrasound">Ultrasound</div>
+      <div class="chip" data-filter="mod" data-val="Microscopy">Microscopy</div>
+      <div class="chip" data-filter="mod" data-val="OCT">OCT</div>
       <button class="clear-btn" id="clearBtn">✕ Clear all filters</button>
     </div>
   </div>
@@ -286,7 +289,7 @@
     <h3>How the GPU estimate works</h3>
     <p>A <b>rough heuristic</b> driven mainly by <b>dimensionality</b> and <b>modality</b>, plus whether the task implies <b>foundation-model pretraining</b>. 2D images fit an entry GPU (8–16&nbsp;GB); gigapixel pathology ~16–24&nbsp;GB; full-resolution 3D volumetric segmentation 24–48&nbsp;GB; whole-body/multimodal 3D 40–48&nbsp;GB; large-scale pretraining implies multi-GPU. Dataset size affects training time and disk more than peak VRAM. Treat every number as an order-of-magnitude starting point.</p>
     <h3>Status &amp; sources</h3>
-    <p><b>🟢 Live</b> — rolling leaderboard, submit anytime · <b>🔵 Open</b> — accepting submissions with a deadline · <b>🟠 Upcoming</b> — announced, not open · <b>⚪ Closed</b> — finished (many keep public data). Compiled from grand-challenge.org, MICCAI 2026, ISBI 2026, CVPR 2026 workshops, Kaggle/RSNA, TCIA, Synapse &amp; Codabench as of the last-updated date — always confirm details on each official page.</p>
+    <p><b>🟢 Live</b> — rolling leaderboard, submit anytime · <b>🔵 Open</b> — accepting registration or submissions · <b>🟠 Upcoming</b> — announced, with participation not yet open · <b>⚪ Closed</b> — finished (many keep public data). Every bi-weekly sweep checks official MICCAI, Grand Challenge, Codabench, AAPM, CVPR-workshop, RSNA/Kaggle, ISBI and Synapse pages; entries are added or changed only when an organizer or host page supports the status. See <code>data/SOURCES.md</code> for the repeatable source checklist and review log; always confirm details on each official page.</p>
   </div>
 </div>
 
@@ -332,7 +335,7 @@ function deadlineInfo(c){
   return {text:`${d} days left`,cls:"",sortKey:d};
 }
 const DATA_LABEL={public:["Public data","d-public"],"on-registration":["Data on registration","d-onreg"],planned:["Data planned","d-planned"],restricted:["Restricted","d-restricted"],unknown:["Data status unknown","d-unknown"]};
-const TASK_ABBR={segmentation:"Seg",classification:"Class",detection:"Detect",registration:"Reg",reconstruction:"Recon","report-generation":"Report"};
+const TASK_ABBR={segmentation:"Seg",classification:"Class",detection:"Detect",registration:"Reg",reconstruction:"Recon","report-generation":"Report","treatment-planning":"Planning"};
 const PRIZE_LABEL={cash:["💰 Cash","cash"],recognition:["🏅 Recognition","recognition"],none:["No prize listed","none"]};
 
 function matches(c){

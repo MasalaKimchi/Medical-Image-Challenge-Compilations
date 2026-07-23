@@ -1,5 +1,5 @@
 /* Single source of truth for both the tracker and the timeline.
-   To update the site, edit this file (or data/challenges.json and regenerate).
+   To update the site, edit data/challenges.json, regenerate this file, and verify both views.
    Loaded as a global before each page's app script. */
 window.CHALLENGES = [
   {
@@ -442,8 +442,8 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://atm26.grand-challenge.org/",
-    "status": "upcoming",
-    "statusNote": "Registration opened 15 Jun; sanity-check phase live. Main deadline not yet announced.",
+    "status": "open",
+    "statusNote": "Registration is active via Grand Challenge; approved teams receive the dataset. Submission dates remain TBA.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -1061,6 +1061,123 @@ window.CHALLENGES = [
     "endEstimated": false,
     "startEstimated": true,
     "rolling": true
+  },
+  {
+    "id": "selma3d26",
+    "name": "SELMA3D 2026 — Self-supervised Light-sheet Microscopy Segmentation",
+    "shortName": "SELMA3D 2026",
+    "venue": "Grand Challenge 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://selma3d2026.grand-challenge.org/",
+    "status": "upcoming",
+    "statusNote": "Training data released 23 Apr and preliminary test samples 30 May; the preliminary submission phase is delayed while the host resolves a platform billing issue.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "Microscopy"
+    ],
+    "anatomy": "mouse and human biological structures",
+    "dimensionality": "3D",
+    "numCases": ">35,050 unannotated 3D patches + >210 manually annotated patches",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Training data released 23 Apr 2026",
+      "submissionDeadline": "Preliminary phase opening TBA (postponed 23 Jun)",
+      "results": "TBA"
+    },
+    "prizes": "Not stated",
+    "overview": "Two self-supervised 3D light-sheet microscopy segmentation tracks: one under fixed-data conditions and one that permits open data for pretraining, with shared annotated fine-tuning data.",
+    "prizeType": "none",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "startISO": "2026-04-23",
+    "endISO": null,
+    "endEstimated": true,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "graceaapm26",
+    "name": "Grace Kim Memorial Grand Challenge — TBI/TMI/TMLI Planning",
+    "shortName": "AAPM Grace Challenge",
+    "venue": "AAPM Annual Meeting 2026",
+    "platform": "AAPM / ProKnow",
+    "url": "https://www.aapm.org/GrandChallenge/Grace/Default.asp",
+    "status": "closed",
+    "statusNote": "The 2026 competition phase ended 1 May; winners were announced 22 May and present at AAPM 16–22 Jul.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "treatment-planning"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "whole body, marrow and lymphoid targets",
+    "dimensionality": "3D",
+    "numCases": "3 practice CT/structure-set cases; competition CT set not publicly enumerated",
+    "datasetSizeGB": null,
+    "scale": "small",
+    "deadlineISO": "2026-05-01",
+    "keyDates": {
+      "registration": "Opened 1 Dec 2025",
+      "submissionDeadline": "Phase II ended 1 May 2026",
+      "results": "Winners announced 22 May; AAPM presentation 16–22 Jul 2026"
+    },
+    "prizes": "Complimentary AAPM Annual Meeting registration for the winner in each of three planning categories",
+    "overview": "AAPM-sponsored challenge to create clinically deliverable intensity-modulated total-body, total-marrow and total-marrow-and-lymphoid irradiation plans from CT and structure-set data.",
+    "prizeType": "recognition",
+    "venueFamily": "Standalone",
+    "venueType": "conference",
+    "startISO": "2025-12-01",
+    "endISO": "2026-05-01",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "synthoct26",
+    "name": "SynthOCT Challenge 2026 — Physics-based OCT Synthesis",
+    "shortName": "SynthOCT",
+    "venue": "MICCAI 2026 · SASHIMI workshop",
+    "platform": "synthoct.com",
+    "url": "https://synthoct.com/",
+    "status": "open",
+    "statusNote": "The official platform is active; final code/model and camera-ready submissions are due 14 Aug 2026 after an outage-related schedule extension.",
+    "dataAvailable": "public",
+    "taskType": [
+      "reconstruction"
+    ],
+    "modality": [
+      "OCT"
+    ],
+    "anatomy": "biological tissue microstructure",
+    "dimensionality": "2D",
+    "numCases": "Official OCT B-scan dataset; exact case count not stated on the challenge page",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-08-14",
+    "keyDates": {
+      "registration": "Extended through 8 Jul 2026; platform remains active",
+      "submissionDeadline": "Final code/model and camera-ready paper: 14 Aug 2026",
+      "results": "Late-August testing; final rankings at the MICCAI 2026 challenge session"
+    },
+    "prizes": "Not stated",
+    "overview": "Generate tissue-mimicking digital phantoms that a fixed virtual scanner converts into synthetic OCT B-scans, scored for optical attenuation and speckle-statistics consistency rather than visual plausibility alone.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "startISO": "2026-06-01",
+    "endISO": "2026-08-14",
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
   },
   {
     "id": "cvpr26ctdx",
