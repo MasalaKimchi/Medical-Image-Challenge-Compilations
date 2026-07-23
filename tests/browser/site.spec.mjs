@@ -21,6 +21,7 @@ test.describe("challenge tracker", () => {
     await page.getByRole("button", { name: "Table", exact: true }).click();
     await expect(page).toHaveURL(/view=table/);
     await page.getByRole("button", { name: "Cards", exact: true }).click();
+    await expect(page.getByText("Fresh · Jul 23, 2026", { exact: true })).toBeVisible();
     const saves = page.getByRole("button", { name: "Save", exact: true });
     expect(await saves.count()).toBe(1);
     await saves.click();
@@ -90,6 +91,7 @@ test.describe("challenge schedule", () => {
     await expectNoSeriousAccessibilityIssues(page);
     await page.getByRole("button", { name: "Timeline", exact: true }).click();
     await expect(page.locator(".today-line")).toBeVisible();
+    await expect(page.locator("#swipeHint")).toBeVisible();
     await expect.poll(() => page.locator("#timelineScroll").evaluate((node) => node.scrollLeft)).toBeGreaterThan(0);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
     expect(overflow).toBe(false);
@@ -112,6 +114,10 @@ test("narrow, landscape, dark, reduced-motion and keyboard states remain usable"
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto("/tracker/");
   expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
+  expect(await page.locator("button").evaluateAll((buttons) => buttons.filter((button) => {
+    const box = button.getBoundingClientRect();
+    return box.width && box.height && (box.width < 44 || box.height < 44);
+  }).map((button) => button.textContent?.trim()))).toEqual([]);
   await expectNoSeriousAccessibilityIssues(page);
   await page.getByRole("searchbox", { name: "Search challenges" }).fill("SynthOCT");
   const save = page.getByRole("button", { name: "Save", exact: true });

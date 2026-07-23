@@ -49,12 +49,14 @@ test("rolling and postponed phases derive live and upcoming", () => {
   assert.equal(deriveChallengeState(postponed, "2026-07-23").status, "upcoming");
 });
 
-test("an explicitly upcoming phase with no start is not active early", () => {
+test("an explicitly upcoming phase is not active, even when its planned start has passed", () => {
   const item = challenge([phase({ id: "final", type: "final-submission", label: "Final submission", startISO: null, endISO: "2026-09-01", acceptingNewTeams: false, state: "upcoming" })]);
   const state = deriveChallengeState(item, "2026-07-23");
   assert.equal(state.status, "upcoming");
   assert.equal(state.currentPhases.length, 0);
   assert.equal(derivePhaseStatus(item.phases[0], "2026-07-23"), "upcoming");
+  const delayed = challenge([phase({ state: "upcoming", startISO: "2026-04-01", endISO: "2026-10-31", acceptingNewTeams: false })]);
+  assert.equal(deriveChallengeState(delayed, "2026-07-23").status, "upcoming");
 });
 
 test("freshness thresholds are stable", () => {
@@ -81,5 +83,5 @@ test("schema migration preserves the reviewed fixture-date status distribution",
   const data = JSON.parse(await readFile(new URL("../data/challenges.json", import.meta.url), "utf8"));
   const counts = { live: 0, open: 0, upcoming: 0, closed: 0 };
   for (const item of data) counts[deriveChallengeState(item, "2026-07-23").status] += 1;
-  assert.deepEqual(counts, { live: 1, open: 21, upcoming: 1, closed: 14 });
+  assert.deepEqual(counts, { live: 1, open: 20, upcoming: 2, closed: 14 });
 });

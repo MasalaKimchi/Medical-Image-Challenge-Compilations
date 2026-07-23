@@ -1832,9 +1832,9 @@ window.CHALLENGES = [
         "startEstimated": true,
         "endEstimated": true,
         "participation": true,
-        "acceptingNewTeams": true,
+        "acceptingNewTeams": false,
         "rolling": false,
-        "state": "active",
+        "state": "upcoming",
         "sourceIds": [
           "official"
         ]

@@ -64,8 +64,7 @@ export function isPhaseActive(phase, todayISO = localTodayISO()) {
   const today = isoDayNumber(todayISO);
   const start = isoDayNumber(phase.startISO);
   const end = isoDayNumber(phase.endISO);
-  if (phase.state === "completed") return false;
-  if (phase.state === "upcoming" && start === null) return false;
+  if (phase.state === "completed" || phase.state === "upcoming") return false;
   if (phase.state === "active" && start === null && end === null) return true;
   if (today === null) return false;
   if (start !== null && today < start) return false;
@@ -75,10 +74,9 @@ export function isPhaseActive(phase, todayISO = localTodayISO()) {
 
 export function isPhaseFuture(phase, todayISO = localTodayISO()) {
   if (!phase || isCancelled(phase) || phase.state === "completed") return false;
-  if (isPostponed(phase)) return true;
+  if (isPostponed(phase) || phase.state === "upcoming") return true;
   const today = isoDayNumber(todayISO);
   const start = isoDayNumber(phase.startISO);
-  if (phase.state === "upcoming" && start === null) return true;
   return today !== null && start !== null && start > today;
 }
 

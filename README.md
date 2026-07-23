@@ -26,7 +26,7 @@ Last updated **23 July 2026**.
 | RSNA | 2 |
 | **Total** | **37** |
 
-As of 23 July 2026, **35 of 37** records have current official-source evidence. The two blocked RSNA records remain visibly unverified. Derived status at that review date: **1 live, 21 open, 1 upcoming, and 14 closed**.
+As of 23 July 2026, **35 of 37** records have current official-source evidence. The two blocked RSNA records remain visibly unverified. Derived status at that review date: **1 live, 20 open, 2 upcoming, and 14 closed**.
 
 ## The Tracker
 
