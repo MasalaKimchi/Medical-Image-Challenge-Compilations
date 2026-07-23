@@ -10,13 +10,13 @@ async function expectNoSeriousAccessibilityIssues(page) {
 test.describe("challenge tracker", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/tracker/");
-    await expect(page.getByText("Showing 37 of 37 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 43 of 43 challenges.")).toBeVisible();
   });
 
   test("search, URL state, views, shortlist and comparison work", async ({ page }) => {
     const search = page.getByRole("searchbox", { name: "Search challenges" });
     await search.fill("SynthOCT");
-    await expect(page.getByText("Showing 1 of 37 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 1 of 43 challenges.")).toBeVisible();
     await expect(page).toHaveURL(/search=SynthOCT/);
     await page.getByRole("button", { name: "Table", exact: true }).click();
     await expect(page).toHaveURL(/view=table/);
@@ -35,7 +35,7 @@ test.describe("challenge tracker", () => {
     const modality = page.getByRole("combobox", { name: "Filter by modality" });
     await modality.selectOption("OCT");
     await expect(modality).toHaveValue("OCT");
-    await expect(page.getByText("Showing 1 of 37 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 1 of 43 challenges.")).toBeVisible();
     await expectNoSeriousAccessibilityIssues(page);
   });
 
@@ -102,8 +102,8 @@ test("landing page derives totals without console errors", async ({ page }) => {
   const errors = [];
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.locator("#challengeCount")).toHaveText("37");
-  await expect(page.locator("#verifiedCount")).toHaveText("35");
+  await expect(page.locator("#challengeCount")).toHaveText("43");
+  await expect(page.locator("#verifiedCount")).toHaveText("41");
   expect(errors).toEqual([]);
 });
 

@@ -33,3 +33,16 @@ This matrix records the fresh review performed on 23 July 2026 for the 27 record
 | RSNA Knee MRI | **Blocked; left unverified** | The [RSNA page](https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge) only says the challenge *will* launch in spring and conclude in October; it does not confirm that entry is currently open or link an active competition, so the estimated window remains upcoming and not joinable. |
 
 The two blocked records intentionally retain `lastVerifiedISO: null` and `sources[].lastCheckedISO: null`. Their existing estimated phases remain visible as unverified rather than being presented as freshly confirmed facts.
+
+## Gap-sweep additions
+
+The following records were added from official sources during the same 23 July UTC review window.
+
+| Challenge | Result | Official evidence supporting current status |
+|---|---|---|
+| MRIxFields 2026 | Verified; added | The [official site](https://mrixfields.chihucloud.com/2026/) lists registration from 1 Apr, testing from 1 Jul, and a 10 Sep registration and Docker deadline. |
+| EchoRisk 2026 | Verified; added | The [official submission guide](https://echorisk-miccai.github.io/submission-guide.html) confirms team registration through Synapse and an extended 20 Aug final Docker deadline. |
+| DoseRAD 2026 | Verified; added | The [Grand Challenge timeline](https://doserad2026.grand-challenge.org/timeline-and-rules/) lists development from 10 Apr through 24 Aug and final testing from 23 Jul through 24 Aug. |
+| ReXGrounding 2026 | Verified; added | The [official challenge site](https://rexrank.ai/ReXGroundingCT/challenge.html) explicitly reports open registration, submissions, and a live public leaderboard without publishing a closing date. |
+| MAMA-Synth 2026 | Verified; added closed | The [official organizer timeline](https://www.ub.edu/mama-synth/mama-synth.html) gives a 25 Jun–10 Jul final test phase, 1 Aug results release, and 27 Sep winners announcement. |
+| FETUS 2026 | Verified; added closed | The [official ISBI programme](https://biomedicalimaging.org/2026/challenges/) lists FETUS and the completed 11 Apr ISBI challenge session. |

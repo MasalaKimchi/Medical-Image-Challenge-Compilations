@@ -3069,5 +3069,585 @@ window.CHALLENGES = [
         ]
       }
     ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "mrixfields26",
+    "name": "MRIxFields 2026 — Cross-Field MRI Translation and Harmonization",
+    "shortName": "MRIxFields",
+    "venue": "MICCAI 2026",
+    "platform": "Self-hosted / Synapse",
+    "url": "https://mrixfields.chihucloud.com/2026/",
+    "statusNote": "Registration and testing are open; registration and Docker submissions close 10 Sep 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "reconstruction",
+      "image translation"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "2,500+ cases spanning 0.1T, 1.5T, 3T, 5T and 7T MRI",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "prizes": "Approximately $21,000 total prize pool across three tasks",
+    "overview": "Translate and harmonize structural brain MRI across five field strengths, including 7T synthesis, ultra-low-field enhancement and controllable any-to-any field translation.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "MRIxFields 2026 official page",
+        "url": "https://mrixfields.chihucloud.com/2026/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-07-23"
+      },
+      {
+        "id": "registry",
+        "label": "MICCAI registered challenge design",
+        "url": "https://zenodo.org/records/19847223",
+        "type": "registry",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Registration",
+        "startISO": "2026-04-01",
+        "endISO": "2026-09-10",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Testing and Docker submissions",
+        "startISO": "2026-07-01",
+        "endISO": "2026-09-10",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Final results",
+        "startISO": "2026-10-08",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "echorisk26",
+    "name": "EchoRisk 2026 — Cardio-Oncology Echocardiography",
+    "shortName": "EchoRisk",
+    "venue": "MICCAI 2026 · STACOM",
+    "platform": "Synapse",
+    "url": "https://echorisk-miccai.github.io/",
+    "statusNote": "Registration is available through the official Synapse workflow; final Docker submissions are due 20 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "classification",
+      "regression",
+      "prediction"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "heart",
+    "dimensionality": "2D+time",
+    "numCases": "422 patients; 2,159 echocardiography videos across 1,123 exams",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Not stated",
+    "overview": "Estimate left-ventricular function, classify dysfunction and predict therapy-induced cardiotoxicity from longitudinal and baseline echocardiography.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "EchoRisk official page",
+        "url": "https://echorisk-miccai.github.io/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-07-23"
+      },
+      {
+        "id": "submission",
+        "label": "EchoRisk Docker submission guide",
+        "url": "https://echorisk-miccai.github.io/submission-guide.html",
+        "type": "platform",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Team registration",
+        "startISO": null,
+        "endISO": "2026-08-20",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "submission"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Final Docker submission",
+        "startISO": null,
+        "endISO": "2026-08-20",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "submission"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Results release",
+        "startISO": "2026-09-27",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "submission"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "doserad26",
+    "name": "DoseRAD 2026 — Real-Time Radiotherapy Dose Calculation",
+    "shortName": "DoseRAD",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://doserad2026.grand-challenge.org/",
+    "statusNote": "Training and validation remain open through 24 Aug; final testing runs 23 Jul–24 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "regression",
+      "reconstruction"
+    ],
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "anatomy": "multi-organ radiotherapy",
+    "dimensionality": "3D",
+    "numCases": "Photon and proton treatment-planning cases with Monte Carlo dose ground truth",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Not stated",
+    "overview": "Predict clinically usable three-dimensional photon and proton dose distributions from CT or MRI and beam-delivery parameters, benchmarked against Monte Carlo calculations.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "DoseRAD official challenge page",
+        "url": "https://doserad2026.grand-challenge.org/timeline-and-rules/",
+        "type": "platform",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "development",
+        "type": "development",
+        "label": "Training and validation",
+        "startISO": "2026-04-10",
+        "endISO": "2026-08-24",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test phase",
+        "startISO": "2026-07-23",
+        "endISO": "2026-08-24",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "post-challenge",
+        "type": "leaderboard",
+        "label": "Post-challenge phase",
+        "startISO": "2026-08-24",
+        "endISO": "2026-12-31",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Results presentation",
+        "startISO": "2026-10-01",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "rexgrounding26",
+    "name": "ReXGrounding 2026 — Free-Text Findings to 3D CT Segmentations",
+    "shortName": "ReXGrounding",
+    "venue": "MICCAI 2026",
+    "platform": "Self-hosted",
+    "url": "https://rexrank.ai/ReXGroundingCT/challenge.html",
+    "statusNote": "The official site reports open registration and a live submission leaderboard; no closing date is published.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation",
+      "grounding"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "chest",
+    "dimensionality": "3D",
+    "numCases": "Not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Not stated",
+    "overview": "Localize unconstrained radiology findings written in free text to precise volumetric segmentation masks in chest CT.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "ReXGrounding official challenge page",
+        "url": "https://rexrank.ai/ReXGroundingCT/challenge.html",
+        "type": "platform",
+        "lastCheckedISO": "2026-07-23"
+      },
+      {
+        "id": "registry",
+        "label": "MICCAI registered challenge design",
+        "url": "https://zenodo.org/records/19737020",
+        "type": "registry",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Registration",
+        "startISO": null,
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "leaderboard",
+        "type": "leaderboard",
+        "label": "Challenge submissions",
+        "startISO": null,
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI challenge session",
+        "startISO": "2026-09-27",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "registry"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "mamasynth26",
+    "name": "MAMA-Synth 2026 — Virtual Contrast-Enhanced Breast MRI",
+    "shortName": "MAMA-Synth",
+    "venue": "MICCAI 2026 · Deep-Breath workshop",
+    "platform": "grand-challenge.org",
+    "url": "https://mamasynth.grand-challenge.org/",
+    "statusNote": "Final testing closed 10 Jul 2026; official results are scheduled for 1 Aug and winners for 27 Sep.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "image translation",
+      "reconstruction"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "breast",
+    "dimensionality": "3D",
+    "numCases": "Not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "€500 / €250 / €150 plus a €300 best-paper award",
+    "overview": "Synthesize virtual post-contrast breast MRI from pre-contrast acquisitions to reduce reliance on gadolinium while preserving diagnostically relevant enhancement.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "MAMA-Synth official organizer page",
+        "url": "https://www.ub.edu/mama-synth/mama-synth.html",
+        "type": "organizer",
+        "lastCheckedISO": "2026-07-23"
+      },
+      {
+        "id": "platform",
+        "label": "MAMA-Synth Grand Challenge timeline",
+        "url": "https://mamasynth.grand-challenge.org/timeline/",
+        "type": "platform",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation phase",
+        "startISO": "2026-05-08",
+        "endISO": "2026-06-24",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test phase",
+        "startISO": "2026-06-25",
+        "endISO": "2026-07-10",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "paper",
+        "type": "paper",
+        "label": "Challenge paper submission",
+        "startISO": null,
+        "endISO": "2026-07-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Official results release",
+        "startISO": "2026-08-01",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "Winners announcement",
+        "startISO": "2026-09-27",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "fetus26",
+    "name": "FETUS 2026 — Fetal Heart Ultrasound Segmentation and Sizing",
+    "shortName": "FETUS 2026",
+    "venue": "ISBI 2026",
+    "platform": "Self-hosted",
+    "url": "https://biomedicalimaging.org/2026/challenges/",
+    "statusNote": "The challenge concluded with the ISBI 2026 challenge session on 11 Apr 2026.",
+    "dataAvailable": "unknown",
+    "taskType": [
+      "segmentation",
+      "regression"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "fetal heart",
+    "dimensionality": "2D",
+    "numCases": "Not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Not stated",
+    "overview": "Segment fetal cardiac ultrasound views and estimate biometric measurements under few-shot and cross-clinical-setting generalization conditions.",
+    "prizeType": "none",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-07-23",
+    "sources": [
+      {
+        "id": "official",
+        "label": "ISBI 2026 official challenge listing",
+        "url": "https://biomedicalimaging.org/2026/challenges/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-07-23"
+      }
+    ],
+    "phases": [
+      {
+        "id": "event",
+        "type": "event",
+        "label": "ISBI challenge session",
+        "startISO": "2026-04-11",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
   }
 ];

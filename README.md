@@ -19,18 +19,18 @@ Last updated **23 July 2026**.
 
 | Venue family | Challenges tracked |
 |---|---:|
-| MICCAI | 21 |
-| ISBI | 7 |
+| MICCAI | 26 |
+| ISBI | 8 |
 | Standalone | 4 |
 | CVPR | 3 |
 | RSNA | 2 |
-| **Total** | **37** |
+| **Total** | **43** |
 
-As of 23 July 2026, **35 of 37** records have current official-source evidence. The two blocked RSNA records remain visibly unverified. Derived status at that review date: **1 live, 20 open, 2 upcoming, and 14 closed**.
+As of 23 July 2026, **41 of 43** records have current official-source evidence. The two blocked RSNA records remain visibly unverified. Derived status at that review date: **1 live, 24 open, 2 upcoming, and 16 closed**.
 
 ## The Tracker
 
-The tracker presents 37 challenges as filterable cards. Highlights include:
+The tracker presents 43 challenges as filterable cards. Highlights include:
 
 - **Derived status filters** — live benchmarks, active phases, upcoming calls, and closed events, calculated from structured phase dates.
 - **Task & modality filters** — narrow by task type (segmentation, classification, registration, reconstruction, report generation, …) and imaging modality (MRI, CT, PET/CT, X-ray, histopathology, ultrasound, …).

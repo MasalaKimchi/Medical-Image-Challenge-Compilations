@@ -83,5 +83,5 @@ test("schema migration preserves the reviewed fixture-date status distribution",
   const data = JSON.parse(await readFile(new URL("../data/challenges.json", import.meta.url), "utf8"));
   const counts = { live: 0, open: 0, upcoming: 0, closed: 0 };
   for (const item of data) counts[deriveChallengeState(item, "2026-07-23").status] += 1;
-  assert.deepEqual(counts, { live: 1, open: 20, upcoming: 2, closed: 14 });
+  assert.deepEqual(counts, { live: 1, open: 24, upcoming: 2, closed: 16 });
 });
