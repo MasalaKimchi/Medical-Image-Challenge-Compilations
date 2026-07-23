@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Medical Image Challenge Timeline",
+  "schemaVersion": 1,
+  "description": "Animated timeline of medical image challenges on a Jul 2025–Dec 2026 date axis, grouped into swimlanes by venue family (MICCAI/ISBI/CVPR/RSNA/Standalone), coloured by status, with a live TODAY marker, next-deadline countdown strip, dashed bars for estimated/TBA dates, and rolling-benchmark fades. Companion to the main tracker.",
+  "mcpTools": [],
+  "mcpServerNames": []
+}
+</script>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Image Challenge Timeline</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --panel:#ffffff; --panel-2:#f0f2f8; --ink:#1a2233; --ink-soft:#5a6478;
+    --line:#e3e7f0; --brand:#3b5bdb; --focus:#2f43c9;
+    --live:#0ca678; --open:#3b5bdb; --upcoming:#e8850c; --closed:#9aa6bd;
+    --today:#e64980;
+    --fam-MICCAI:#4c6ef5; --fam-ISBI:#0ca678; --fam-CVPR:#e8850c; --fam-RSNA:#e64980; --fam-Standalone:#7c8798;
+    --shadow:0 1px 3px rgba(20,30,60,.08),0 6px 24px rgba(20,30,60,.06);
+    --radius:14px; --t:220ms cubic-bezier(.2,.7,.3,1); --gutter:172px;
+  }
+  html[data-theme="dark"]{
+    --bg:#0e1220; --panel:#161c2e; --panel-2:#1e2740; --ink:#e8ecf6; --ink-soft:#9aa6c0;
+    --line:#28324d; --brand:#7d97ff; --focus:#9db2ff;
+    --live:#38d9a9; --open:#8aa2ff; --upcoming:#ffb454; --closed:#68748f; --today:#faa2c1;
+    --fam-MICCAI:#8aa2ff; --fam-ISBI:#38d9a9; --fam-CVPR:#ffb454; --fam-RSNA:#faa2c1; --fam-Standalone:#9aa6c0;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px}
+  .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.12em}
+
+  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+  .title h1{margin:0 0 4px;font-size:25px;letter-spacing:-.4px;display:flex;align-items:center;gap:10px}
+  .title h1 .icon{width:25px;height:25px;stroke:var(--brand)}
+  .title p{margin:0;color:var(--ink-soft);font-size:14px;max-width:640px}
+  .head-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:7px;transition:border-color var(--t),transform var(--t);white-space:nowrap}
+  .btn:hover{border-color:var(--brand);text-decoration:none;transform:translateY(-1px)}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)} .btn.primary .icon{stroke:#fff}
+
+  /* Next deadlines strip */
+  .next-title{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-soft);margin:6px 2px 10px;font-weight:700}
+  .next-strip{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 10px}
+  .dcard{flex:0 0 auto;min-width:186px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .dcard .fam{font-size:10.5px;font-weight:800;letter-spacing:.4px;color:#fff;padding:2px 7px;border-radius:5px;display:inline-block;margin-bottom:8px}
+  .dcard .nm{font-size:13px;font-weight:700;line-height:1.25;margin-bottom:8px;display:block;color:var(--ink)}
+  .dcard .cd{font-size:22px;font-weight:800;line-height:1} .dcard .cd small{font-size:12px;font-weight:600;color:var(--ink-soft)}
+  .dcard .dt{font-size:11.5px;color:var(--ink-soft);margin-top:3px}
+  .dcard.urgent{border-color:var(--today)}
+  .dcard.urgent .cd{color:var(--today)}
+  .dcard.urgent::after{content:"";position:absolute;inset:0;border-radius:12px;border:2px solid var(--today);opacity:0;animation:glow 2s ease-in-out infinite}
+  @keyframes glow{0%,100%{opacity:0}50%{opacity:.55}}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 16px;margin:6px 0 0}
+  .filters-label{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;align-self:center}
+  .chip{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-soft);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;transition:border-color var(--t),color var(--t),background var(--t);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--brand);color:var(--ink)}
+  .chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .chip .dotc{width:9px;height:9px;border-radius:50%;flex:none}
+  .spacer{flex:1}
+
+  /* Chart */
+  .scroll{overflow-x:auto;margin-top:14px}
+  .chart{position:relative;min-width:1000px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding-bottom:14px}
+  .axis{display:flex;height:46px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:5;border-radius:var(--radius) var(--radius) 0 0}
+  .axis-gutter{width:var(--gutter);flex:none;display:flex;align-items:center;padding-left:16px;font-size:12px;font-weight:700;color:var(--ink-soft)}
+  .axis-track{position:relative;flex:1}
+  .yearband{position:absolute;top:5px;height:15px;font-size:10.5px;font-weight:800;color:var(--ink-soft);letter-spacing:.5px;border-left:1px solid var(--line);padding-left:5px}
+  .mon{position:absolute;bottom:6px;text-align:center;font-size:11px;color:var(--ink-soft);transform:translateX(-50%)}
+  .mon.q{color:var(--ink);font-weight:700}
+
+  .overlay{position:absolute;left:var(--gutter);right:0;top:46px;bottom:0;pointer-events:none;z-index:1}
+  .gl{position:absolute;top:0;bottom:0;width:1px;background:var(--line);opacity:.6}
+  .gl.q{opacity:1;background:var(--line)}
+  .todayline{position:absolute;top:0;bottom:0;width:2px;background:var(--today);z-index:4}
+  .todayflag{position:absolute;top:2px;transform:translateX(-50%);background:var(--today);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;white-space:nowrap;letter-spacing:.4px}
+  .todaydot{position:absolute;top:44px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--today);box-shadow:0 0 0 0 var(--today);animation:pulse 2.2s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(230,73,128,.5)}100%{box-shadow:0 0 0 14px rgba(230,73,128,0)}}
+
+  .lanes{position:relative;z-index:2}
+  .group-h{display:flex;align-items:center;gap:8px;padding:12px 16px 6px;font-size:12px;font-weight:800;letter-spacing:.4px}
+  .group-h .gdot{width:10px;height:10px;border-radius:3px}
+  .group-h .gc{color:var(--ink-soft);font-weight:600;font-size:11.5px}
+  .row{display:flex;align-items:center;height:34px}
+  .row:hover{background:var(--panel-2)}
+  .lane-name{width:var(--gutter);flex:none;padding:0 10px 0 16px;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:3px solid transparent}
+  .lane-name a{color:var(--ink)}
+  .track{position:relative;flex:1;height:100%}
+  .bar{position:absolute;top:8px;height:18px;border-radius:6px;cursor:pointer;transform-origin:left center;box-shadow:0 1px 3px rgba(0,0,0,.12);transition:filter var(--t),transform var(--t);animation:grow .6s cubic-bezier(.2,.7,.3,1) both}
+  .bar:hover{filter:brightness(1.08) saturate(1.1);transform:scaleY(1.12)}
+  @keyframes grow{from{transform:scaleX(.02)}to{transform:scaleX(1)}}
+  .bar.est{border:1.5px dashed rgba(255,255,255,.85)}
+  .bar .roll-arrow{position:absolute;right:-2px;top:50%;transform:translateY(-50%);color:#fff;font-size:12px;font-weight:900;text-shadow:0 0 3px rgba(0,0,0,.35)}
+  .bar .qmark{position:absolute;right:4px;top:50%;transform:translateY(-50%);color:#fff;font-size:10px;font-weight:800;opacity:.9}
+  .before-mark{position:absolute;left:0;top:9px;font-size:11px;color:var(--ink-soft);font-weight:700}
+
+  #tip{position:fixed;z-index:50;max-width:290px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:12px 14px;font-size:12.5px;pointer-events:none;opacity:0;transition:opacity 120ms;color:var(--ink)}
+  #tip h4{margin:0 0 6px;font-size:13.5px}
+  #tip .tb{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:2px 7px;border-radius:5px;color:#fff;margin-bottom:6px}
+  #tip .trow{display:flex;justify-content:space-between;gap:14px;padding:2px 0;color:var(--ink-soft)}
+  #tip .trow b{color:var(--ink);font-weight:600;text-align:right}
+  .legend2{display:flex;gap:16px;flex-wrap:wrap;padding:12px 16px;font-size:12px;color:var(--ink-soft);align-items:center}
+  .legend2 .li{display:inline-flex;align-items:center;gap:6px} .legend2 .sw{width:22px;height:11px;border-radius:4px}
+  .note{color:var(--ink-soft);font-size:12.5px;padding:2px 4px;margin-top:14px}
+  @media(max-width:700px){:root{--gutter:120px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.bar{transform:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="title">
+      <h1><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Challenge Timeline</h1>
+      <p>Every tracked medical-image challenge on one date axis — registration/data release through deadline — grouped by venue and coloured by status. The pink line is today.</p>
+    </div>
+    <div class="head-actions">
+      <a class="btn primary" href="index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h7V4H3zM14 20h7v-8h-7zM14 4v5h7V4zM3 20h7v-5H3z"/></svg> Tracker view</a>
+      <button class="btn" id="themeBtn"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg> <span>Dark</span></button>
+    </div>
+  </header>
+
+  <div class="next-title">⏳ Next deadlines</div>
+  <div class="next-strip" id="nextStrip"></div>
+
+  <div class="panel">
+    <div class="toolbar">
+      <span class="filters-label">Status</span>
+      <div class="chip" data-filter="status" data-val="live"><span class="dotc" style="background:var(--live)"></span>Live</div>
+      <div class="chip" data-filter="status" data-val="open"><span class="dotc" style="background:var(--open)"></span>Open</div>
+      <div class="chip" data-filter="status" data-val="upcoming"><span class="dotc" style="background:var(--upcoming)"></span>Upcoming</div>
+      <div class="chip" data-filter="status" data-val="closed"><span class="dotc" style="background:var(--closed)"></span>Closed</div>
+      <span class="spacer"></span>
+      <span class="filters-label">Venue</span>
+      <div class="chip" data-filter="fam" data-val="MICCAI"><span class="dotc" style="background:var(--fam-MICCAI)"></span>MICCAI</div>
+      <div class="chip" data-filter="fam" data-val="ISBI"><span class="dotc" style="background:var(--fam-ISBI)"></span>ISBI</div>
+      <div class="chip" data-filter="fam" data-val="CVPR"><span class="dotc" style="background:var(--fam-CVPR)"></span>CVPR</div>
+      <div class="chip" data-filter="fam" data-val="RSNA"><span class="dotc" style="background:var(--fam-RSNA)"></span>RSNA</div>
+      <div class="chip" data-filter="fam" data-val="Standalone"><span class="dotc" style="background:var(--fam-Standalone)"></span>Standalone</div>
+    </div>
+    <div class="legend2">
+      <span class="li"><span class="sw" style="background:var(--live)"></span>Live / rolling</span>
+      <span class="li"><span class="sw" style="background:var(--open)"></span>Open</span>
+      <span class="li"><span class="sw" style="background:var(--upcoming)"></span>Upcoming</span>
+      <span class="li"><span class="sw" style="background:var(--closed)"></span>Closed</span>
+      <span class="li"><span class="sw" style="border:1.5px dashed var(--ink-soft);background:transparent"></span>Dashed = estimated / TBA date</span>
+      <span class="li"><b style="color:var(--today)">|</b> Today · 23 Jul 2026</span>
+    </div>
+    <div class="scroll">
+      <div class="chart" id="chart">
+        <div class="axis"><div class="axis-gutter">Challenge</div><div class="axis-track" id="axisTrack"></div></div>
+        <div class="lanes" id="lanes"></div>
+        <div class="overlay" id="overlay"></div>
+      </div>
+    </div>
+  </div>
+  <div class="note" id="note"></div>
+</div>
+<div id="tip"></div>
+
+<script>
+const CHALLENGES = [{"id":"brats26","name":"BraTS 2026 Cluster of Challenges","shortName":"BraTS","venue":"MICCAI 2026","platform":"Synapse","url":"https://www.synapse.org/Synapse:syn74274097/wiki/","status":"open","statusNote":"15th BraTS cluster (5 sub-challenges). Validation leaderboard live since 21 May; final submission deadline 23 Jul 2026.","dataAvailable":"on-registration","taskType":["segmentation","classification","reconstruction"],"modality":["MRI","Histopathology-WSI"],"anatomy":"brain","dimensionality":"mixed","numCases":"5 sub-challenges; large multi-institutional cohorts","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-07-23","keyDates":{"registration":"Data released 1 May 2026","submissionDeadline":"23 Jul 2026 (final)","results":"Acceptances 24 Aug; MICCAI satellite 27 Sep 2026"},"prizes":"Top teams invited to present at MICCAI (no cash stated)","overview":"Flagship brain-tumor benchmark spanning metastases segmentation, pediatric tumors, cross-tumor generalizability (GoAT), MR inpainting and glioma histopathology.","prizeType":"recognition","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-05-01","endISO":"2026-07-23","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"flare26","name":"FLARE 2026 Task 2 — AutoMSC","shortName":"FLARE AutoMSC","venue":"MICCAI 2026","platform":"Codabench","url":"https://www.codabench.org/competitions/15553/","status":"open","statusNote":"Validation submissions open through 20 Aug; Docker testing 20–31 Aug 2026.","dataAvailable":"on-registration","taskType":["segmentation","classification"],"modality":["CT","MRI","PET"],"anatomy":"multi-organ","dimensionality":"3D","numCases":"Multiple datasets incl. PI-CAI prostate MRI (~1,500), LUNA25, BrainMets","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-08-31","keyDates":{"registration":"1 Apr – 20 Aug 2026","submissionDeadline":"Testing 20–31 Aug; paper 31 Aug 2026","results":"MICCAI 2026 (Oct)"},"prizes":"Top-5 cash (Amazon gift cards 300/200/150/100/100 CAD) + oral talks; certificates to top 10","overview":"Build a self-configuring 3D model that adapts across diverse datasets and performs segmentation AND classification jointly, scored on accuracy and runtime efficiency.","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-01","endISO":"2026-08-31","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"fomo26","name":"FOMO26 — Foundation Model Challenge for Brain MRI","shortName":"FOMO26","venue":"MICCAI 2026","platform":"Synapse","url":"https://fomo26.github.io/","status":"open","statusNote":"Two tracks (methods-only, open-data). Submissions accepted until 21 Aug 2026.","dataAvailable":"public","taskType":["classification","segmentation"],"modality":["MRI"],"anatomy":"brain","dimensionality":"3D","numCases":"~306,207 brain MRI (FOMO300K pretraining) + few-shot downstream tasks","datasetSizeGB":null,"scale":"foundation","deadlineISO":"2026-08-21","keyDates":{"registration":"Opened 20 Apr 2026","submissionDeadline":"21 Aug 2026","results":"1 Oct 2026"},"prizes":"$1,000 per track ($500 / $300 / $200 top three)","overview":"Pretrain a brain-MRI foundation model on a large public corpus, then evaluate few-shot across 7 clinical downstream tasks (classification, segmentation, brain-age, fairness).","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-20","endISO":"2026-08-21","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"cmrx26","name":"CMRxRecon 2026 — Ultra-Fast 4D Flow MRI","shortName":"CMRxRecon","venue":"MICCAI 2026","platform":"Self-hosted","url":"https://cmrx.chihucloud.com/2026/","status":"open","statusNote":"Testing submission open 1 Jul – 20 Aug 2026.","dataAvailable":"on-registration","taskType":["reconstruction"],"modality":["MRI"],"anatomy":"heart (multi-organ)","dimensionality":"3D","numCases":"~400 subjects, 10+ centers and scanners","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-08-20","keyDates":{"registration":"Opened 1 Feb 2026","submissionDeadline":"Testing 1 Jul – 20 Aug 2026","results":"8 Oct 2026 (MICCAI)"},"prizes":"Monetary awards for top-5 per task (amounts TBA)","overview":"AI reconstruction of highly undersampled (10×–50×) 4D Flow MRI to cut acquisition from ~30–60 min toward sub-5-min clinical workflows.","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-02-01","endISO":"2026-08-20","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"hecktor26","name":"HECKTOR 2026 — Head & Neck Tumor Analysis","shortName":"HECKTOR","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://hecktor26.grand-challenge.org/","status":"open","statusNote":"Testing submission open 15–25 Jul 2026 (closing very soon); final report 8 Aug.","dataAvailable":"on-registration","taskType":["segmentation","classification"],"modality":["PET","CT"],"anatomy":"head and neck","dimensionality":"3D","numCases":"~1,423 patients from 11+ centers","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-07-25","keyDates":{"registration":"Training data 15 Apr 2026","submissionDeadline":"Testing 15–25 Jul; report 8 Aug 2026","results":"Top-5 announced 20 Aug; workshop Oct 2026"},"prizes":"Prizes offered (amounts not stated)","overview":"Multimodal FDG-PET/CT pipeline that segments primary tumors and lymph nodes, infers TN staging, and predicts recurrence-free survival.","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-15","endISO":"2026-07-25","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"pengwin26","name":"PENGWIN 2026 — Peripelvic Fracture Segmentation & Planning","shortName":"PENGWIN","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://pengwin2026.grand-challenge.org/","status":"open","statusNote":"Preliminary submission phase open since 22 May 2026; final deadline TBA.","dataAvailable":"on-registration","taskType":["segmentation","detection"],"modality":["CT"],"anatomy":"pelvis","dimensionality":"3D","numCases":"~16,500 (500 clinical from 7 institutions + 16,000 simulated fractures)","datasetSizeGB":null,"scale":"large","deadlineISO":null,"keyDates":{"registration":"Training released 24 Apr 2026","submissionDeadline":"Preliminary phase open (final TBA)","results":"MICCAI 2026 (Oct)"},"prizes":"None stated","overview":"Segment fractured pelvic bone fragments in 3D CT and plan their surgical reduction (repositioning) for image-guided orthopedic trauma care.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-24","endISO":"2026-09-27","endEstimated":true,"startEstimated":false,"rolling":false},{"id":"learn2reg26","name":"Learn2Reg 2026 — Deformable Registration","shortName":"Learn2Reg","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://learn2reg.grand-challenge.org/","status":"open","statusNote":"Underway since kick-off 26 May 2026; leaderboard on Codabench. Test deadline TBA.","dataAvailable":"on-registration","taskType":["registration"],"modality":["PET","CT"],"anatomy":"whole-body & lung","dimensionality":"3D","numCases":"PSMAReg 597 (+262 test); Learn2Breath 200 pairs (+100 test)","datasetSizeGB":null,"scale":"medium","deadlineISO":null,"keyDates":{"registration":"Kick-off 26 May 2026","submissionDeadline":"Before MICCAI 2026 (TBA)","results":"MICCAI 2026 (Oct)"},"prizes":"None stated","overview":"Deformable registration across two tasks: longitudinal whole-body PSMA PET/CT (before vs after therapy) and inspiratory–expiratory chest CT for lung biomechanics.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-05-26","endISO":"2026-09-27","endEstimated":true,"startEstimated":false,"rolling":false},{"id":"odin26","name":"ODIN 2026 — Oral & Dental Report Generation","shortName":"ODIN","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://odin2026.grand-challenge.org/","status":"open","statusNote":"Site launched 25 May; training data released May 2026. Submission deadline TBA.","dataAvailable":"public","taskType":["report-generation"],"modality":["CBCT","Intraoral-scan","Photograph"],"anatomy":"oral & dental","dimensionality":"mixed","numCases":"Bite2Text 1,000 cases; ToothFairy4 (n/s)","datasetSizeGB":null,"scale":"medium","deadlineISO":null,"keyDates":{"registration":"—","submissionDeadline":"TBA (training released May 2026)","results":"MICCAI 2026 (Oct)"},"prizes":"None stated","overview":"Generate structured clinical reports from dental imaging: maxillofacial reports from 3D CBCT, and orthodontic reports from 3D intraoral scans plus 2D photos.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-05-10","endISO":"2026-09-27","endEstimated":true,"startEstimated":false,"rolling":false},{"id":"autopet5","name":"autoPET V — Whole-Body PET/CT Lesion Segmentation","shortName":"autoPET V","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://autopet-v.grand-challenge.org/","status":"open","statusNote":"Final test phase opened 15 Jul; challenge closes 1 Sep 2026.","dataAvailable":"public","taskType":["segmentation"],"modality":["PET","CT"],"anatomy":"whole-body","dimensionality":"3D","numCases":"Multi-tracer FDG + PSMA PET/CT (TCIA-hosted)","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-09-01","keyDates":{"registration":"Opened 1 Apr 2026","submissionDeadline":"1 Sep 2026 (final test from 15 Jul)","results":"MICCAI 2026, 27 Sep"},"prizes":"None stated","overview":"Interactive, clinician-in-the-loop lesion segmentation on whole-body FDG and PSMA PET/CT, refining predictions from corrective scribbles.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-01","endISO":"2026-09-01","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"isles26","name":"ISLES'26 — Ischemic Stroke Lesion Segmentation","shortName":"ISLES'26","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://isles-26.grand-challenge.org/","status":"open","statusNote":"Submission system opened 15 Jul; Docker submission deadline 15 Aug 2026.","dataAvailable":"on-registration","taskType":["segmentation"],"modality":["MRI"],"anatomy":"brain","dimensionality":"3D","numCases":"~2,000 annotated scans from 60+ centers","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-08-15","keyDates":{"registration":"Verified accounts required","submissionDeadline":"15 Aug 2026 (Docker)","results":"MICCAI 2026 (Oct)"},"prizes":"Not stated","overview":"Segment ischemic stroke lesions across acute, sub-acute and chronic phases on MRI, with a substantially expanded multi-center dataset.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-07-15","endISO":"2026-08-15","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"aimstbi26","name":"AIMS-TBI 2026 — Traumatic Brain Injury Lesions","shortName":"AIMS-TBI26","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://aims-tbi26.grand-challenge.org/","status":"open","statusNote":"Final model submission open since 1 Jul; submission & paper deadline 23 Jul 2026.","dataAvailable":"on-registration","taskType":["detection","segmentation"],"modality":["MRI"],"anatomy":"brain","dimensionality":"3D","numCases":"~892 T1w MRI (553/100/239 split), ENIGMA Consortium","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-07-23","keyDates":{"registration":"Data via use agreement","submissionDeadline":"23 Jul 2026","results":"MICCAI 2026 workshop, 1 Oct"},"prizes":"$500 / $250 / $100 + brain trophies","overview":"Detect and segment 3D traumatic brain injury lesions (contusions, hemorrhage, hematoma) on T1-weighted MRI in moderate-to-severe TBI patients.","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-07-01","endISO":"2026-07-23","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"atm26","name":"ATM26 — Airway Tree Modeling","shortName":"ATM26","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://atm26.grand-challenge.org/","status":"upcoming","statusNote":"Registration opened 15 Jun; sanity-check phase live. Main deadline not yet announced.","dataAvailable":"on-registration","taskType":["segmentation","classification"],"modality":["CT"],"anatomy":"lung / airway","dimensionality":"3D","numCases":"Not publicly stated","datasetSizeGB":null,"scale":"medium","deadlineISO":null,"keyDates":{"registration":"Opened 15 Jun 2026","submissionDeadline":"TBA","results":"MICCAI 2026 (Oct)"},"prizes":"Not stated","overview":"Two-track chest-CT airway analysis: topology-preserving binary airway-tree segmentation and branch-wise anatomical labeling for bronchoscopic navigation.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-06-15","endISO":"2026-09-27","endEstimated":true,"startEstimated":false,"rolling":false},{"id":"headline26","name":"HEADLINE — VLM Head CT Reporting","shortName":"HEADLINE26","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://headline26.grand-challenge.org/","status":"open","statusNote":"Validation & sanity-check phases open; test phase opening soon.","dataAvailable":"on-registration","taskType":["report-generation"],"modality":["CT"],"anatomy":"brain","dimensionality":"3D","numCases":"500 validation studies (total n/s)","datasetSizeGB":null,"scale":"medium","deadlineISO":null,"keyDates":{"registration":"Signup at headline.ccibonn.ai","submissionDeadline":"TBA","results":"MICCAI 2026 (Oct)"},"prizes":"Not stated","overview":"Benchmark vision-language models on generating diagnostic radiology reports from head CT scans.","prizeType":"none","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-06-01","endISO":"2026-09-27","endEstimated":true,"startEstimated":true,"rolling":false},{"id":"beetle","name":"BEETLE — Breast Cancer Histopathology Segmentation","shortName":"BEETLE","venue":"Grand Challenge","platform":"grand-challenge.org","url":"https://beetle.grand-challenge.org/","status":"live","statusNote":"Continuous long-term benchmark — no deadlines, live leaderboard.","dataAvailable":"public","taskType":["segmentation"],"modality":["Histopathology-WSI"],"anatomy":"breast","dimensionality":"2D","numCases":"587 dev biopsies/resections + 170 annotated regions (54 WSIs)","datasetSizeGB":null,"scale":"medium","deadlineISO":null,"keyDates":{"registration":"Rolling","submissionDeadline":"None (continuous)","results":"Live leaderboard"},"prizes":"None","overview":"Multiclass semantic segmentation of H&E-stained breast-cancer whole-slide images into four tissue categories, scored by Dice.","prizeType":"none","venueFamily":"Standalone","venueType":"platform","startISO":null,"endISO":null,"endEstimated":false,"startEstimated":false,"rolling":true},{"id":"reg2","name":"REG² — Reasoning-Guided Pathology Report Generation","shortName":"REG²","venue":"MICCAI 2026","platform":"grand-challenge.org","url":"https://reg2026.grand-challenge.org/","status":"closed","statusNote":"Test Phase 2 closed 20 Jul 2026; winners announced at MICCAI 2026.","dataAvailable":"on-registration","taskType":["report-generation"],"modality":["Histopathology-WSI"],"anatomy":"n/a","dimensionality":"2D","numCases":"Test Phase 1: 350 cases (+ training set)","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-07-20","keyDates":{"registration":"Opened 15 Apr 2026","submissionDeadline":"20 Jul 2026 (Test Phase 2)","results":"MICCAI 2026, 27 Sep"},"prizes":"€800 / €400 / €200 / €100 + certificate","overview":"Generate pathology reports from gigapixel whole-slide images while making the diagnostic reasoning explicit — scored on clinical correctness, not text overlap.","prizeType":"cash","venueFamily":"MICCAI","venueType":"conference","startISO":"2026-04-15","endISO":"2026-07-20","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"fmcuia","name":"Foundation Model Challenge for Ultrasound","shortName":"FMC-UIA","venue":"ISBI 2026","platform":"Codabench","url":"https://www.codabench.org/competitions/11539/","status":"live","statusNote":"Final testing phase is open-ended with a rolling leaderboard (~179 teams).","dataAvailable":"on-registration","taskType":["segmentation","classification","detection"],"modality":["Ultrasound"],"anatomy":"multi-organ","dimensionality":"2D","numCases":"50,000+ multi-center ultrasound images","datasetSizeGB":null,"scale":"foundation","deadlineISO":null,"keyDates":{"registration":"Opened 17 Nov 2025","submissionDeadline":"Open-ended final testing phase","results":"ISBI 2026 (Apr)"},"prizes":"Top-10 cash + Best Paper / Presentation / Task awards","overview":"Build a single foundation model performing classification, segmentation, detection and regression across diverse ultrasound organs and pathologies.","prizeType":"cash","venueFamily":"ISBI","venueType":"conference","startISO":"2025-11-17","endISO":null,"endEstimated":false,"startEstimated":false,"rolling":true},{"id":"cxrlt26","name":"CXR-LT 2026 — Long-Tailed Chest X-ray Classification","shortName":"CXR-LT","venue":"ISBI 2026","platform":"Codabench","url":"https://cxr-lt.github.io/CXR-LT-2026/","status":"live","statusNote":"Ongoing multi-year benchmark; leaderboard remains open (2026 ranked phase ended 4 Feb).","dataAvailable":"public","taskType":["classification"],"modality":["X-ray"],"anatomy":"chest","dimensionality":"2D","numCases":"~145,000 chest X-rays (PadChest + NIH external test)","datasetSizeGB":null,"scale":"large","deadlineISO":null,"keyDates":{"registration":"Dev phase from 1 Dec 2025","submissionDeadline":"Rolling (ranked phase ended 4 Feb 2026)","results":"ISBI 2026 (Apr)"},"prizes":"None stated","overview":"Multi-label, long-tailed and zero-shot classification of thoracic diseases on ~145k chest X-rays, including generalization to rare unseen classes.","prizeType":"none","venueFamily":"ISBI","venueType":"conference","startISO":"2025-12-01","endISO":"2026-02-04","endEstimated":false,"startEstimated":false,"rolling":true},{"id":"lcrmpi","name":"LCR-MPI — Low-Concentration MPI Reconstruction","shortName":"LCR-MPI","venue":"ISBI 2026","platform":"Self-hosted","url":"https://www.mpilab.net/LCR-MPI-Challenge/","status":"closed","statusNote":"Submission deadline 26 Feb 2026; results at ISBI 2026 (April).","dataAvailable":"on-registration","taskType":["reconstruction"],"modality":["Magnetic-Particle-Imaging"],"anatomy":"n/a (phantom)","dimensionality":"2D","numCases":"Simulated + real FFL-MPI datasets","datasetSizeGB":null,"scale":"small","deadlineISO":"2026-02-26","keyDates":{"registration":"Opened 1 Dec 2025","submissionDeadline":"26 Feb 2026","results":"ISBI 2026 (Apr)"},"prizes":"None stated","overview":"Reconstruct high-quality field-free-line Magnetic Particle Imaging under low tracer concentration, scored by SSIM, PSNR and NRMSE.","prizeType":"none","venueFamily":"ISBI","venueType":"conference","startISO":"2025-12-01","endISO":"2026-02-26","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"riva","name":"RIVA — Cervical Cytology Challenge","shortName":"RIVA","venue":"ISBI 2026","platform":"Kaggle","url":"https://lia-ditella.github.io/rivachallenge/","status":"closed","statusNote":"Final evaluation ended 20 Feb 2026; dataset openly available on Zenodo/Kaggle.","dataAvailable":"public","taskType":["detection","classification"],"modality":["Cytology-microscopy"],"anatomy":"cervix","dimensionality":"2D","numCases":"959 fields, 26,158 annotated nuclei, 8 Bethesda classes","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-02-20","keyDates":{"registration":"Launched 15 Dec 2025","submissionDeadline":"20 Feb 2026","results":"ISBI 2026 (Apr)"},"prizes":"Track A $2,000 / $1,200; Track B $1,200 / $600","overview":"Detect and classify cervical cells on a large multi-expert Pap-smear dataset (8 Bethesda classes) for precancer/cancer screening.","prizeType":"cash","venueFamily":"ISBI","venueType":"conference","startISO":"2025-12-15","endISO":"2026-02-20","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"wbcbench26","name":"WBCBench 2026 — Robust White Blood Cell Classification","shortName":"WBCBench","venue":"ISBI 2026","platform":"Kaggle","url":"https://xudong-ma.github.io/WBCBench2026-Robust-White-Blood-Cell-Classification/","status":"closed","statusNote":"Concluded at ISBI 2026 (11 Apr); dataset now public on Hugging Face.","dataAvailable":"public","taskType":["classification"],"modality":["Microscopy-blood-smear"],"anatomy":"blood","dimensionality":"2D","numCases":"55,012 images across 13 WBC classes","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-04-11","keyDates":{"registration":"—","submissionDeadline":"Closed before ISBI 2026","results":"11 Apr 2026 (ISBI)"},"prizes":"$800 / $600 / $500 + $100 Best Paper","overview":"Robust 13-class white-blood-cell classification on 55k blood-smear images under severe class imbalance and simulated domain shift.","prizeType":"cash","venueFamily":"ISBI","venueType":"conference","startISO":"2026-01-01","endISO":"2026-04-11","endEstimated":false,"startEstimated":true,"rolling":false},{"id":"endouc","name":"EndoUC — Ulcerative Colitis Grading in Endoscopy","shortName":"EndoUC","venue":"ISBI 2026","platform":"Self-hosted","url":"https://endouc-cv.github.io/","status":"closed","statusNote":"ISBI 2026 challenge; dataset released under CC BY-SA 4.0.","dataAvailable":"public","taskType":["classification","report-generation"],"modality":["Endoscopy"],"anatomy":"colon","dimensionality":"2D","numCases":"2,945 colonoscopy images","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-04-08","keyDates":{"registration":"—","submissionDeadline":"—","results":"ISBI 2026 (Apr)"},"prizes":"None stated","overview":"Automated ulcerative-colitis severity scoring (Mayo Endoscopic Score, UCEIS) plus clinical image captioning from a multimodal colonoscopy dataset.","prizeType":"none","venueFamily":"ISBI","venueType":"conference","startISO":"2026-01-01","endISO":"2026-04-08","endEstimated":false,"startEstimated":true,"rolling":false},{"id":"csv26","name":"CSV 2026 — Carotid Plaque Segmentation & Vulnerability","shortName":"CSV","venue":"ISBI 2026","platform":"Self-hosted","url":"http://csv-isbi.net/","status":"closed","statusNote":"ISBI 2026 challenge; exact dates unconfirmed — presumed concluded around April 2026.","dataAvailable":"unknown","taskType":["segmentation","classification"],"modality":["Ultrasound"],"anatomy":"carotid artery","dimensionality":"2D","numCases":"~1,500 paired carotid ultrasound images","datasetSizeGB":null,"scale":"medium","deadlineISO":"2026-04-08","keyDates":{"registration":"—","submissionDeadline":"—","results":"ISBI 2026 (Apr)"},"prizes":"None stated","overview":"Segment atherosclerotic plaque and classify its vulnerability from paired carotid B-mode ultrasound, to improve stroke-risk stratification.","prizeType":"none","venueFamily":"ISBI","venueType":"conference","startISO":"2026-01-01","endISO":"2026-04-08","endEstimated":false,"startEstimated":true,"rolling":false},{"id":"rsnaaneurysm","name":"RSNA Intracranial Aneurysm Detection","shortName":"RSNA Aneurysm","venue":"Kaggle / RSNA 2025","platform":"Kaggle","url":"https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection","status":"closed","statusNote":"Submissions closed 14 Oct 2025; dataset remains public on Kaggle.","dataAvailable":"public","taskType":["detection","segmentation"],"modality":["CT-angiography","MRA","MRI"],"anatomy":"brain","dimensionality":"3D","numCases":"~6,500+ studies; 3,500+ annotated aneurysms from 18 institutions","datasetSizeGB":null,"scale":"large","deadlineISO":"2025-10-14","keyDates":{"registration":"Launched 29 Jul 2025","submissionDeadline":"14 Oct 2025","results":"Nov 2025 (RSNA)"},"prizes":"$50,000 total (top 9 teams)","overview":"Detect and localize intracranial aneurysms across 13 vascular locations using multimodal CTA, MRA and MRI; some studies include 3D vessel segmentations.","prizeType":"cash","venueFamily":"RSNA","venueType":"conference","startISO":"2025-07-29","endISO":"2025-10-14","endEstimated":false,"startEstimated":false,"rolling":false},{"id":"rsnaknee26","name":"RSNA Knee MRI AI Challenge","shortName":"RSNA Knee MRI","venue":"Kaggle / RSNA 2026","platform":"Kaggle / RSNA","url":"https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge","status":"open","statusNote":"Launching Spring 2026, concluding October 2026; first RSNA challenge to use both images and report text.","dataAvailable":"on-registration","taskType":["detection","classification"],"modality":["MRI"],"anatomy":"knee","dimensionality":"3D","numCases":">5,000 knee MRI exams from 16 institutions (reports in 9 languages)","datasetSizeGB":null,"scale":"large","deadlineISO":"2026-10-31","keyDates":{"registration":"Launch Spring 2026","submissionDeadline":"Oct 2026","results":"RSNA 2026 (Nov–Dec)"},"prizes":"Not stated","overview":"Detect a range of knee abnormalities (ligament/meniscus tears, cartilage loss, effusion, synovitis) on MRI, using both images and radiology-report text.","prizeType":"none","venueFamily":"RSNA","venueType":"conference","startISO":"2026-04-01","endISO":"2026-10-31","endEstimated":true,"startEstimated":true,"rolling":false},{"id":"panorama","name":"PANORAMA — Pancreatic Cancer Diagnosis","shortName":"PANORAMA","venue":"TCIA / Grand Challenge","platform":"grand-challenge.org","url":"https://panorama.grand-challenge.org/","status":"closed","statusNote":"Competitive leaderboard closed (results Feb 2025; Lancet Oncology Jan 2026). Public dev dataset remains available.","dataAvailable":"public","taskType":["detection","classification"],"modality":["CT"],"anatomy":"pancreas","dimensionality":"3D","numCases":">1,500 contrast-enhanced CT; 400 hidden test","datasetSizeGB":null,"scale":"large","deadlineISO":"2025-02-28","keyDates":{"registration":"—","submissionDeadline":"Closed (results 28 Feb 2025)","results":"Publication Jan 2026"},"prizes":"€2,000 total (1,000 / 500 / 250 / 150 / 100) + authorship","overview":"Benchmarks AI against abdominal radiologists for detecting and diagnosing pancreatic ductal adenocarcinoma (PDAC) on contrast-enhanced CT.","prizeType":"cash","venueFamily":"Standalone","venueType":"platform","startISO":"2024-11-01","endISO":"2025-02-28","endEstimated":false,"startEstimated":true,"rolling":false},{"id":"biomedseg-int","name":"BiomedSegFM — Interactive 3D Segmentation","shortName":"BiomedSegFM (Interactive)","venue":"CVPR 2026","platform":"Codabench","url":"https://www.codabench.org/competitions/5263/","status":"live","statusNote":"Multi-year rolling benchmark; featured at the CVPR 2026 Foundation Models for Medical Vision workshop.","dataAvailable":"public","taskType":["segmentation"],"modality":["CT","MRI","PET","Ultrasound","Microscopy"],"anatomy":"multiple","dimensionality":"3D","numCases":"Large multi-modal 3D set (junma/CVPR-BiomedSegFM on HF)","datasetSizeGB":340,"scale":"foundation","deadlineISO":null,"keyDates":{"registration":"Rolling","submissionDeadline":"Rolling (CVPR 2026 phase ~3 Jun)","results":"CVPR 2026 workshop, 3 Jun"},"prizes":"None stated","overview":"Build a foundation model that segments 3D biomedical volumes via interactive prompts (bounding box + up to 5 correction clicks) across CT, MRI, PET, US and microscopy.","prizeType":"none","venueFamily":"CVPR","venueType":"conference","startISO":"2025-06-01","endISO":null,"endEstimated":false,"startEstimated":true,"rolling":true},{"id":"biomedseg-txt","name":"BiomedSegFM — Text-guided 3D Segmentation","shortName":"BiomedSegFM (Text)","venue":"CVPR 2026","platform":"Codabench","url":"https://www.codabench.org/competitions/5651/","status":"live","statusNote":"Multi-year rolling benchmark; featured at the CVPR 2026 Foundation Models for Medical Vision workshop.","dataAvailable":"public","taskType":["segmentation"],"modality":["CT","MRI","PET","Ultrasound","Microscopy"],"anatomy":"multiple","dimensionality":"3D","numCases":"Shares the 340 GB BiomedSegFM dataset","datasetSizeGB":340,"scale":"foundation","deadlineISO":null,"keyDates":{"registration":"Rolling","submissionDeadline":"Rolling (CVPR 2026 phase ~3 Jun)","results":"CVPR 2026 workshop, 3 Jun"},"prizes":"None stated","overview":"Segment structures in 3D biomedical volumes from free-text prompts, training a text-guided segmentation foundation model spanning five modalities.","prizeType":"none","venueFamily":"CVPR","venueType":"conference","startISO":"2025-06-01","endISO":null,"endEstimated":false,"startEstimated":true,"rolling":true},{"id":"cvpr26ctdx","name":"CVPR 2026 — Foundation Models for CT Diagnosis","shortName":"CVPR26 CT-Dx","venue":"CVPR 2026","platform":"Codabench","url":"https://www.codabench.org/competitions/12650/","status":"closed","statusNote":"Test window 10–15 May 2026; presented at the CVPR 2026 FMV workshop (3 Jun). Data public.","dataAvailable":"public","taskType":["classification"],"modality":["CT"],"anatomy":"chest, abdomen","dimensionality":"3D","numCases":"Not publicly stated","datasetSizeGB":null,"scale":"foundation","deadlineISO":"2026-05-15","keyDates":{"registration":"Opened 10 Apr 2026","submissionDeadline":"Test 10–15 May 2026","results":"CVPR 2026 workshop, 3 Jun"},"prizes":"None stated","overview":"Benchmarks 3D CT foundation models for whole-body diagnosis under realistic class imbalance, via linear probing and embedding aggregation of frozen encoders.","prizeType":"none","venueFamily":"CVPR","venueType":"conference","startISO":"2026-04-10","endISO":"2026-05-15","endEstimated":false,"startEstimated":false,"rolling":false}];
+const TODAY = new Date("2026-07-23T00:00:00");
+const dt=s=>new Date(s+"T00:00:00");
+const AXIS_START=dt("2025-07-01"), AXIS_END=dt("2026-12-31"), TOTAL=AXIS_END-AXIS_START;
+const pct=d=>((d-AXIS_START)/TOTAL)*100;
+const FAM_ORDER=["MICCAI","ISBI","CVPR","RSNA","Standalone"];
+const FAM_COLOR=f=>getComputedStyle(document.documentElement).getPropertyValue("--fam-"+f);
+const STATUS_COLOR={live:"--live",open:"--open",upcoming:"--upcoming",closed:"--closed"};
+const FAM_FULL={MICCAI:"MICCAI 2026",ISBI:"ISBI 2026",CVPR:"CVPR 2026",RSNA:"RSNA (Kaggle)",Standalone:"Standalone / platform"};
+
+let state={status:new Set(),fam:new Set()};
+const visible=c=>(!state.status.size||state.status.has(c.status))&&(!state.fam.size||state.fam.has(c.venueFamily));
+const daysTo=iso=>iso?Math.round((dt(iso)-TODAY)/864e5):null;
+
+/* ----- axis (months + year bands + gridlines) ----- */
+function buildAxis(){
+  const at=document.getElementById("axisTrack"), ov=document.getElementById("overlay");
+  let y=2025,m=7,html="",gl="";
+  const yearSpans={};
+  while(y<2026||(y===2026&&m<=12)){
+    const first=new Date(y,m-1,1), next=(m===12)?new Date(y+1,0,1):new Date(y,m,1);
+    const l=Math.max(pct(first),0), r=Math.min(pct(next),100), mid=(l+r)/2;
+    const isQ=(m===1||m===4||m===7||m===10);
+    const label=first.toLocaleString("en",{month:"short"});
+    html+=`<div class="mon ${isQ?'q':''}" style="left:${mid}%">${label}</div>`;
+    gl+=`<div class="gl ${isQ?'q':''}" style="left:${l}%"></div>`;
+    (yearSpans[y]=yearSpans[y]||[]).push(l,r);
+    m++; if(m>12){m=1;y++;}
+  }
+  // year bands
+  Object.keys(yearSpans).forEach(yr=>{const arr=yearSpans[yr];const l=Math.min(...arr);html=`<div class="yearband" style="left:${l}%">${yr}</div>`+html;});
+  at.innerHTML=html;
+  // today line + gridlines into overlay
+  const tp=pct(TODAY);
+  ov.innerHTML=gl+`<div class="todayline" style="left:${tp}%"></div><div class="todaydot" style="left:${tp}%"></div><div class="todayflag" style="left:${tp}%">TODAY</div>`;
+}
+
+/* ----- bar geometry ----- */
+function geom(c){
+  const s0=c.startISO?dt(c.startISO):null, e0=c.endISO?dt(c.endISO):null;
+  let s=s0||(e0?new Date(e0-30*864e5):AXIS_START);
+  let solidEnd=c.rolling?(e0||TODAY):(e0||new Date(s.getTime()+30*864e5));
+  let end=c.rolling?AXIS_END:solidEnd;
+  if(end<AXIS_START) return {before:true};
+  if(s>AXIS_END) return {after:true};
+  const sC=new Date(Math.max(s,AXIS_START)), eC=new Date(Math.min(end,AXIS_END));
+  const left=pct(sC), width=Math.max(pct(eC)-pct(sC),1.3);
+  let solidFrac=1;
+  if(c.rolling){ const se=new Date(Math.min(solidEnd,AXIS_END)); solidFrac=Math.min(Math.max((se-sC)/(eC-sC),0.04),1); }
+  return {left,width,solidFrac,overflowR:end>AXIS_END,before:false};
+}
+
+function barStyle(c,g){
+  const col=`var(${STATUS_COLOR[c.status]})`;
+  let bg=col;
+  if(c.rolling && g.solidFrac<0.99){
+    const p=(g.solidFrac*100).toFixed(1);
+    bg=`linear-gradient(90deg, ${col} 0%, ${col} ${p}%, color-mix(in srgb, ${col} 22%, transparent) 100%)`;
+  }
+  return `left:${g.left}%;width:${g.width}%;background:${bg};`;
+}
+
+/* ----- render lanes ----- */
+function render(){
+  const lanes=document.getElementById("lanes");
+  let html="", i=0, shown=0;
+  FAM_ORDER.forEach(fam=>{
+    const items=CHALLENGES.filter(c=>c.venueFamily===fam && visible(c))
+      .sort((a,b)=>(a.startISO||a.endISO||"9999").localeCompare(b.startISO||b.endISO||"9999"));
+    if(!items.length) return;
+    html+=`<div class="group-h"><span class="gdot" style="background:${FAM_COLOR(fam)}"></span>${FAM_FULL[fam]} <span class="gc">· ${items.length}</span></div>`;
+    items.forEach(c=>{
+      shown++;
+      const g=geom(c);
+      const delay=Math.min(i*22,520); i++;
+      let bar;
+      if(g.before){
+        bar=`<span class="before-mark" title="Concluded before Jul 2025">◂ concluded ${c.endISO||''}</span>`;
+      } else {
+        const roll=c.rolling?`<span class="roll-arrow">›</span>`:"";
+        const q=c.endEstimated?`<span class="qmark">?</span>`:"";
+        bar=`<div class="bar ${c.endEstimated?'est':''}" style="${barStyle(c,g)};animation-delay:${delay}ms" data-id="${c.id}" tabindex="0">${roll}${q}</div>`;
+      }
+      html+=`<div class="row"><div class="lane-name" style="border-left-color:${FAM_COLOR(fam)}"><a href="${c.url}" target="_blank" rel="noopener" title="${c.name}">${c.shortName}</a></div><div class="track">${bar}</div></div>`;
+    });
+  });
+  lanes.innerHTML=html || `<div style="padding:40px;text-align:center;color:var(--ink-soft)">No challenges match these filters.</div>`;
+  document.getElementById("note").textContent=`Showing ${shown} of ${CHALLENGES.length} challenges. Bars span registration/data-release → deadline; dashed = estimated or TBA (pinned to the conference date); rolling benchmarks fade to the right. Hover a bar for details.`;
+  attachTips();
+}
+
+/* ----- tooltip ----- */
+function attachTips(){
+  const tip=document.getElementById("tip");
+  document.querySelectorAll(".bar").forEach(b=>{
+    const c=CHALLENGES.find(x=>x.id===b.dataset.id);
+    const show=e=>{
+      const col=`var(${STATUS_COLOR[c.status]})`;
+      tip.innerHTML=`<span class="tb" style="background:${col}">${c.status==="live"?"Live benchmark":c.status}</span>
+        <h4>${c.name}</h4>
+        <div class="trow"><span>Venue</span><b>${FAM_FULL[c.venueFamily]} · ${c.platform}</b></div>
+        <div class="trow"><span>Task</span><b>${c.taskType.join(", ")}</b></div>
+        <div class="trow"><span>Modality</span><b>${c.modality.join(", ")} (${c.dimensionality})</b></div>
+        <div class="trow"><span>Window</span><b>${(c.startISO||"?")} → ${c.rolling?"rolling":(c.endISO||"TBA")}${c.endEstimated?" (est.)":""}</b></div>
+        <div class="trow"><span>Deadline</span><b>${c.keyDates.submissionDeadline}</b></div>
+        <div class="trow"><span>Prize</span><b>${c.prizeType==="none"?"None listed":c.prizes}</b></div>
+        <div class="trow"><span>Data</span><b>${c.dataAvailable}</b></div>`;
+      tip.style.opacity="1"; move(e);
+    };
+    const move=e=>{
+      const pad=14, w=tip.offsetWidth, h=tip.offsetHeight;
+      let x=e.clientX+pad, yy=e.clientY+pad;
+      if(x+w>innerWidth) x=e.clientX-w-pad;
+      if(yy+h>innerHeight) yy=e.clientY-h-pad;
+      tip.style.left=x+"px"; tip.style.top=yy+"px";
+    };
+    b.addEventListener("mouseenter",show); b.addEventListener("mousemove",move);
+    b.addEventListener("mouseleave",()=>tip.style.opacity="0");
+    b.addEventListener("focus",e=>{const r=b.getBoundingClientRect();show({clientX:r.left+r.width/2,clientY:r.top});});
+    b.addEventListener("blur",()=>tip.style.opacity="0");
+    b.addEventListener("click",()=>window.open(c.url,"_blank"));
+    b.addEventListener("keydown",e=>{if(e.key==="Enter")window.open(c.url,"_blank");});
+  });
+}
+
+/* ----- next deadlines strip ----- */
+function renderNext(){
+  const up=CHALLENGES.filter(c=>(c.status==="open"||c.status==="upcoming")&&c.deadlineISO&&daysTo(c.deadlineISO)>=0)
+    .sort((a,b)=>daysTo(a.deadlineISO)-daysTo(b.deadlineISO)).slice(0,7);
+  const strip=document.getElementById("nextStrip");
+  strip.innerHTML=up.map(c=>{
+    const d=daysTo(c.deadlineISO); const urgent=d<=14;
+    const disp=dt(c.deadlineISO).toLocaleDateString("en",{day:"numeric",month:"short",year:"numeric"});
+    return `<div class="dcard ${urgent?'urgent':''}">
+      <span class="fam" style="background:${FAM_COLOR(c.venueFamily)}">${c.venueFamily}</span>
+      <a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.shortName}</a>
+      <div class="cd">${d===0?"Today":d}<small>${d===0?"":" day"+(d>1?"s":"")}</small></div>
+      <div class="dt">${disp}${c.endEstimated?" · est.":""}</div></div>`;
+  }).join("") || `<div class="dcard">No upcoming deadlines with a fixed date.</div>`;
+}
+
+function bind(){
+  document.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{
+    const f=ch.dataset.filter,v=ch.dataset.val; ch.classList.toggle("on");
+    state[f].has(v)?state[f].delete(v):state[f].add(v); render();
+  });
+  document.getElementById("themeBtn").onclick=()=>{
+    const html=document.documentElement, dark=html.getAttribute("data-theme")==="dark";
+    html.setAttribute("data-theme",dark?"light":"dark");
+    document.querySelector("#themeBtn span").textContent=dark?"Dark":"Light";
+    buildAxis(); render();
+  };
+}
+(function(){
+  if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+    document.documentElement.setAttribute("data-theme","dark"); document.querySelector("#themeBtn span").textContent="Light";
+  }
+  buildAxis(); renderNext(); bind(); render();
+})();
+</script>
+</body>
+</html>

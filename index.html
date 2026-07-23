@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Image Challenge Compilations</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --panel:#ffffff; --ink:#1a2233; --ink-soft:#5a6478;
+    --line:#e3e7f0; --brand:#3b5bdb; --focus:#2f43c9;
+    --shadow:0 1px 3px rgba(20,30,60,.08),0 6px 24px rgba(20,30,60,.06);
+    --radius:16px; --t:220ms cubic-bezier(.2,.7,.3,1);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e1220; --panel:#161c2e; --ink:#e8ecf6; --ink-soft:#9aa6c0;
+      --line:#28324d; --brand:#7d97ff; --focus:#9db2ff;
+      --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:56px 20px 80px}
+  header{margin-bottom:36px}
+  h1{margin:0 0 10px;font-size:30px;letter-spacing:-.5px}
+  .sub{margin:0;color:var(--ink-soft);font-size:16px;max-width:680px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;transition:transform var(--t),border-color var(--t)}
+  .card:hover{transform:translateY(-3px);border-color:var(--brand)}
+  .card img{width:100%;height:200px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line);background:var(--bg)}
+  .card .body{padding:18px 20px 22px}
+  .card h2{margin:0 0 6px;font-size:19px;display:flex;align-items:center;gap:8px}
+  .card p{margin:0;color:var(--ink-soft);font-size:14px}
+  .tag{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:var(--brand)}
+  footer{margin-top:44px;color:var(--ink-soft);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Medical Image Challenge Compilations</h1>
+    <p class="sub">A curated, regularly refreshed view of medical-image analysis challenges and competitions across MICCAI, ISBI, CVPR, RSNA, Kaggle and Grand Challenge. Two companion views share the same underlying dataset.</p>
+  </header>
+
+  <div class="cards">
+    <a class="card" href="tracker/index.html">
+      <img src="tracker/thumbnail.png" alt="Preview of the Challenge Tracker">
+      <div class="body">
+        <h2>Challenge Tracker</h2>
+        <p>Filterable catalog of segmentation, classification and beyond — live benchmarks, open competitions and upcoming calls, with prize &amp; venue tags plus rough GPU-requirement estimates.</p>
+        <span class="tag">Open the tracker →</span>
+      </div>
+    </a>
+
+    <a class="card" href="timeline/index.html">
+      <img src="timeline/thumbnail.png" alt="Preview of the Challenge Timeline">
+      <div class="body">
+        <h2>Challenge Timeline</h2>
+        <p>Every tracked challenge on one date axis — registration and data release through deadline — grouped by venue, coloured by status, with a live TODAY marker.</p>
+        <span class="tag">Open the timeline →</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    Data compiled and maintained by <a href="https://github.com/MasalaKimchi" style="color:var(--brand)">MasalaKimchi</a>. Dates and statuses are best-effort estimates — always confirm on each challenge's official page.
+  </footer>
+</div>
+</body>
+</html>
