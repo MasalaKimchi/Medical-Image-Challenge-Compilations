@@ -24,37 +24,6 @@ Last updated **23 July 2026**.
 | RSNA | 2 |
 | **Total** | **37** |
 
-## Live pages
-
-If GitHub Pages is enabled for this repository (Settings → Pages → deploy from `main`, root), the views are served at:
-
-- `https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/` — landing page
-- `.../tracker/` — the tracker
-- `.../timeline/` — the timeline
-
-## Repository structure
-
-```
-.
-├── index.html          # Landing page linking to both views
-├── data/
-│   ├── challenges.json # Canonical challenge dataset (edit this)
-│   └── challenges.js   # Same data as window.CHALLENGES, loaded by both pages
-│   └── SOURCES.md      # Bi-weekly source checklist and review log
-├── tracker/
-│   ├── index.html      # Challenge Tracker (filterable catalog + GPU estimator)
-│   └── thumbnail.png   # Preview image
-├── timeline/
-│   ├── index.html      # Challenge Timeline (date-axis swimlanes)
-│   └── thumbnail.png   # Preview image
-├── favicon.svg
-├── .nojekyll           # Serve files as-is on GitHub Pages
-├── LICENSE             # MIT
-└── README.md
-```
-
-Both views share **one source of truth**: `data/challenges.js` (which sets `window.CHALLENGES`) is loaded before each page's app script, so the tracker and timeline can never drift apart. `data/challenges.json` holds the identical data in plain JSON for editing and future automation. Each `index.html` carries only its own CSS and JavaScript — no build step, no external dependencies. Open any page directly in a browser, or serve the folder with any static host.
-
 ## The Tracker
 
 The tracker presents 37 challenges as filterable cards. Highlights include:
