@@ -24,6 +24,17 @@
     .view-group button[aria-pressed="true"],.chip[aria-pressed="true"],.save[aria-pressed="true"]{background:var(--brand-fill);border-color:var(--brand-fill);color:#fff}
     @media(max-width:950px){.filter-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(3,1fr)}.control-top{grid-template-columns:1fr 1fr}.planner-body{grid-template-columns:1fr}}
     @media(max-width:650px){.wrap{padding:17px 14px 120px}.top{grid-template-columns:1fr}.actions{justify-content:flex-start}.stats{grid-template-columns:repeat(2,1fr)}.stat:first-child{grid-column:1/-1}.control-top,.filter-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.card{padding:15px}.control-foot{align-items:flex-start;flex-direction:column}.planner-fields{grid-template-columns:1fr}.tray{align-items:flex-start}.tray-actions{flex-wrap:wrap;justify-content:flex-end}.tray .button,.tray-clear{font-size:12px;padding:7px 9px}.comparison{grid-template-columns:1fr!important}.actions .button,.actions .icon-button{flex:1}.dialog-body{padding:10px}}
+    /* Clinical Navigator visual system */
+    :root{--bg:#f6f7f2;--panel:#fffefa;--panel2:#eef3ef;--ink:#153937;--muted:#667c78;--line:#d6e1db;--brand:#0d6f68;--brand-fill:#0d6f68;--brand2:#085c57;--brand-bg:#e5f2ed;--live:#087f68;--open:#2563a6;--soon:#b87015;--closed:#6d7773;--danger:#c64f42;--shadow:0 10px 28px rgba(17,59,57,.07);--r:18px}
+    html[data-theme="dark"]{--bg:#0d211f;--panel:#132d2a;--panel2:#1b3834;--ink:#f1f5ef;--muted:#b2c5c0;--line:#31504b;--brand:#65c9bb;--brand-fill:#0d6f68;--brand2:#8bd9ce;--brand-bg:#183e39;--live:#6bd5b8;--open:#8ebdf0;--soon:#efb968;--closed:#b4bfbb;--danger:#ff998c;--shadow:0 12px 34px rgba(0,0,0,.3)}
+    body{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 4%,var(--bg)) 0,var(--bg) 300px)}
+    .wrap{max-width:1360px;padding-top:34px}.top{padding:26px 28px;border-radius:22px;background:#113b39;color:#f4f8f5;box-shadow:0 18px 44px rgba(17,59,57,.16)}
+    .top .eyebrow,.top .intro,.top .updated{color:#c5d8d3}.top h1{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.025em}.top .button,.top .icon-button{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff}.top .button.primary{background:#fff;color:#113b39;border-color:#fff}
+    .stats{margin:20px 0}.stat{position:relative;overflow:hidden;border-radius:14px;box-shadow:none;transition:transform 180ms ease,border-color 180ms ease}.stat::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--line)}.stat[data-stat="live"]::before{background:var(--live)}.stat[data-stat="open"]::before{background:var(--open)}.stat[data-stat="upcoming"]::before{background:var(--soon)}.stat[data-stat="closed"]::before{background:var(--closed)}.stat:hover{transform:translateY(-2px);border-color:var(--brand)}.stat[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand) 28%,transparent)}
+    .controls{position:sticky;top:10px;z-index:12;border-radius:20px;padding:18px;box-shadow:0 14px 36px rgba(17,59,57,.1)}.control-top{grid-template-columns:minmax(260px,1.2fr) minmax(190px,.55fr) auto auto}.filter-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}.filter-set{border:0;padding:0;margin:0}.filter-set legend{font-size:11px;margin-bottom:5px}.filter-select{width:100%;min-height:44px;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--ink);padding:9px 34px 9px 11px}.status-key{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.status-key strong{color:var(--ink)}.status-key span{display:inline-flex;align-items:center;gap:6px}.status-key i{width:9px;height:9px;border-radius:50%;background:var(--closed)}.status-key .live i{background:var(--live)}.status-key .open i{background:var(--open)}.status-key .upcoming i{background:var(--soon)}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}.card{border-radius:18px;box-shadow:0 5px 18px rgba(17,59,57,.055);transition:transform 180ms ease,border-color 180ms ease,box-shadow 180ms ease}.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--brand) 50%,var(--line));box-shadow:0 14px 34px rgba(17,59,57,.12)}.card h2{font-family:Georgia,"Times New Roman",serif;font-size:20px}.action-box{border-left:3px solid var(--brand);background:var(--brand-bg)}.badge{border:1px solid currentColor}.badge.live{background:color-mix(in srgb,var(--live) 14%,var(--panel))}.badge.open{background:color-mix(in srgb,var(--open) 13%,var(--panel))}.badge.upcoming{background:color-mix(in srgb,var(--soon) 14%,var(--panel))}.badge.closed{background:color-mix(in srgb,var(--closed) 13%,var(--panel))}.planner,.method,.table-wrap{border-radius:18px}.planner summary,.method h2{font-family:Georgia,"Times New Roman",serif}.tray{background:#113b39;color:#fffefa}.dialog-head h2,.compare-card h3{font-family:Georgia,"Times New Roman",serif}
+    @media(max-width:950px){.controls{position:static}.filter-grid{grid-template-columns:repeat(2,1fr)}.control-top{grid-template-columns:1fr 1fr}}
+    @media(max-width:650px){.top{padding:22px 19px;border-radius:18px}.filter-grid,.control-top{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.status-key{gap:9px 13px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
   </style>
@@ -60,6 +71,7 @@
           <button class="button" id="copyLink" type="button">Copy filtered link</button>
         </div>
         <div class="filter-grid" id="filterGrid"></div>
+        <div class="status-key" aria-label="Challenge status color key"><strong>Status colors</strong><span class="live"><i></i>Live</span><span class="open"><i></i>Open</span><span class="upcoming"><i></i>Upcoming</span><span><i></i>Closed</span></div>
         <div class="control-foot"><p class="count" id="count" aria-live="polite"></p><button class="subtle-button" id="clearFilters" type="button">Clear all filters</button></div>
       </section>
 
@@ -91,9 +103,9 @@
   <dialog class="dialog" id="compareDialog" aria-labelledby="compareHeading"><div class="dialog-head"><h2 id="compareHeading">Compare saved challenges</h2><button class="dialog-close" id="closeCompare" type="button" aria-label="Close comparison">×</button></div><div class="dialog-body" id="compareBody"></div></dialog>
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="../data/challenges.js"></script>
+  <script src="../data/challenges.js?v=20260723-2"></script>
   <script type="module">
-    import * as Core from "../assets/challenge-core.js";
+    import * as Core from "../assets/challenge-core.js?v=20260723-2";
 
     const challenges = Array.isArray(window.CHALLENGES) ? window.CHALLENGES : [];
     const $ = id => document.getElementById(id);
@@ -231,7 +243,7 @@
       $("stats").innerHTML=[["all","All challenges"],["live","Rolling live"],["open","Open now"],["upcoming","Upcoming"],["closed","Closed"]].map(([key,text])=>`<button class="stat" type="button" data-stat="${key}" aria-pressed="${key==="all"?!state.status.size:state.status.size===1&&state.status.has(key)}"><strong>${counts[key]||0}</strong><span>${text}</span></button>`).join("");
     }
     function renderFilters(){
-      $("filterGrid").innerHTML=filterDefs.map(([key,title,values])=>`<fieldset class="filter-set"><legend>${title}</legend><div class="chips">${values.map(v=>`<button class="chip" type="button" data-filter="${esc(key)}" data-value="${esc(v)}" aria-pressed="${state[key].has(v)}">${esc(label(v))}</button>`).join("")}</div></fieldset>`).join("");
+      $("filterGrid").innerHTML=filterDefs.map(([key,title,values])=>`<fieldset class="filter-set"><legend>${title}</legend><select class="filter-select" data-filter="${esc(key)}" aria-label="Filter by ${esc(title.toLowerCase())}"><option value="">All ${esc(title.toLowerCase())}</option>${values.map(v=>`<option value="${esc(v)}" ${state[key].has(v)?"selected":""}>${esc(label(v))}</option>`).join("")}</select></fieldset>`).join("");
     }
     function updateSortHeaders(){document.querySelectorAll("th[aria-sort]").forEach(th=>{const key=th.querySelector("button")?.dataset.sort;th.setAttribute("aria-sort",state.sort===key?"ascending":"none")})}
     function render(){
@@ -250,7 +262,7 @@
 
     $("search").value=state.search;$("sort").value=[...$("sort").options].some(o=>o.value===state.sort)?state.sort:"deadline";state.sort=$("sort").value;
     $("search").addEventListener("input",event=>{state.search=event.target.value;render()});$("sort").addEventListener("change",event=>{state.sort=event.target.value;render()});
-    $("filterGrid").addEventListener("click",event=>{const button=event.target.closest("[data-filter]");if(!button)return;const set=state[button.dataset.filter],value=button.dataset.value;set.has(value)?set.delete(value):set.add(value);render()});
+    $("filterGrid").addEventListener("change",event=>{const select=event.target.closest("select[data-filter]");if(!select)return;const set=state[select.dataset.filter];set.clear();if(select.value)set.add(select.value);render()});
     $("stats").addEventListener("click",event=>{const button=event.target.closest("[data-stat]");if(!button)return;state.status.clear();if(button.dataset.stat!=="all")state.status.add(button.dataset.stat);render()});
     document.addEventListener("click",event=>{const save=event.target.closest("[data-save]");if(save)toggleSave(save.dataset.save);const sorter=event.target.closest("[data-sort]");if(sorter){state.sort=sorter.dataset.sort;$("sort").value=state.sort;render()}});
     $("cardsView").addEventListener("click",()=>{state.view="cards";render()});$("tableView").addEventListener("click",()=>{state.view="table";render()});$("clearFilters").addEventListener("click",clearFilters);$("emptyClear").addEventListener("click",clearFilters);
