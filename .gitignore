@@ -1,6 +1,5 @@
 .DS_Store
 _to_delete/
 node_modules/
-dist/
 test-results/
 playwright-report/

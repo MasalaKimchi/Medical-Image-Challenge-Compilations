@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-site.mjs",
     "generate:data": "node scripts/generate-data.mjs",
     "check:data": "node scripts/validate-data.mjs && node scripts/generate-data.mjs --check",
     "test": "npm run check:data && node --test tests/*.test.mjs",
