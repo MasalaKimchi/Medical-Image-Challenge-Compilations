@@ -6,10 +6,10 @@ The project ships two self-contained, interactive HTML views built on the same u
 
 | View | What it does |
 |------|--------------|
-| **[Challenge Tracker](tracker/index.html)** | A filterable catalog of every tracked challenge, with status, task type, modality, prize/venue tags, and a built-in GPU-requirement estimator. |
-| **[Challenge Timeline](timeline/index.html)** | A Gantt-style view placing every challenge on a single date axis (registration/data release → deadline), grouped into swimlanes by venue and coloured by status, with a live `TODAY` marker. |
+| **[Challenge Tracker](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/tracker/)** | A filterable catalog of every tracked challenge, with status, task type, modality, prize/venue tags, and a built-in GPU-requirement estimator. |
+| **[Challenge Timeline](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/)** | A Gantt-style view placing every challenge on a single date axis (registration/data release → deadline), grouped into swimlanes by venue and coloured by status, with a live `TODAY` marker. |
 
-A lightweight **[landing page](index.html)** links to both.
+A lightweight [**landing page**](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/) links to both.
 
 Know a challenge we should track? [Suggest it](https://github.com/MasalaKimchi/Medical-Image-Challenge-Compilations/issues/new?template=suggest-challenge.yml).
 
