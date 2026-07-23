@@ -1,0 +1,1103 @@
+/* Single source of truth for both the tracker and the timeline.
+   To update the site, edit this file (or data/challenges.json and regenerate).
+   Loaded as a global before each page's app script. */
+window.CHALLENGES = [
+  {
+    "id": "brats26",
+    "name": "BraTS 2026 Cluster of Challenges",
+    "shortName": "BraTS",
+    "venue": "MICCAI 2026",
+    "platform": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn74274097/wiki/",
+    "status": "open",
+    "statusNote": "15th BraTS cluster (5 sub-challenges). Validation leaderboard live since 21 May; final submission deadline 23 Jul 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "classification",
+      "reconstruction"
+    ],
+    "modality": [
+      "MRI",
+      "Histopathology-WSI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "mixed",
+    "numCases": "5 sub-challenges; large multi-institutional cohorts",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-07-23",
+    "keyDates": {
+      "registration": "Data released 1 May 2026",
+      "submissionDeadline": "23 Jul 2026 (final)",
+      "results": "Acceptances 24 Aug; MICCAI satellite 27 Sep 2026"
+    },
+    "prizes": "Top teams invited to present at MICCAI (no cash stated)",
+    "overview": "Flagship brain-tumor benchmark spanning metastases segmentation, pediatric tumors, cross-tumor generalizability (GoAT), MR inpainting and glioma histopathology.",
+    "prizeType": "recognition",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-05-01",
+    "endISO": "2026-07-23",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "flare26",
+    "name": "FLARE 2026 Task 2 — AutoMSC",
+    "shortName": "FLARE AutoMSC",
+    "venue": "MICCAI 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/15553/",
+    "status": "open",
+    "statusNote": "Validation submissions open through 20 Aug; Docker testing 20–31 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "classification"
+    ],
+    "modality": [
+      "CT",
+      "MRI",
+      "PET"
+    ],
+    "anatomy": "multi-organ",
+    "dimensionality": "3D",
+    "numCases": "Multiple datasets incl. PI-CAI prostate MRI (~1,500), LUNA25, BrainMets",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-08-31",
+    "keyDates": {
+      "registration": "1 Apr – 20 Aug 2026",
+      "submissionDeadline": "Testing 20–31 Aug; paper 31 Aug 2026",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "Top-5 cash (Amazon gift cards 300/200/150/100/100 CAD) + oral talks; certificates to top 10",
+    "overview": "Build a self-configuring 3D model that adapts across diverse datasets and performs segmentation AND classification jointly, scored on accuracy and runtime efficiency.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-01",
+    "endISO": "2026-08-31",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "fomo26",
+    "name": "FOMO26 — Foundation Model Challenge for Brain MRI",
+    "shortName": "FOMO26",
+    "venue": "MICCAI 2026",
+    "platform": "Synapse",
+    "url": "https://fomo26.github.io/",
+    "status": "open",
+    "statusNote": "Two tracks (methods-only, open-data). Submissions accepted until 21 Aug 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification",
+      "segmentation"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "~306,207 brain MRI (FOMO300K pretraining) + few-shot downstream tasks",
+    "datasetSizeGB": null,
+    "scale": "foundation",
+    "deadlineISO": "2026-08-21",
+    "keyDates": {
+      "registration": "Opened 20 Apr 2026",
+      "submissionDeadline": "21 Aug 2026",
+      "results": "1 Oct 2026"
+    },
+    "prizes": "$1,000 per track ($500 / $300 / $200 top three)",
+    "overview": "Pretrain a brain-MRI foundation model on a large public corpus, then evaluate few-shot across 7 clinical downstream tasks (classification, segmentation, brain-age, fairness).",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-20",
+    "endISO": "2026-08-21",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "cmrx26",
+    "name": "CMRxRecon 2026 — Ultra-Fast 4D Flow MRI",
+    "shortName": "CMRxRecon",
+    "venue": "MICCAI 2026",
+    "platform": "Self-hosted",
+    "url": "https://cmrx.chihucloud.com/2026/",
+    "status": "open",
+    "statusNote": "Testing submission open 1 Jul – 20 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "reconstruction"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "heart (multi-organ)",
+    "dimensionality": "3D",
+    "numCases": "~400 subjects, 10+ centers and scanners",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-08-20",
+    "keyDates": {
+      "registration": "Opened 1 Feb 2026",
+      "submissionDeadline": "Testing 1 Jul – 20 Aug 2026",
+      "results": "8 Oct 2026 (MICCAI)"
+    },
+    "prizes": "Monetary awards for top-5 per task (amounts TBA)",
+    "overview": "AI reconstruction of highly undersampled (10×–50×) 4D Flow MRI to cut acquisition from ~30–60 min toward sub-5-min clinical workflows.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-02-01",
+    "endISO": "2026-08-20",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "hecktor26",
+    "name": "HECKTOR 2026 — Head & Neck Tumor Analysis",
+    "shortName": "HECKTOR",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://hecktor26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Testing submission open 15–25 Jul 2026 (closing very soon); final report 8 Aug.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "classification"
+    ],
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "anatomy": "head and neck",
+    "dimensionality": "3D",
+    "numCases": "~1,423 patients from 11+ centers",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-07-25",
+    "keyDates": {
+      "registration": "Training data 15 Apr 2026",
+      "submissionDeadline": "Testing 15–25 Jul; report 8 Aug 2026",
+      "results": "Top-5 announced 20 Aug; workshop Oct 2026"
+    },
+    "prizes": "Prizes offered (amounts not stated)",
+    "overview": "Multimodal FDG-PET/CT pipeline that segments primary tumors and lymph nodes, infers TN staging, and predicts recurrence-free survival.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-15",
+    "endISO": "2026-07-25",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "pengwin26",
+    "name": "PENGWIN 2026 — Peripelvic Fracture Segmentation & Planning",
+    "shortName": "PENGWIN",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://pengwin2026.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Preliminary submission phase open since 22 May 2026; final deadline TBA.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "detection"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "pelvis",
+    "dimensionality": "3D",
+    "numCases": "~16,500 (500 clinical from 7 institutions + 16,000 simulated fractures)",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Training released 24 Apr 2026",
+      "submissionDeadline": "Preliminary phase open (final TBA)",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "None stated",
+    "overview": "Segment fractured pelvic bone fragments in 3D CT and plan their surgical reduction (repositioning) for image-guided orthopedic trauma care.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-24",
+    "endISO": "2026-09-27",
+    "endEstimated": true,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "learn2reg26",
+    "name": "Learn2Reg 2026 — Deformable Registration",
+    "shortName": "Learn2Reg",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://learn2reg.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Underway since kick-off 26 May 2026; leaderboard on Codabench. Test deadline TBA.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "registration"
+    ],
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "anatomy": "whole-body & lung",
+    "dimensionality": "3D",
+    "numCases": "PSMAReg 597 (+262 test); Learn2Breath 200 pairs (+100 test)",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Kick-off 26 May 2026",
+      "submissionDeadline": "Before MICCAI 2026 (TBA)",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "None stated",
+    "overview": "Deformable registration across two tasks: longitudinal whole-body PSMA PET/CT (before vs after therapy) and inspiratory–expiratory chest CT for lung biomechanics.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-05-26",
+    "endISO": "2026-09-27",
+    "endEstimated": true,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "odin26",
+    "name": "ODIN 2026 — Oral & Dental Report Generation",
+    "shortName": "ODIN",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://odin2026.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Site launched 25 May; training data released May 2026. Submission deadline TBA.",
+    "dataAvailable": "public",
+    "taskType": [
+      "report-generation"
+    ],
+    "modality": [
+      "CBCT",
+      "Intraoral-scan",
+      "Photograph"
+    ],
+    "anatomy": "oral & dental",
+    "dimensionality": "mixed",
+    "numCases": "Bite2Text 1,000 cases; ToothFairy4 (n/s)",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "—",
+      "submissionDeadline": "TBA (training released May 2026)",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "None stated",
+    "overview": "Generate structured clinical reports from dental imaging: maxillofacial reports from 3D CBCT, and orthodontic reports from 3D intraoral scans plus 2D photos.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-05-10",
+    "endISO": "2026-09-27",
+    "endEstimated": true,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "autopet5",
+    "name": "autoPET V — Whole-Body PET/CT Lesion Segmentation",
+    "shortName": "autoPET V",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://autopet-v.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Final test phase opened 15 Jul; challenge closes 1 Sep 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "anatomy": "whole-body",
+    "dimensionality": "3D",
+    "numCases": "Multi-tracer FDG + PSMA PET/CT (TCIA-hosted)",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-09-01",
+    "keyDates": {
+      "registration": "Opened 1 Apr 2026",
+      "submissionDeadline": "1 Sep 2026 (final test from 15 Jul)",
+      "results": "MICCAI 2026, 27 Sep"
+    },
+    "prizes": "None stated",
+    "overview": "Interactive, clinician-in-the-loop lesion segmentation on whole-body FDG and PSMA PET/CT, refining predictions from corrective scribbles.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-01",
+    "endISO": "2026-09-01",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "isles26",
+    "name": "ISLES'26 — Ischemic Stroke Lesion Segmentation",
+    "shortName": "ISLES'26",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://isles-26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Submission system opened 15 Jul; Docker submission deadline 15 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "~2,000 annotated scans from 60+ centers",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-08-15",
+    "keyDates": {
+      "registration": "Verified accounts required",
+      "submissionDeadline": "15 Aug 2026 (Docker)",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "Not stated",
+    "overview": "Segment ischemic stroke lesions across acute, sub-acute and chronic phases on MRI, with a substantially expanded multi-center dataset.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-07-15",
+    "endISO": "2026-08-15",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "aimstbi26",
+    "name": "AIMS-TBI 2026 — Traumatic Brain Injury Lesions",
+    "shortName": "AIMS-TBI26",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://aims-tbi26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Final model submission open since 1 Jul; submission & paper deadline 23 Jul 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "detection",
+      "segmentation"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "~892 T1w MRI (553/100/239 split), ENIGMA Consortium",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-07-23",
+    "keyDates": {
+      "registration": "Data via use agreement",
+      "submissionDeadline": "23 Jul 2026",
+      "results": "MICCAI 2026 workshop, 1 Oct"
+    },
+    "prizes": "$500 / $250 / $100 + brain trophies",
+    "overview": "Detect and segment 3D traumatic brain injury lesions (contusions, hemorrhage, hematoma) on T1-weighted MRI in moderate-to-severe TBI patients.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-07-01",
+    "endISO": "2026-07-23",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "atm26",
+    "name": "ATM26 — Airway Tree Modeling",
+    "shortName": "ATM26",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://atm26.grand-challenge.org/",
+    "status": "upcoming",
+    "statusNote": "Registration opened 15 Jun; sanity-check phase live. Main deadline not yet announced.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "classification"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "lung / airway",
+    "dimensionality": "3D",
+    "numCases": "Not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Opened 15 Jun 2026",
+      "submissionDeadline": "TBA",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "Not stated",
+    "overview": "Two-track chest-CT airway analysis: topology-preserving binary airway-tree segmentation and branch-wise anatomical labeling for bronchoscopic navigation.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-06-15",
+    "endISO": "2026-09-27",
+    "endEstimated": true,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "headline26",
+    "name": "HEADLINE — VLM Head CT Reporting",
+    "shortName": "HEADLINE26",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://headline26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Validation & sanity-check phases open; test phase opening soon.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "report-generation"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "500 validation studies (total n/s)",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Signup at headline.ccibonn.ai",
+      "submissionDeadline": "TBA",
+      "results": "MICCAI 2026 (Oct)"
+    },
+    "prizes": "Not stated",
+    "overview": "Benchmark vision-language models on generating diagnostic radiology reports from head CT scans.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-06-01",
+    "endISO": "2026-09-27",
+    "endEstimated": true,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "beetle",
+    "name": "BEETLE — Breast Cancer Histopathology Segmentation",
+    "shortName": "BEETLE",
+    "venue": "Grand Challenge",
+    "platform": "grand-challenge.org",
+    "url": "https://beetle.grand-challenge.org/",
+    "status": "live",
+    "statusNote": "Continuous long-term benchmark — no deadlines, live leaderboard.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "Histopathology-WSI"
+    ],
+    "anatomy": "breast",
+    "dimensionality": "2D",
+    "numCases": "587 dev biopsies/resections + 170 annotated regions (54 WSIs)",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Rolling",
+      "submissionDeadline": "None (continuous)",
+      "results": "Live leaderboard"
+    },
+    "prizes": "None",
+    "overview": "Multiclass semantic segmentation of H&E-stained breast-cancer whole-slide images into four tissue categories, scored by Dice.",
+    "prizeType": "none",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "startISO": null,
+    "endISO": null,
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": true
+  },
+  {
+    "id": "reg2",
+    "name": "REG² — Reasoning-Guided Pathology Report Generation",
+    "shortName": "REG²",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://reg2026.grand-challenge.org/",
+    "status": "closed",
+    "statusNote": "Test Phase 2 closed 20 Jul 2026; winners announced at MICCAI 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "report-generation"
+    ],
+    "modality": [
+      "Histopathology-WSI"
+    ],
+    "anatomy": "n/a",
+    "dimensionality": "2D",
+    "numCases": "Test Phase 1: 350 cases (+ training set)",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-07-20",
+    "keyDates": {
+      "registration": "Opened 15 Apr 2026",
+      "submissionDeadline": "20 Jul 2026 (Test Phase 2)",
+      "results": "MICCAI 2026, 27 Sep"
+    },
+    "prizes": "€800 / €400 / €200 / €100 + certificate",
+    "overview": "Generate pathology reports from gigapixel whole-slide images while making the diagnostic reasoning explicit — scored on clinical correctness, not text overlap.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-15",
+    "endISO": "2026-07-20",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "fmcuia",
+    "name": "Foundation Model Challenge for Ultrasound",
+    "shortName": "FMC-UIA",
+    "venue": "ISBI 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/11539/",
+    "status": "live",
+    "statusNote": "Final testing phase is open-ended with a rolling leaderboard (~179 teams).",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "segmentation",
+      "classification",
+      "detection"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "multi-organ",
+    "dimensionality": "2D",
+    "numCases": "50,000+ multi-center ultrasound images",
+    "datasetSizeGB": null,
+    "scale": "foundation",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Opened 17 Nov 2025",
+      "submissionDeadline": "Open-ended final testing phase",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "Top-10 cash + Best Paper / Presentation / Task awards",
+    "overview": "Build a single foundation model performing classification, segmentation, detection and regression across diverse ultrasound organs and pathologies.",
+    "prizeType": "cash",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2025-11-17",
+    "endISO": null,
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": true
+  },
+  {
+    "id": "cxrlt26",
+    "name": "CXR-LT 2026 — Long-Tailed Chest X-ray Classification",
+    "shortName": "CXR-LT",
+    "venue": "ISBI 2026",
+    "platform": "Codabench",
+    "url": "https://cxr-lt.github.io/CXR-LT-2026/",
+    "status": "live",
+    "statusNote": "Ongoing multi-year benchmark; leaderboard remains open (2026 ranked phase ended 4 Feb).",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification"
+    ],
+    "modality": [
+      "X-ray"
+    ],
+    "anatomy": "chest",
+    "dimensionality": "2D",
+    "numCases": "~145,000 chest X-rays (PadChest + NIH external test)",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Dev phase from 1 Dec 2025",
+      "submissionDeadline": "Rolling (ranked phase ended 4 Feb 2026)",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "None stated",
+    "overview": "Multi-label, long-tailed and zero-shot classification of thoracic diseases on ~145k chest X-rays, including generalization to rare unseen classes.",
+    "prizeType": "none",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2025-12-01",
+    "endISO": "2026-02-04",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": true
+  },
+  {
+    "id": "lcrmpi",
+    "name": "LCR-MPI — Low-Concentration MPI Reconstruction",
+    "shortName": "LCR-MPI",
+    "venue": "ISBI 2026",
+    "platform": "Self-hosted",
+    "url": "https://www.mpilab.net/LCR-MPI-Challenge/",
+    "status": "closed",
+    "statusNote": "Submission deadline 26 Feb 2026; results at ISBI 2026 (April).",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "reconstruction"
+    ],
+    "modality": [
+      "Magnetic-Particle-Imaging"
+    ],
+    "anatomy": "n/a (phantom)",
+    "dimensionality": "2D",
+    "numCases": "Simulated + real FFL-MPI datasets",
+    "datasetSizeGB": null,
+    "scale": "small",
+    "deadlineISO": "2026-02-26",
+    "keyDates": {
+      "registration": "Opened 1 Dec 2025",
+      "submissionDeadline": "26 Feb 2026",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "None stated",
+    "overview": "Reconstruct high-quality field-free-line Magnetic Particle Imaging under low tracer concentration, scored by SSIM, PSNR and NRMSE.",
+    "prizeType": "none",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2025-12-01",
+    "endISO": "2026-02-26",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "riva",
+    "name": "RIVA — Cervical Cytology Challenge",
+    "shortName": "RIVA",
+    "venue": "ISBI 2026",
+    "platform": "Kaggle",
+    "url": "https://lia-ditella.github.io/rivachallenge/",
+    "status": "closed",
+    "statusNote": "Final evaluation ended 20 Feb 2026; dataset openly available on Zenodo/Kaggle.",
+    "dataAvailable": "public",
+    "taskType": [
+      "detection",
+      "classification"
+    ],
+    "modality": [
+      "Cytology-microscopy"
+    ],
+    "anatomy": "cervix",
+    "dimensionality": "2D",
+    "numCases": "959 fields, 26,158 annotated nuclei, 8 Bethesda classes",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-02-20",
+    "keyDates": {
+      "registration": "Launched 15 Dec 2025",
+      "submissionDeadline": "20 Feb 2026",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "Track A $2,000 / $1,200; Track B $1,200 / $600",
+    "overview": "Detect and classify cervical cells on a large multi-expert Pap-smear dataset (8 Bethesda classes) for precancer/cancer screening.",
+    "prizeType": "cash",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2025-12-15",
+    "endISO": "2026-02-20",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "wbcbench26",
+    "name": "WBCBench 2026 — Robust White Blood Cell Classification",
+    "shortName": "WBCBench",
+    "venue": "ISBI 2026",
+    "platform": "Kaggle",
+    "url": "https://xudong-ma.github.io/WBCBench2026-Robust-White-Blood-Cell-Classification/",
+    "status": "closed",
+    "statusNote": "Concluded at ISBI 2026 (11 Apr); dataset now public on Hugging Face.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification"
+    ],
+    "modality": [
+      "Microscopy-blood-smear"
+    ],
+    "anatomy": "blood",
+    "dimensionality": "2D",
+    "numCases": "55,012 images across 13 WBC classes",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-04-11",
+    "keyDates": {
+      "registration": "—",
+      "submissionDeadline": "Closed before ISBI 2026",
+      "results": "11 Apr 2026 (ISBI)"
+    },
+    "prizes": "$800 / $600 / $500 + $100 Best Paper",
+    "overview": "Robust 13-class white-blood-cell classification on 55k blood-smear images under severe class imbalance and simulated domain shift.",
+    "prizeType": "cash",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2026-01-01",
+    "endISO": "2026-04-11",
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "endouc",
+    "name": "EndoUC — Ulcerative Colitis Grading in Endoscopy",
+    "shortName": "EndoUC",
+    "venue": "ISBI 2026",
+    "platform": "Self-hosted",
+    "url": "https://endouc-cv.github.io/",
+    "status": "closed",
+    "statusNote": "ISBI 2026 challenge; dataset released under CC BY-SA 4.0.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification",
+      "report-generation"
+    ],
+    "modality": [
+      "Endoscopy"
+    ],
+    "anatomy": "colon",
+    "dimensionality": "2D",
+    "numCases": "2,945 colonoscopy images",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-04-08",
+    "keyDates": {
+      "registration": "—",
+      "submissionDeadline": "—",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "None stated",
+    "overview": "Automated ulcerative-colitis severity scoring (Mayo Endoscopic Score, UCEIS) plus clinical image captioning from a multimodal colonoscopy dataset.",
+    "prizeType": "none",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2026-01-01",
+    "endISO": "2026-04-08",
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "csv26",
+    "name": "CSV 2026 — Carotid Plaque Segmentation & Vulnerability",
+    "shortName": "CSV",
+    "venue": "ISBI 2026",
+    "platform": "Self-hosted",
+    "url": "http://csv-isbi.net/",
+    "status": "closed",
+    "statusNote": "ISBI 2026 challenge; exact dates unconfirmed — presumed concluded around April 2026.",
+    "dataAvailable": "unknown",
+    "taskType": [
+      "segmentation",
+      "classification"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "carotid artery",
+    "dimensionality": "2D",
+    "numCases": "~1,500 paired carotid ultrasound images",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-04-08",
+    "keyDates": {
+      "registration": "—",
+      "submissionDeadline": "—",
+      "results": "ISBI 2026 (Apr)"
+    },
+    "prizes": "None stated",
+    "overview": "Segment atherosclerotic plaque and classify its vulnerability from paired carotid B-mode ultrasound, to improve stroke-risk stratification.",
+    "prizeType": "none",
+    "venueFamily": "ISBI",
+    "venueType": "conference",
+    "startISO": "2026-01-01",
+    "endISO": "2026-04-08",
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "rsnaaneurysm",
+    "name": "RSNA Intracranial Aneurysm Detection",
+    "shortName": "RSNA Aneurysm",
+    "venue": "Kaggle / RSNA 2025",
+    "platform": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection",
+    "status": "closed",
+    "statusNote": "Submissions closed 14 Oct 2025; dataset remains public on Kaggle.",
+    "dataAvailable": "public",
+    "taskType": [
+      "detection",
+      "segmentation"
+    ],
+    "modality": [
+      "CT-angiography",
+      "MRA",
+      "MRI"
+    ],
+    "anatomy": "brain",
+    "dimensionality": "3D",
+    "numCases": "~6,500+ studies; 3,500+ annotated aneurysms from 18 institutions",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2025-10-14",
+    "keyDates": {
+      "registration": "Launched 29 Jul 2025",
+      "submissionDeadline": "14 Oct 2025",
+      "results": "Nov 2025 (RSNA)"
+    },
+    "prizes": "$50,000 total (top 9 teams)",
+    "overview": "Detect and localize intracranial aneurysms across 13 vascular locations using multimodal CTA, MRA and MRI; some studies include 3D vessel segmentations.",
+    "prizeType": "cash",
+    "venueFamily": "RSNA",
+    "venueType": "conference",
+    "startISO": "2025-07-29",
+    "endISO": "2025-10-14",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  },
+  {
+    "id": "rsnaknee26",
+    "name": "RSNA Knee MRI AI Challenge",
+    "shortName": "RSNA Knee MRI",
+    "venue": "Kaggle / RSNA 2026",
+    "platform": "Kaggle / RSNA",
+    "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge",
+    "status": "open",
+    "statusNote": "Launching Spring 2026, concluding October 2026; first RSNA challenge to use both images and report text.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "detection",
+      "classification"
+    ],
+    "modality": [
+      "MRI"
+    ],
+    "anatomy": "knee",
+    "dimensionality": "3D",
+    "numCases": ">5,000 knee MRI exams from 16 institutions (reports in 9 languages)",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-10-31",
+    "keyDates": {
+      "registration": "Launch Spring 2026",
+      "submissionDeadline": "Oct 2026",
+      "results": "RSNA 2026 (Nov–Dec)"
+    },
+    "prizes": "Not stated",
+    "overview": "Detect a range of knee abnormalities (ligament/meniscus tears, cartilage loss, effusion, synovitis) on MRI, using both images and radiology-report text.",
+    "prizeType": "none",
+    "venueFamily": "RSNA",
+    "venueType": "conference",
+    "startISO": "2026-04-01",
+    "endISO": "2026-10-31",
+    "endEstimated": true,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "panorama",
+    "name": "PANORAMA — Pancreatic Cancer Diagnosis",
+    "shortName": "PANORAMA",
+    "venue": "TCIA / Grand Challenge",
+    "platform": "grand-challenge.org",
+    "url": "https://panorama.grand-challenge.org/",
+    "status": "closed",
+    "statusNote": "Competitive leaderboard closed (results Feb 2025; Lancet Oncology Jan 2026). Public dev dataset remains available.",
+    "dataAvailable": "public",
+    "taskType": [
+      "detection",
+      "classification"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "pancreas",
+    "dimensionality": "3D",
+    "numCases": ">1,500 contrast-enhanced CT; 400 hidden test",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2025-02-28",
+    "keyDates": {
+      "registration": "—",
+      "submissionDeadline": "Closed (results 28 Feb 2025)",
+      "results": "Publication Jan 2026"
+    },
+    "prizes": "€2,000 total (1,000 / 500 / 250 / 150 / 100) + authorship",
+    "overview": "Benchmarks AI against abdominal radiologists for detecting and diagnosing pancreatic ductal adenocarcinoma (PDAC) on contrast-enhanced CT.",
+    "prizeType": "cash",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "startISO": "2024-11-01",
+    "endISO": "2025-02-28",
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": false
+  },
+  {
+    "id": "biomedseg-int",
+    "name": "BiomedSegFM — Interactive 3D Segmentation",
+    "shortName": "BiomedSegFM (Interactive)",
+    "venue": "CVPR 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/5263/",
+    "status": "live",
+    "statusNote": "Multi-year rolling benchmark; featured at the CVPR 2026 Foundation Models for Medical Vision workshop.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "CT",
+      "MRI",
+      "PET",
+      "Ultrasound",
+      "Microscopy"
+    ],
+    "anatomy": "multiple",
+    "dimensionality": "3D",
+    "numCases": "Large multi-modal 3D set (junma/CVPR-BiomedSegFM on HF)",
+    "datasetSizeGB": 340,
+    "scale": "foundation",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Rolling",
+      "submissionDeadline": "Rolling (CVPR 2026 phase ~3 Jun)",
+      "results": "CVPR 2026 workshop, 3 Jun"
+    },
+    "prizes": "None stated",
+    "overview": "Build a foundation model that segments 3D biomedical volumes via interactive prompts (bounding box + up to 5 correction clicks) across CT, MRI, PET, US and microscopy.",
+    "prizeType": "none",
+    "venueFamily": "CVPR",
+    "venueType": "conference",
+    "startISO": "2025-06-01",
+    "endISO": null,
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": true
+  },
+  {
+    "id": "biomedseg-txt",
+    "name": "BiomedSegFM — Text-guided 3D Segmentation",
+    "shortName": "BiomedSegFM (Text)",
+    "venue": "CVPR 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/5651/",
+    "status": "live",
+    "statusNote": "Multi-year rolling benchmark; featured at the CVPR 2026 Foundation Models for Medical Vision workshop.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation"
+    ],
+    "modality": [
+      "CT",
+      "MRI",
+      "PET",
+      "Ultrasound",
+      "Microscopy"
+    ],
+    "anatomy": "multiple",
+    "dimensionality": "3D",
+    "numCases": "Shares the 340 GB BiomedSegFM dataset",
+    "datasetSizeGB": 340,
+    "scale": "foundation",
+    "deadlineISO": null,
+    "keyDates": {
+      "registration": "Rolling",
+      "submissionDeadline": "Rolling (CVPR 2026 phase ~3 Jun)",
+      "results": "CVPR 2026 workshop, 3 Jun"
+    },
+    "prizes": "None stated",
+    "overview": "Segment structures in 3D biomedical volumes from free-text prompts, training a text-guided segmentation foundation model spanning five modalities.",
+    "prizeType": "none",
+    "venueFamily": "CVPR",
+    "venueType": "conference",
+    "startISO": "2025-06-01",
+    "endISO": null,
+    "endEstimated": false,
+    "startEstimated": true,
+    "rolling": true
+  },
+  {
+    "id": "cvpr26ctdx",
+    "name": "CVPR 2026 — Foundation Models for CT Diagnosis",
+    "shortName": "CVPR26 CT-Dx",
+    "venue": "CVPR 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/12650/",
+    "status": "closed",
+    "statusNote": "Test window 10–15 May 2026; presented at the CVPR 2026 FMV workshop (3 Jun). Data public.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "chest, abdomen",
+    "dimensionality": "3D",
+    "numCases": "Not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "foundation",
+    "deadlineISO": "2026-05-15",
+    "keyDates": {
+      "registration": "Opened 10 Apr 2026",
+      "submissionDeadline": "Test 10–15 May 2026",
+      "results": "CVPR 2026 workshop, 3 Jun"
+    },
+    "prizes": "None stated",
+    "overview": "Benchmarks 3D CT foundation models for whole-body diagnosis under realistic class imbalance, via linear probing and embedding aggregation of frozen encoders.",
+    "prizeType": "none",
+    "venueFamily": "CVPR",
+    "venueType": "conference",
+    "startISO": "2026-04-10",
+    "endISO": "2026-05-15",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false
+  }
+];

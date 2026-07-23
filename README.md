@@ -24,17 +24,22 @@ If GitHub Pages is enabled for this repository (Settings → Pages → deploy fr
 ```
 .
 ├── index.html          # Landing page linking to both views
+├── data/
+│   ├── challenges.json # Canonical challenge dataset (edit this)
+│   └── challenges.js   # Same data as window.CHALLENGES, loaded by both pages
 ├── tracker/
 │   ├── index.html      # Challenge Tracker (filterable catalog + GPU estimator)
 │   └── thumbnail.png   # Preview image
 ├── timeline/
 │   ├── index.html      # Challenge Timeline (date-axis swimlanes)
 │   └── thumbnail.png   # Preview image
+├── favicon.svg
+├── .nojekyll           # Serve files as-is on GitHub Pages
 ├── LICENSE             # MIT
 └── README.md
 ```
 
-Each `index.html` is a **single self-contained file** — all CSS, JavaScript and challenge data are inlined, with no build step and no external dependencies. Open any file directly in a browser, or serve the folder with any static host.
+Both views share **one source of truth**: `data/challenges.js` (which sets `window.CHALLENGES`) is loaded before each page's app script, so the tracker and timeline can never drift apart. `data/challenges.json` holds the identical data in plain JSON for editing and future automation. Each `index.html` carries only its own CSS and JavaScript — no build step, no external dependencies. Open any page directly in a browser, or serve the folder with any static host.
 
 ## The Tracker
 
@@ -58,9 +63,24 @@ The timeline renders the same dataset on a **Jul 2025 – Dec 2026 date axis**, 
 
 Dates, deadlines and statuses are **best-effort estimates** compiled from public challenge announcements and are refreshed periodically. Always confirm details on each challenge's official page before relying on them — registration windows and deadlines shift.
 
-## Contributing
+## Updating the data
 
-Because the data lives inline in each `index.html`, updates are made by editing the challenge entries directly in the relevant file. When adding or changing a challenge, update both the tracker and the timeline so the two views stay in sync.
+Every refresh is a **single-file edit** — both views read the same dataset:
+
+1. Edit `data/challenges.json` (add/modify a challenge object).
+2. Regenerate the JS copy so the pages pick it up:
+   ```bash
+   python3 -c "import json,pathlib; d=pathlib.Path('data/challenges.json').read_text(); pathlib.Path('data/challenges.js').write_text('window.CHALLENGES = '+d.rstrip()+';\n')"
+   ```
+   (Or edit `data/challenges.js` directly — it's just `window.CHALLENGES = [ … ];`.)
+3. Commit and push; GitHub Pages redeploys automatically.
+
+Each challenge object supports fields such as `name`, `venue`, `platform`, `url`, `status` (`live`/`open`/`upcoming`/`closed`), `taskType`, `modality`, `deadlineISO`, `startISO`/`endISO`, `prizeType`, and `venueFamily`. Copy an existing entry as a template.
+
+To preview locally, run a static server from the repo root and open `http://localhost:8000/`:
+```bash
+python3 -m http.server 8000
+```
 
 ## License
 
