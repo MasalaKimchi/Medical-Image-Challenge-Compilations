@@ -32,10 +32,9 @@ test.describe("challenge tracker", () => {
   });
 
   test("filter buttons are semantic and axe has no serious findings", async ({ page }) => {
-    const oct = page.getByRole("button", { name: "OCT", exact: true });
-    await expect(oct).toHaveAttribute("aria-pressed", "false");
-    await oct.click();
-    await expect(oct).toHaveAttribute("aria-pressed", "true");
+    const modality = page.getByRole("combobox", { name: "Filter by modality" });
+    await modality.selectOption("OCT");
+    await expect(modality).toHaveValue("OCT");
     await expect(page.getByText("Showing 1 of 37 challenges.")).toBeVisible();
     await expectNoSeriousAccessibilityIssues(page);
   });
