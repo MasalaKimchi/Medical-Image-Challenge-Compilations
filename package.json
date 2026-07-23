@@ -1,0 +1,19 @@
+{
+  "name": "medical-image-challenge-compilations",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:data": "node scripts/generate-data.mjs",
+    "check:data": "node scripts/validate-data.mjs && node scripts/generate-data.mjs --check",
+    "test": "npm run check:data && node --test tests/*.test.mjs",
+    "test:browser": "playwright test",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "npm test && npm run check:links && npm run test:browser"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1",
+    "ajv": "^8.20.0"
+  }
+}

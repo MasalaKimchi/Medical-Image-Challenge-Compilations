@@ -23,8 +23,9 @@ This tracker is refreshed with a **source-first review**, not a general web sear
 2. Follow each candidate to its **official organizer or host page**. Capture its exact URL, status, key dates, platform, modality, task, and any access restriction.
 3. De-duplicate a cluster of sub-challenges only when it has a shared registration and schedule; otherwise list tracks separately.
 4. Keep `live` for continuous leaderboards, `open` for an active registration or submission phase, and `upcoming` for an announced challenge with no active participation phase. Do not call a data release alone “open” unless registration or participation is actually available.
-5. Mark a deadline as estimated only when the official page does not state one. Preserve the official page URL in every record and set `lastVerified` for new or materially changed entries.
-6. Regenerate `data/challenges.js`, update the visible last-updated count/date, preview the tracker and timeline, then commit the dataset, documentation, and generated copy together.
+5. Mark a phase date as estimated only when the official page does not state an exact date. Preserve each official page in `sources`, reference it from every status-driving phase through `sourceIds`, and set `lastVerifiedISO` only after the record has actually been checked.
+6. Model registration, development, validation, testing, final submission, papers, results, and events as separate `phases`; conference dates must not stand in for unknown participation deadlines.
+7. Regenerate `data/challenges.js`, validate `data/challenges.json` against `data/challenges.schema.json`, update the visible last-updated count/date, preview the tracker and timeline, then commit the dataset, documentation, and generated copy together.
 
 ## Review log
 

@@ -1,340 +1,79 @@
-<!DOCTYPE html>
-<script type="application/json" id="cowork-artifact-meta">
-{
-  "name": "Medical Image Challenge Timeline",
-  "schemaVersion": 1,
-  "description": "Animated timeline of medical image challenges on a Jul 2025–Dec 2026 date axis, grouped into swimlanes by venue family (MICCAI/ISBI/CVPR/RSNA/Standalone), coloured by status, with a live TODAY marker, next-deadline countdown strip, dashed bars for estimated/TBA dates, and rolling-benchmark fades. Companion to the main tracker.",
-  "mcpTools": [],
-  "mcpServerNames": []
-}
-</script>
+<!doctype html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Medical Image Challenge Timeline</title>
-<meta name="description" content="Every tracked medical image challenge on one date axis, grouped by venue and coloured by status, with a live TODAY marker.">
+<meta name="description" content="Explore medical-image challenge phases and deadlines in an accessible agenda or timeline.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Medical Image Challenge Timeline">
-<meta property="og:description" content="Every tracked medical image challenge on one date axis, grouped by venue and coloured by status, with a live TODAY marker.">
-<meta property="og:url" content="https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/">
-<meta property="og:image" content="https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/thumbnail.png">
-<meta name="twitter:card" content="summary_large_image">
 <style>
-  :root{
-    --bg:#f6f7fb; --panel:#ffffff; --panel-2:#f0f2f8; --ink:#1a2233; --ink-soft:#5a6478;
-    --line:#e3e7f0; --brand:#3b5bdb; --focus:#2f43c9;
-    --live:#0ca678; --open:#3b5bdb; --upcoming:#e8850c; --closed:#9aa6bd;
-    --today:#e64980;
-    --fam-MICCAI:#4c6ef5; --fam-ISBI:#0ca678; --fam-CVPR:#e8850c; --fam-RSNA:#e64980; --fam-Standalone:#7c8798;
-    --shadow:0 1px 3px rgba(20,30,60,.08),0 6px 24px rgba(20,30,60,.06);
-    --radius:14px; --t:220ms cubic-bezier(.2,.7,.3,1); --gutter:172px;
-  }
-  html[data-theme="dark"]{
-    --bg:#0e1220; --panel:#161c2e; --panel-2:#1e2740; --ink:#e8ecf6; --ink-soft:#9aa6c0;
-    --line:#28324d; --brand:#7d97ff; --focus:#9db2ff;
-    --live:#38d9a9; --open:#8aa2ff; --upcoming:#ffb454; --closed:#68748f; --today:#faa2c1;
-    --fam-MICCAI:#8aa2ff; --fam-ISBI:#38d9a9; --fam-CVPR:#ffb454; --fam-RSNA:#faa2c1; --fam-Standalone:#9aa6c0;
-    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
-  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
-  .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px}
-  .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.12em}
-
-  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:14px}
-  .title h1{margin:0 0 4px;font-size:25px;letter-spacing:-.4px;display:flex;align-items:center;gap:10px}
-  .title h1 .icon{width:25px;height:25px;stroke:var(--brand)}
-  .title p{margin:0;color:var(--ink-soft);font-size:14px;max-width:640px}
-  .head-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
-  .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 14px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:7px;transition:border-color var(--t),transform var(--t);white-space:nowrap}
-  .btn:hover{border-color:var(--brand);text-decoration:none;transform:translateY(-1px)}
-  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)} .btn.primary .icon{stroke:#fff}
-
-  /* Next deadlines strip */
-  .next-title{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-soft);margin:6px 2px 10px;font-weight:700}
-  .next-strip{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 10px}
-  .dcard{flex:0 0 auto;min-width:186px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .dcard .fam{font-size:10.5px;font-weight:800;letter-spacing:.4px;color:#fff;padding:2px 7px;border-radius:5px;display:inline-block;margin-bottom:8px}
-  .dcard .nm{font-size:13px;font-weight:700;line-height:1.25;margin-bottom:8px;display:block;color:var(--ink)}
-  .dcard .cd{font-size:22px;font-weight:800;line-height:1} .dcard .cd small{font-size:12px;font-weight:600;color:var(--ink-soft)}
-  .dcard .dt{font-size:11.5px;color:var(--ink-soft);margin-top:3px}
-  .dcard.urgent{border-color:var(--today)}
-  .dcard.urgent .cd{color:var(--today)}
-  .dcard.urgent::after{content:"";position:absolute;inset:0;border-radius:12px;border:2px solid var(--today);opacity:0;animation:glow 2s ease-in-out infinite}
-  @keyframes glow{0%,100%{opacity:0}50%{opacity:.55}}
-
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 16px;margin:6px 0 0}
-  .filters-label{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;align-self:center}
-  .chip{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-soft);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;transition:border-color var(--t),color var(--t),background var(--t);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
-  .chip:hover{border-color:var(--brand);color:var(--ink)}
-  .chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
-  .chip .dotc{width:9px;height:9px;border-radius:50%;flex:none}
-  .spacer{flex:1}
-
-  /* Chart */
-  .scroll{overflow-x:auto;margin-top:14px}
-  .chart{position:relative;min-width:1000px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding-bottom:14px}
-  .axis{display:flex;height:46px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:5;border-radius:var(--radius) var(--radius) 0 0}
-  .axis-gutter{width:var(--gutter);flex:none;display:flex;align-items:center;padding-left:16px;font-size:12px;font-weight:700;color:var(--ink-soft)}
-  .axis-track{position:relative;flex:1}
-  .yearband{position:absolute;top:5px;height:15px;font-size:10.5px;font-weight:800;color:var(--ink-soft);letter-spacing:.5px;border-left:1px solid var(--line);padding-left:5px}
-  .mon{position:absolute;bottom:6px;text-align:center;font-size:11px;color:var(--ink-soft);transform:translateX(-50%)}
-  .mon.q{color:var(--ink);font-weight:700}
-
-  .overlay{position:absolute;left:var(--gutter);right:0;top:46px;bottom:0;pointer-events:none;z-index:1}
-  .gl{position:absolute;top:0;bottom:0;width:1px;background:var(--line);opacity:.6}
-  .gl.q{opacity:1;background:var(--line)}
-  .todayline{position:absolute;top:0;bottom:0;width:2px;background:var(--today);z-index:4}
-  .todayflag{position:absolute;top:2px;transform:translateX(-50%);background:var(--today);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;white-space:nowrap;letter-spacing:.4px}
-  .todaydot{position:absolute;top:44px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--today);box-shadow:0 0 0 0 var(--today);animation:pulse 2.2s ease-out infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(230,73,128,.5)}100%{box-shadow:0 0 0 14px rgba(230,73,128,0)}}
-
-  .lanes{position:relative;z-index:2}
-  .group-h{display:flex;align-items:center;gap:8px;padding:12px 16px 6px;font-size:12px;font-weight:800;letter-spacing:.4px}
-  .group-h .gdot{width:10px;height:10px;border-radius:3px}
-  .group-h .gc{color:var(--ink-soft);font-weight:600;font-size:11.5px}
-  .row{display:flex;align-items:center;height:34px}
-  .row:hover{background:var(--panel-2)}
-  .lane-name{width:var(--gutter);flex:none;padding:0 10px 0 16px;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:3px solid transparent}
-  .lane-name a{color:var(--ink)}
-  .track{position:relative;flex:1;height:100%}
-  .bar{position:absolute;top:8px;height:18px;border-radius:6px;cursor:pointer;transform-origin:left center;box-shadow:0 1px 3px rgba(0,0,0,.12);transition:filter var(--t),transform var(--t);animation:grow .6s cubic-bezier(.2,.7,.3,1) both}
-  .bar:hover{filter:brightness(1.08) saturate(1.1);transform:scaleY(1.12)}
-  @keyframes grow{from{transform:scaleX(.02)}to{transform:scaleX(1)}}
-  .bar.est{border:1.5px dashed rgba(255,255,255,.85)}
-  .bar .roll-arrow{position:absolute;right:-2px;top:50%;transform:translateY(-50%);color:#fff;font-size:12px;font-weight:900;text-shadow:0 0 3px rgba(0,0,0,.35)}
-  .bar .qmark{position:absolute;right:4px;top:50%;transform:translateY(-50%);color:#fff;font-size:10px;font-weight:800;opacity:.9}
-  .before-mark{position:absolute;left:0;top:9px;font-size:11px;color:var(--ink-soft);font-weight:700}
-
-  #tip{position:fixed;z-index:50;max-width:290px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:12px 14px;font-size:12.5px;pointer-events:none;opacity:0;transition:opacity 120ms;color:var(--ink)}
-  #tip h4{margin:0 0 6px;font-size:13.5px}
-  #tip .tb{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:2px 7px;border-radius:5px;color:#fff;margin-bottom:6px}
-  #tip .trow{display:flex;justify-content:space-between;gap:14px;padding:2px 0;color:var(--ink-soft)}
-  #tip .trow b{color:var(--ink);font-weight:600;text-align:right}
-  .legend2{display:flex;gap:16px;flex-wrap:wrap;padding:12px 16px;font-size:12px;color:var(--ink-soft);align-items:center}
-  .legend2 .li{display:inline-flex;align-items:center;gap:6px} .legend2 .sw{width:22px;height:11px;border-radius:4px}
-  .note{color:var(--ink-soft);font-size:12.5px;padding:2px 4px;margin-top:14px}
-  @media(max-width:700px){:root{--gutter:120px}}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important}.bar{transform:none!important}}
+:root{--bg:#f5f7fb;--panel:#fff;--panel2:#f0f3f9;--ink:#172033;--muted:#586277;--line:#dce2ed;--brand:#4055cc;--brand-fill:#4055cc;--brand2:#3042ad;--live:#006944;--live-fill:#006944;--open:#4055cc;--open-fill:#4055cc;--upcoming:#7b4800;--upcoming-fill:#7b4800;--closed:#4e586a;--closed-fill:#4e586a;--today:#b91f55;--today-fill:#b91f55;--shadow:0 7px 28px rgba(23,32,51,.08);--radius:16px;--gutter:170px;--focus:#2455d6}
+[data-theme=dark]{--bg:#0d1220;--panel:#151c2d;--panel2:#1b2438;--ink:#edf1f8;--muted:#a6b0c4;--line:#2a3651;--brand:#8ca0ff;--brand-fill:#4055cc;--brand2:#aebaff;--live:#4bd3a2;--live-fill:#087a53;--open:#8ca0ff;--open-fill:#4055cc;--upcoming:#f3b55f;--upcoming-fill:#8a5100;--closed:#a5b0c4;--closed-fill:#596477;--today:#ff8ab1;--today-fill:#b91f55;--shadow:0 9px 34px rgba(0,0,0,.35);--focus:#b8c4ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.skip{position:fixed;left:12px;top:-80px;background:var(--brand-fill);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}.skip:focus{top:12px}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.wrap{max-width:1440px;margin:auto;padding:32px 24px 70px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:24px}.title h1{font-size:clamp(27px,4vw,42px);line-height:1.08;margin:0 0 9px;letter-spacing:-.8px}.title p{max-width:760px;color:var(--muted);font-size:15px;margin:0}.actions,.button-group{display:flex;gap:8px;flex-wrap:wrap}.btn,.chip{min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);padding:9px 13px;font:inherit;font-weight:650;cursor:pointer}.btn:hover,.chip:hover{border-color:var(--brand)}.btn.primary,.btn[aria-pressed=true],.chip[aria-pressed=true]{background:var(--brand-fill);border-color:var(--brand-fill);color:#fff;text-decoration:none}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.metric{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px 16px}.metric strong{display:block;font-size:23px}.metric span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.deadline-section h2,.agenda h2{font-size:16px;margin:0 0 10px}.deadline-strip{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x proximity}.deadline-card{min-width:190px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px;scroll-snap-align:start}.deadline-card.urgent{border-color:var(--today)}.deadline-card .venue{font-size:10px;font-weight:800;color:var(--brand2);text-transform:uppercase}.deadline-card a{display:block;font-weight:750;text-decoration:none;margin:3px 0}.deadline-card strong{color:var(--today);font-size:18px}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius);overflow:hidden;margin-top:16px}.toolbar{padding:15px;border-bottom:1px solid var(--line);display:flex;align-items:end;gap:12px;flex-wrap:wrap}.toolbar fieldset{border:0;padding:0;margin:0;min-width:0}.toolbar legend{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:750;margin-bottom:5px}.toolbar .chip{min-height:38px;padding:7px 11px}.toolbar .spacer{flex:1}.view-tools{padding:12px 15px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--panel2)}.view-tools .label{font-size:12px;color:var(--muted);font-weight:700}.view-tools .btn{min-height:38px;padding:7px 11px}.view-tools .jump{margin-left:auto}.status-line{padding:10px 15px;color:var(--muted);border-bottom:1px solid var(--line)}.status-line[role=status]{min-height:42px}.hidden{display:none!important}.agenda{padding:18px}.agenda-group{margin:0 0 24px}.agenda-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:7px}.agenda-list{display:grid;gap:9px}.agenda-item{display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(150px,.8fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--panel)}.agenda-item a{font-weight:750;text-decoration:none}.agenda-item .meta{color:var(--muted);font-size:12px}.agenda-item .when{text-align:right}.agenda-item .when strong{display:block}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:750;text-transform:capitalize}.badge.live{background:color-mix(in srgb,var(--live) 15%,transparent);color:var(--live)}.badge.open{background:color-mix(in srgb,var(--open) 15%,transparent);color:var(--open)}.badge.upcoming{background:color-mix(in srgb,var(--upcoming) 18%,transparent);color:var(--upcoming)}.badge.closed{background:color-mix(in srgb,var(--closed) 18%,transparent);color:var(--closed)}.timeline-wrap{position:relative}.scroll{overflow:auto;max-width:100%;scrollbar-color:var(--brand) var(--panel2)}.chart{position:relative;min-width:720px}.axis,.lane{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}.axis{position:sticky;top:0;z-index:8;height:58px;border-bottom:1px solid var(--line);background:var(--panel)}.gutter-head,.lane-name{position:sticky;left:0;z-index:7;background:var(--panel);border-right:1px solid var(--line)}.gutter-head{display:flex;align-items:end;padding:0 12px 10px;font-size:11px;color:var(--muted);font-weight:700}.axis-track{position:relative;background:var(--panel2)}.month{position:absolute;bottom:0;height:100%;border-left:1px solid var(--line);padding:29px 0 0 6px;font-size:11px;color:var(--muted);white-space:nowrap}.month b{position:absolute;top:5px;font-size:12px;color:var(--ink)}.group{padding:9px 12px;background:var(--panel2);border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--muted)}.lane{min-height:48px;border-bottom:1px solid var(--line)}.lane-name{display:flex;flex-direction:column;justify-content:center;padding:7px 12px}.lane-name a{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}.lane-name span{font-size:10px;color:var(--muted)}.track{position:relative;background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:var(--month-width,110px) 100%}.phase{position:absolute;top:12px;height:24px;min-width:8px;border-radius:6px;color:#fff;font-size:10px;font-weight:750;text-decoration:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:4px 7px;box-shadow:0 1px 3px rgba(0,0,0,.2)}.phase[data-status=live]{background:var(--live-fill)}.phase[data-status=open]{background:var(--open-fill)}.phase[data-status=upcoming]{background:var(--upcoming-fill)}.phase[data-status=closed]{background:var(--closed-fill)}.phase.estimated{border:2px dashed #fff;background:var(--upcoming-fill)}.tba{position:absolute;left:7px;top:13px;color:var(--muted);font-size:11px;font-style:italic}.today-line{position:absolute;top:0;bottom:0;width:2px;background:var(--today-fill);z-index:5;pointer-events:none}.today-line span{position:sticky;top:3px;background:var(--today-fill);color:#fff;border-radius:5px;padding:2px 5px;font-size:9px;font-weight:800;transform:translateX(-45%);display:inline-block}.swipe{position:absolute;right:12px;top:12px;z-index:12;background:var(--ink);color:var(--bg);border-radius:999px;padding:6px 10px;font-size:11px;pointer-events:none;animation:pulse 1.5s 2}.swipe.hidden{display:none}@keyframes pulse{50%{transform:translateX(-5px)}}.legend{padding:12px 15px;color:var(--muted);font-size:12px;display:flex;gap:16px;flex-wrap:wrap}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}.site-footer{color:var(--muted);font-size:12px;margin-top:18px;text-align:center}
+@media(max-width:700px){.wrap{padding:22px 14px 60px}.top{display:block}.actions{margin-top:16px}.summary{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}.toolbar{align-items:stretch}.toolbar fieldset{width:100%}.toolbar .button-group{display:grid;grid-template-columns:repeat(3,1fr)}.toolbar .chip{padding:7px 5px}.view-tools .jump{margin-left:0}.agenda{padding:12px}.agenda-item{grid-template-columns:1fr auto}.agenda-item .phase-meta{grid-column:1/-1;grid-row:2}.chart{min-width:680px}.lane,.axis{grid-template-columns:130px minmax(0,1fr)}:root{--gutter:130px}.gutter-head,.lane-name{box-shadow:4px 0 8px rgba(0,0,0,.08)}}
+@media(max-width:360px){.summary{grid-template-columns:1fr}.metric:last-child{grid-column:auto}.view-tools{gap:7px}.btn{padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to timeline content</a>
 <div class="wrap">
-  <header class="top">
-    <div class="title">
-      <h1><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Challenge Timeline</h1>
-      <p>Every tracked medical-image challenge on one date axis — registration/data release through deadline — grouped by venue and coloured by status. The pink line is today.</p>
-    </div>
-    <div class="head-actions">
-      <a class="btn primary" href="../tracker/index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h7V4H3zM14 20h7v-8h-7zM14 4v5h7V4zM3 20h7v-5H3z"/></svg> Tracker view</a>
-      <button class="btn" id="themeBtn"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg> <span>Dark</span></button>
-    </div>
-  </header>
-
-  <div class="next-title">⏳ Next deadlines</div>
-  <div class="next-strip" id="nextStrip"></div>
-
-  <div class="panel">
+<header class="top">
+  <div class="title"><h1>Challenge schedule</h1><p>See what is open, what happens next, and how every medical-image challenge phase fits together. Use the agenda for a quick read or the timeline for the full picture.</p></div>
+  <nav class="actions" aria-label="Site views"><a class="btn primary" href="../tracker/index.html">Browse challenges</a><button class="btn" id="themeBtn" type="button" aria-pressed="false">Dark theme</button></nav>
+</header>
+<main id="main">
+  <section aria-labelledby="summaryTitle"><h2 id="summaryTitle" class="sr-only">Schedule summary</h2><div class="summary" id="summary"></div></section>
+  <section class="deadline-section" aria-labelledby="deadlinesTitle"><h2 id="deadlinesTitle">Next actionable dates</h2><div class="deadline-strip" id="deadlineStrip"></div></section>
+  <section class="panel" aria-labelledby="exploreTitle">
+    <h2 id="exploreTitle" class="sr-only">Explore schedule</h2>
     <div class="toolbar">
-      <span class="filters-label">Status</span>
-      <div class="chip" data-filter="status" data-val="live"><span class="dotc" style="background:var(--live)"></span>Live</div>
-      <div class="chip" data-filter="status" data-val="open"><span class="dotc" style="background:var(--open)"></span>Open</div>
-      <div class="chip" data-filter="status" data-val="upcoming"><span class="dotc" style="background:var(--upcoming)"></span>Upcoming</div>
-      <div class="chip" data-filter="status" data-val="closed"><span class="dotc" style="background:var(--closed)"></span>Closed</div>
-      <span class="spacer"></span>
-      <span class="filters-label">Venue</span>
-      <div class="chip" data-filter="fam" data-val="MICCAI"><span class="dotc" style="background:var(--fam-MICCAI)"></span>MICCAI</div>
-      <div class="chip" data-filter="fam" data-val="ISBI"><span class="dotc" style="background:var(--fam-ISBI)"></span>ISBI</div>
-      <div class="chip" data-filter="fam" data-val="CVPR"><span class="dotc" style="background:var(--fam-CVPR)"></span>CVPR</div>
-      <div class="chip" data-filter="fam" data-val="RSNA"><span class="dotc" style="background:var(--fam-RSNA)"></span>RSNA</div>
-      <div class="chip" data-filter="fam" data-val="Standalone"><span class="dotc" style="background:var(--fam-Standalone)"></span>Standalone</div>
+      <fieldset><legend>Status</legend><div class="button-group" id="statusFilters"></div></fieldset>
+      <fieldset><legend>Venue</legend><div class="button-group" id="venueFilters"></div></fieldset>
     </div>
-    <div class="legend2">
-      <span class="li"><span class="sw" style="background:var(--live)"></span>Live / rolling</span>
-      <span class="li"><span class="sw" style="background:var(--open)"></span>Open</span>
-      <span class="li"><span class="sw" style="background:var(--upcoming)"></span>Upcoming</span>
-      <span class="li"><span class="sw" style="background:var(--closed)"></span>Closed</span>
-      <span class="li"><span class="sw" style="border:1.5px dashed var(--ink-soft);background:transparent"></span>Dashed = estimated / TBA date</span>
-      <span class="li"><b style="color:var(--today)">|</b> Today · 23 Jul 2026</span>
+    <div class="view-tools">
+      <span class="label">View</span><div class="button-group" id="viewButtons" aria-label="Schedule view"><button class="btn" type="button" data-view="agenda">Agenda</button><button class="btn" type="button" data-view="timeline">Timeline</button></div>
+      <span class="label timeline-only">Range</span><div class="button-group timeline-only" id="rangeButtons" aria-label="Timeline range"><button class="btn" type="button" data-range="3">3 months</button><button class="btn" type="button" data-range="6">6 months</button><button class="btn" type="button" data-range="12">12 months</button><button class="btn" type="button" data-range="all">All dates</button></div>
+      <div class="button-group jump timeline-only"><button class="btn" id="todayBtn" type="button">Today</button><button class="btn" id="nextBtn" type="button">Next deadline</button></div>
     </div>
-    <div class="scroll">
-      <div class="chart" id="chart">
-        <div class="axis"><div class="axis-gutter">Challenge</div><div class="axis-track" id="axisTrack"></div></div>
-        <div class="lanes" id="lanes"></div>
-        <div class="overlay" id="overlay"></div>
-      </div>
-    </div>
-  </div>
-  <div class="note" id="note"></div>
+    <div class="status-line" id="statusLine" role="status" aria-live="polite"></div>
+    <div class="agenda" id="agenda"></div>
+    <div class="timeline-wrap hidden" id="timelineWrap"><div class="swipe hidden" id="swipeHint">Swipe timeline →</div><div class="scroll" id="timelineScroll"><div class="chart" id="chart"></div></div><div class="legend"><span><i class="dot" style="background:var(--live)"></i>Live / rolling</span><span><i class="dot" style="background:var(--open)"></i>Open</span><span><i class="dot" style="background:var(--upcoming)"></i>Upcoming</span><span><i class="dot" style="background:var(--closed)"></i>Past</span><span>Dashed = estimated</span></div></div>
+  </section>
+</main>
+<footer class="site-footer">Dates are source-reviewed but can change. Confirm details on each official challenge page.</footer>
 </div>
-<div id="tip"></div>
-
 <script src="../data/challenges.js"></script>
-<script>
-/* Challenge data loaded from ../data/challenges.js as window.CHALLENGES */
-const TODAY = new Date("2026-07-23T00:00:00");
-const dt=s=>new Date(s+"T00:00:00");
-const AXIS_START=dt("2025-07-01"), AXIS_END=dt("2026-12-31"), TOTAL=AXIS_END-AXIS_START;
-const pct=d=>((d-AXIS_START)/TOTAL)*100;
-const FAM_ORDER=["MICCAI","ISBI","CVPR","RSNA","Standalone"];
-const FAM_COLOR=f=>getComputedStyle(document.documentElement).getPropertyValue("--fam-"+f);
-const STATUS_COLOR={live:"--live",open:"--open",upcoming:"--upcoming",closed:"--closed"};
-const FAM_FULL={MICCAI:"MICCAI 2026",ISBI:"ISBI 2026",CVPR:"CVPR 2026",RSNA:"RSNA (Kaggle)",Standalone:"Standalone / platform"};
+<script type="module">
+import {daysBetween,deriveChallengeState,derivePhaseStatus,formatDate,getAxisBounds,getNextAction,isoDayNumber,localTodayISO} from "../assets/challenge-core.js";
 
-let state={status:new Set(),fam:new Set()};
-const visible=c=>(!state.status.size||state.status.has(c.status))&&(!state.fam.size||state.fam.has(c.venueFamily));
-const daysTo=iso=>iso?Math.round((dt(iso)-TODAY)/864e5):null;
+const CHALLENGES=window.CHALLENGES||[], TODAY=localTodayISO();
+const FAMILIES=[...new Set(CHALLENGES.map(c=>c.venueFamily))];
+const STATUS=["live","open","upcoming","closed"];
+const state={status:new Set(),family:new Set(),view:sessionStorage.getItem("scheduleView")||(matchMedia("(max-width:700px)").matches?"agenda":"timeline"),range:matchMedia("(max-width:700px)").matches?"6":"12"};
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const enriched=()=>CHALLENGES.map(c=>({...c,derived:deriveChallengeState(c,TODAY),action:getNextAction(c,TODAY)}));
+const selected=()=>enriched().filter(c=>(!state.status.size||state.status.has(c.derived.status))&&(!state.family.size||state.family.has(c.venueFamily)));
 
-/* ----- axis (months + year bands + gridlines) ----- */
-function buildAxis(){
-  const at=document.getElementById("axisTrack"), ov=document.getElementById("overlay");
-  let y=2025,m=7,html="",gl="";
-  const yearSpans={};
-  while(y<2026||(y===2026&&m<=12)){
-    const first=new Date(y,m-1,1), next=(m===12)?new Date(y+1,0,1):new Date(y,m,1);
-    const l=Math.max(pct(first),0), r=Math.min(pct(next),100), mid=(l+r)/2;
-    const isQ=(m===1||m===4||m===7||m===10);
-    const label=first.toLocaleString("en",{month:"short"});
-    html+=`<div class="mon ${isQ?'q':''}" style="left:${mid}%">${label}</div>`;
-    gl+=`<div class="gl ${isQ?'q':''}" style="left:${l}%"></div>`;
-    (yearSpans[y]=yearSpans[y]||[]).push(l,r);
-    m++; if(m>12){m=1;y++;}
-  }
-  // year bands
-  Object.keys(yearSpans).forEach(yr=>{const arr=yearSpans[yr];const l=Math.min(...arr);html=`<div class="yearband" style="left:${l}%">${yr}</div>`+html;});
-  at.innerHTML=html;
-  // today line + gridlines into overlay
-  const tp=pct(TODAY);
-  ov.innerHTML=gl+`<div class="todayline" style="left:${tp}%"></div><div class="todaydot" style="left:${tp}%"></div><div class="todayflag" style="left:${tp}%">TODAY</div>`;
+function setupFilters(){
+  $("statusFilters").innerHTML=STATUS.map(v=>`<button type="button" class="chip" data-kind="status" data-value="${v}" aria-pressed="false">${v[0].toUpperCase()+v.slice(1)}</button>`).join("");
+  $("venueFilters").innerHTML=FAMILIES.map(v=>`<button type="button" class="chip" data-kind="family" data-value="${esc(v)}" aria-pressed="false">${esc(v)}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(button=>button.addEventListener("click",()=>{const set=state[button.dataset.kind],value=button.dataset.value;set.has(value)?set.delete(value):set.add(value);button.setAttribute("aria-pressed",String(set.has(value)));render();}));
 }
-
-/* ----- bar geometry ----- */
-function geom(c){
-  const s0=c.startISO?dt(c.startISO):null, e0=c.endISO?dt(c.endISO):null;
-  let s=s0||(e0?new Date(e0-30*864e5):AXIS_START);
-  let solidEnd=c.rolling?(e0||TODAY):(e0||new Date(s.getTime()+30*864e5));
-  let end=c.rolling?AXIS_END:solidEnd;
-  if(end<AXIS_START) return {before:true};
-  if(s>AXIS_END) return {after:true};
-  const sC=new Date(Math.max(s,AXIS_START)), eC=new Date(Math.min(end,AXIS_END));
-  const left=pct(sC), width=Math.max(pct(eC)-pct(sC),1.3);
-  let solidFrac=1;
-  if(c.rolling){ const se=new Date(Math.min(solidEnd,AXIS_END)); solidFrac=Math.min(Math.max((se-sC)/(eC-sC),0.04),1); }
-  return {left,width,solidFrac,overflowR:end>AXIS_END,before:false};
-}
-
-function barStyle(c,g){
-  const col=`var(${STATUS_COLOR[c.status]})`;
-  let bg=col;
-  if(c.rolling && g.solidFrac<0.99){
-    const p=(g.solidFrac*100).toFixed(1);
-    bg=`linear-gradient(90deg, ${col} 0%, ${col} ${p}%, color-mix(in srgb, ${col} 22%, transparent) 100%)`;
-  }
-  return `left:${g.left}%;width:${g.width}%;background:${bg};`;
-}
-
-/* ----- render lanes ----- */
-function render(){
-  const lanes=document.getElementById("lanes");
-  let html="", i=0, shown=0;
-  FAM_ORDER.forEach(fam=>{
-    const items=CHALLENGES.filter(c=>c.venueFamily===fam && visible(c))
-      .sort((a,b)=>(a.startISO||a.endISO||"9999").localeCompare(b.startISO||b.endISO||"9999"));
-    if(!items.length) return;
-    html+=`<div class="group-h"><span class="gdot" style="background:${FAM_COLOR(fam)}"></span>${FAM_FULL[fam]} <span class="gc">· ${items.length}</span></div>`;
-    items.forEach(c=>{
-      shown++;
-      const g=geom(c);
-      const delay=Math.min(i*22,520); i++;
-      let bar;
-      if(g.before){
-        bar=`<span class="before-mark" title="Concluded before Jul 2025">◂ concluded ${c.endISO||''}</span>`;
-      } else {
-        const roll=c.rolling?`<span class="roll-arrow">›</span>`:"";
-        const q=c.endEstimated?`<span class="qmark">?</span>`:"";
-        bar=`<div class="bar ${c.endEstimated?'est':''}" style="${barStyle(c,g)};animation-delay:${delay}ms" data-id="${c.id}" tabindex="0">${roll}${q}</div>`;
-      }
-      html+=`<div class="row"><div class="lane-name" style="border-left-color:${FAM_COLOR(fam)}"><a href="${c.url}" target="_blank" rel="noopener" title="${c.name}">${c.shortName}</a></div><div class="track">${bar}</div></div>`;
-    });
-  });
-  lanes.innerHTML=html || `<div style="padding:40px;text-align:center;color:var(--ink-soft)">No challenges match these filters.</div>`;
-  document.getElementById("note").textContent=`Showing ${shown} of ${CHALLENGES.length} challenges. Bars span registration/data-release → deadline; dashed = estimated or TBA (pinned to the conference date); rolling benchmarks fade to the right. Hover a bar for details.`;
-  attachTips();
-}
-
-/* ----- tooltip ----- */
-function attachTips(){
-  const tip=document.getElementById("tip");
-  document.querySelectorAll(".bar").forEach(b=>{
-    const c=CHALLENGES.find(x=>x.id===b.dataset.id);
-    const show=e=>{
-      const col=`var(${STATUS_COLOR[c.status]})`;
-      tip.innerHTML=`<span class="tb" style="background:${col}">${c.status==="live"?"Live benchmark":c.status}</span>
-        <h4>${c.name}</h4>
-        <div class="trow"><span>Venue</span><b>${FAM_FULL[c.venueFamily]} · ${c.platform}</b></div>
-        <div class="trow"><span>Task</span><b>${c.taskType.join(", ")}</b></div>
-        <div class="trow"><span>Modality</span><b>${c.modality.join(", ")} (${c.dimensionality})</b></div>
-        <div class="trow"><span>Window</span><b>${(c.startISO||"?")} → ${c.rolling?"rolling":(c.endISO||"TBA")}${c.endEstimated?" (est.)":""}</b></div>
-        <div class="trow"><span>Deadline</span><b>${c.keyDates.submissionDeadline}</b></div>
-        <div class="trow"><span>Prize</span><b>${c.prizeType==="none"?"None listed":c.prizes}</b></div>
-        <div class="trow"><span>Data</span><b>${c.dataAvailable}</b></div>`;
-      tip.style.opacity="1"; move(e);
-    };
-    const move=e=>{
-      const pad=14, w=tip.offsetWidth, h=tip.offsetHeight;
-      let x=e.clientX+pad, yy=e.clientY+pad;
-      if(x+w>innerWidth) x=e.clientX-w-pad;
-      if(yy+h>innerHeight) yy=e.clientY-h-pad;
-      tip.style.left=x+"px"; tip.style.top=yy+"px";
-    };
-    b.addEventListener("mouseenter",show); b.addEventListener("mousemove",move);
-    b.addEventListener("mouseleave",()=>tip.style.opacity="0");
-    b.addEventListener("focus",e=>{const r=b.getBoundingClientRect();show({clientX:r.left+r.width/2,clientY:r.top});});
-    b.addEventListener("blur",()=>tip.style.opacity="0");
-    b.addEventListener("click",()=>window.open(c.url,"_blank"));
-    b.addEventListener("keydown",e=>{if(e.key==="Enter")window.open(c.url,"_blank");});
-  });
-}
-
-/* ----- next deadlines strip ----- */
-function renderNext(){
-  const up=CHALLENGES.filter(c=>(c.status==="open"||c.status==="upcoming")&&c.deadlineISO&&daysTo(c.deadlineISO)>=0)
-    .sort((a,b)=>daysTo(a.deadlineISO)-daysTo(b.deadlineISO)).slice(0,7);
-  const strip=document.getElementById("nextStrip");
-  strip.innerHTML=up.map(c=>{
-    const d=daysTo(c.deadlineISO); const urgent=d<=14;
-    const disp=dt(c.deadlineISO).toLocaleDateString("en",{day:"numeric",month:"short",year:"numeric"});
-    return `<div class="dcard ${urgent?'urgent':''}">
-      <span class="fam" style="background:${FAM_COLOR(c.venueFamily)}">${c.venueFamily}</span>
-      <a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.shortName}</a>
-      <div class="cd">${d===0?"Today":d}<small>${d===0?"":" day"+(d>1?"s":"")}</small></div>
-      <div class="dt">${disp}${c.endEstimated?" · est.":""}</div></div>`;
-  }).join("") || `<div class="dcard">No upcoming deadlines with a fixed date.</div>`;
-}
-
-function bind(){
-  document.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{
-    const f=ch.dataset.filter,v=ch.dataset.val; ch.classList.toggle("on");
-    state[f].has(v)?state[f].delete(v):state[f].add(v); render();
-  });
-  document.getElementById("themeBtn").onclick=()=>{
-    const html=document.documentElement, dark=html.getAttribute("data-theme")==="dark";
-    html.setAttribute("data-theme",dark?"light":"dark");
-    document.querySelector("#themeBtn span").textContent=dark?"Dark":"Light";
-    buildAxis(); render();
-  };
-}
-(function(){
-  if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
-    document.documentElement.setAttribute("data-theme","dark"); document.querySelector("#themeBtn span").textContent="Light";
-  }
-  buildAxis(); renderNext(); bind(); render();
-})();
+function renderSummary(){const all=enriched(),counts=Object.fromEntries(STATUS.map(s=>[s,all.filter(c=>c.derived.status===s).length]));$("summary").innerHTML=`<div class="metric"><strong>${all.length}</strong><span>Challenges aggregated</span></div><div class="metric"><strong>${counts.open+counts.live}</strong><span>Open or live</span></div><div class="metric"><strong>${all.filter(c=>c.derived.canJoinNow).length}</strong><span>Accepting new teams</span></div>`;}
+function renderDeadlines(){const items=enriched().filter(c=>c.action.dateISO&&c.action.days>=0&&(c.derived.status==="open"||c.derived.status==="upcoming")).sort((a,b)=>a.action.days-b.action.days).slice(0,8);$("deadlineStrip").innerHTML=items.length?items.map(c=>`<article class="deadline-card ${c.action.days<=14?'urgent':''}"><span class="venue">${esc(c.venueFamily)}</span><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.shortName)}</a><div>${esc(c.action.label)}</div><strong>${c.action.days===0?'Today':`${c.action.days} days`}</strong><div>${formatDate(c.action.dateISO)}${c.action.estimated?' · estimated':''}</div></article>`).join(""):`<p>No upcoming exact dates match the current data.</p>`;}
+function groupTitle(action){return action.dateISO?action.dateISO.slice(0,7):action.kind==="rolling"?"Rolling":"TBA / postponed";}
+function renderAgenda(items){const groups=new Map();items.sort((a,b)=>(a.action.dateISO||"9999").localeCompare(b.action.dateISO||"9999")||a.name.localeCompare(b.name)).forEach(c=>{const key=groupTitle(c.action);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(c)});let html="";for(const [key,list] of groups){let title=key;if(/^\d{4}-\d{2}$/.test(key))title=new Intl.DateTimeFormat("en",{month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(`${key}-01T00:00:00Z`));html+=`<section class="agenda-group"><h3>${esc(title)}</h3><div class="agenda-list">${list.map(c=>`<article class="agenda-item"><div><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a><div class="meta">${esc(c.venue)} · ${esc(c.platform)}</div></div><div class="phase-meta"><span class="badge ${c.derived.status}">${c.derived.status}</span> ${esc(c.action.label)}${c.action.estimated?' · estimated':''}</div><div class="when"><strong>${c.action.dateISO?formatDate(c.action.dateISO):c.action.kind==='rolling'?'Continuous':'Date TBA'}</strong>${c.action.days!==null&&c.action.days>=0?`<span>${c.action.days===0?'Today':`${c.action.days} days`}</span>`:''}</div></article>`).join("")}</div></section>`}$("agenda").innerHTML=html||"<p>No challenges match these filters.</p>";}
+function monthShift(iso,delta){const [y,m]=iso.split("-").map(Number),d=new Date(Date.UTC(y,m-1+delta,1));return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,"0")}-01`}
+function monthEnd(iso){const [y,m]=iso.split("-").map(Number),d=new Date(Date.UTC(y,m,0));return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,"0")}-${String(d.getUTCDate()).padStart(2,"0")}`}
+function rangeBounds(items){if(state.range==="all")return getAxisBounds(items,TODAY);const n=Number(state.range),start=monthShift(`${TODAY.slice(0,7)}-01`,-1),end=monthEnd(monthShift(start,n-1));return{startISO:start,endISO:end,totalDays:daysBetween(start,end)+1}}
+function phaseInRange(p,b){if(p.rolling||p.state==="active"&&!p.startISO&&!p.endISO||p.state==="postponed")return true;const s=p.startISO||p.endISO,e=p.endISO||p.startISO;if(!s&&!e)return true;return isoDayNumber(e)>=isoDayNumber(b.startISO)&&isoDayNumber(s)<=isoDayNumber(b.endISO)}
+function renderTimeline(items){const bounds=rangeBounds(items),rangeItems=items.filter(c=>c.phases.some(p=>phaseInRange(p,bounds))),months=[];let cur=`${bounds.startISO.slice(0,7)}-01`;while(cur<=bounds.endISO){months.push(cur);cur=monthShift(cur,1)}const trackWidth=Math.max(550,months.length*110),chartWidth=trackWidth+(matchMedia("(max-width:700px)").matches?130:170);$("chart").style.width=`${chartWidth}px`;const pct=iso=>Math.max(0,Math.min(100,daysBetween(bounds.startISO,iso)/Math.max(1,bounds.totalDays-1)*100));let html=`<div class="axis"><div class="gutter-head">Challenge</div><div class="axis-track" style="--month-width:${trackWidth/months.length}px">${months.map((m,i)=>`<span class="month" style="left:${i/months.length*100}%;width:${100/months.length}%"><b>${i===0||m.endsWith('-01-01')?m.slice(0,4):''}</b>${new Intl.DateTimeFormat('en',{month:'short',timeZone:'UTC'}).format(new Date(m+'T00:00:00Z'))}</span>`).join('')}</div></div>`;for(const family of FAMILIES){const familyItems=rangeItems.filter(c=>c.venueFamily===family);if(!familyItems.length)continue;html+=`<div class="group">${esc(family)} · ${familyItems.length}</div>`;for(const c of familyItems){const phases=c.phases.filter(p=>phaseInRange(p,bounds));html+=`<div class="lane"><div class="lane-name"><a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc(c.name)}">${esc(c.shortName)}</a><span>${esc(c.derived.currentPhaseLabel)}</span></div><div class="track" style="--month-width:${trackWidth/months.length}px">`;for(const p of phases){if(!p.startISO&&!p.endISO&&!p.rolling){html+=`<span class="tba">${esc(p.label)} · ${p.state||'TBA'}</span>`;continue}const s=p.startISO||p.endISO||bounds.startISO,e=p.rolling?bounds.endISO:(p.endISO||p.startISO),left=pct(s),right=pct(e),width=Math.max(.8,right-left);const status=derivePhaseStatus(p,TODAY);const aria=`${c.name}, ${p.label}, ${p.startISO?formatDate(p.startISO):'start TBA'} to ${p.rolling?'rolling':p.endISO?formatDate(p.endISO):'end TBA'}${p.startEstimated||p.endEstimated?', estimated dates':''}`;html+=`<a class="phase ${p.startEstimated||p.endEstimated?'estimated':''}" data-phase-id="${esc(c.id)}-${esc(p.id)}" data-status="${status}" href="${esc(c.url)}" target="_blank" rel="noopener" aria-label="${esc(aria)}" title="${esc(aria)}" style="left:${left}%;width:${width}%">${esc(p.label)}</a>`}html+=`</div></div>`}}if(isoDayNumber(TODAY)>=isoDayNumber(bounds.startISO)&&isoDayNumber(TODAY)<=isoDayNumber(bounds.endISO)){const left=(matchMedia("(max-width:700px)").matches?130:170)+pct(TODAY)/100*trackWidth;html+=`<div class="today-line" style="left:${left}px"><span>TODAY</span></div>`}$("chart").innerHTML=html;const hidden=items.length-rangeItems.length;$("statusLine").textContent=`Showing ${rangeItems.length} of ${CHALLENGES.length} challenges${hidden?` · ${hidden} filtered result${hidden===1?' is':'s are'} outside this date range`:''}.`;requestAnimationFrame(()=>jumpToDate(TODAY,false));if(matchMedia("(max-width:700px)").matches&&!sessionStorage.getItem("timelineSwiped"))$("swipeHint").classList.remove("hidden");return bounds;}
+function jumpToDate(iso,smooth=true){const sc=$("timelineScroll"),line=$("chart").querySelector(".today-line");if(iso===TODAY&&line){sc.scrollTo({left:Math.max(0,line.offsetLeft-sc.clientWidth/2),behavior:smooth?'smooth':'auto'});return}const items=selected(),bounds=rangeBounds(items),trackWidth=$("chart").clientWidth-(matchMedia("(max-width:700px)").matches?130:170),x=(matchMedia("(max-width:700px)").matches?130:170)+Math.max(0,Math.min(1,daysBetween(bounds.startISO,iso)/(bounds.totalDays-1)))*trackWidth;sc.scrollTo({left:Math.max(0,x-sc.clientWidth/2),behavior:smooth?'smooth':'auto'})}
+function render(){const items=selected();renderSummary();renderDeadlines();document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.view===state.view)));document.querySelectorAll("[data-range]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.range===state.range)));document.querySelectorAll(".timeline-only").forEach(el=>el.classList.toggle("hidden",state.view!=="timeline"));$("agenda").classList.toggle("hidden",state.view!=="agenda");$("timelineWrap").classList.toggle("hidden",state.view!=="timeline");if(state.view==="agenda"){$("statusLine").textContent=`Showing ${items.length} of ${CHALLENGES.length} challenges.`;renderAgenda(items)}else renderTimeline(items)}
+setupFilters();document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{state.view=b.dataset.view;sessionStorage.setItem("scheduleView",state.view);render()}));document.querySelectorAll("[data-range]").forEach(b=>b.addEventListener("click",()=>{state.range=b.dataset.range;render()}));$("todayBtn").addEventListener("click",()=>jumpToDate(TODAY));$("nextBtn").addEventListener("click",()=>{const n=selected().filter(c=>c.action.dateISO&&c.action.days>=0).sort((a,b)=>a.action.days-b.action.days)[0];if(n)jumpToDate(n.action.dateISO)});$("timelineScroll").addEventListener("scroll",()=>{$("swipeHint").classList.add("hidden");sessionStorage.setItem("timelineSwiped","1")},{once:true});$("themeBtn").addEventListener("click",()=>{const dark=document.documentElement.dataset.theme==="dark";document.documentElement.dataset.theme=dark?"light":"dark";$("themeBtn").setAttribute("aria-pressed",String(!dark));$("themeBtn").textContent=dark?"Dark theme":"Light theme"});if(matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.dataset.theme="dark";$("themeBtn").textContent="Light theme";$("themeBtn").setAttribute("aria-pressed","true")}render();
 </script>
 </body>
 </html>

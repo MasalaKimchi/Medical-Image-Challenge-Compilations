@@ -6,8 +6,8 @@ The project ships two self-contained, interactive HTML views built on the same u
 
 | View | What it does |
 |------|--------------|
-| **[Challenge Tracker](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/tracker/)** | A filterable catalog of every tracked challenge, with status, task type, modality, prize/venue tags, and a built-in GPU-requirement estimator. |
-| **[Challenge Timeline](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/)** | A Gantt-style view placing every challenge on a single date axis (registration/data release → deadline), grouped into swimlanes by venue and coloured by status, with a live `TODAY` marker. |
+| **[Challenge Tracker](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/tracker/)** | A filterable catalog with derived live status, next actions, source freshness, a four-item shortlist, comparison, and calendar export. |
+| **[Challenge Schedule](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/)** | A reader-friendly agenda and phase timeline covering registration, development, validation, testing, submissions, results, and events. |
 
 A lightweight [**landing page**](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/) links to both.
 
@@ -26,27 +26,31 @@ Last updated **23 July 2026**.
 | RSNA | 2 |
 | **Total** | **37** |
 
+As of 23 July 2026, **35 of 37** records have current official-source evidence. The two blocked RSNA records remain visibly unverified. Derived status at that review date: **1 live, 21 open, 1 upcoming, and 14 closed**.
+
 ## The Tracker
 
 The tracker presents 37 challenges as filterable cards. Highlights include:
 
-- **Status filters** — live benchmarks, open competitions, upcoming calls, and closed events.
+- **Derived status filters** — live benchmarks, active phases, upcoming calls, and closed events, calculated from structured phase dates.
 - **Task & modality filters** — narrow by task type (segmentation, classification, registration, reconstruction, report generation, …) and imaging modality (MRI, CT, PET/CT, X-ray, histopathology, ultrasound, …).
 - **Venue & prize tags** — MICCAI, ISBI, CVPR, RSNA, Grand Challenge; cash-prize vs. recognition.
-- **GPU-requirement estimator** — a rough VRAM/tier estimate derived from dataset size and modality, to help gauge the compute needed to compete.
+- **Shortlist and compare** — save up to four challenges locally, compare their practical details, and export exact deadlines to a calendar.
+- **Source freshness** — see when status-driving information was last reviewed and follow the official source directly.
+- **Rough compute planner** — an optional, confidence-labelled heuristic kept below the discovery experience.
 - **Light / dark theme.**
 
 ## The Timeline
 
-The timeline renders the same dataset on a **Jul 2025 – Dec 2026 date axis**, grouped into swimlanes by venue family (MICCAI / ISBI / CVPR / RSNA / Standalone) and coloured by status. It adds:
+The schedule renders the same structured phase data as either a compact agenda or a zoomable timeline grouped by venue family. It adds:
 
-- A live **`TODAY`** marker (the pink line) and a next-deadline countdown strip.
-- **Dashed bars** for estimated / TBA dates.
-- Rolling-benchmark fades for continuously-open leaderboards.
+- A live **today** marker, next-action strip, and 3/6/12-month or all-date ranges.
+- Separate phase bars for registration, development, validation, testing, submission, results, and events.
+- An agenda-first mobile view, plus explicit rolling and TBA sections.
 
 ## Data & accuracy
 
-Dates, deadlines and statuses are compiled from official organizer and platform pages and are refreshed bi-weekly using the documented [source sweep](data/SOURCES.md). A platform listing is not enough to mark a challenge as open: the relevant organizer or host page must confirm an active registration or submission phase. Always confirm details on each challenge's official page before relying on them — registration windows and deadlines shift.
+Dates, phases and evidence are compiled from official organizer and platform pages and refreshed bi-weekly using the documented [source sweep](data/SOURCES.md). Status is derived locally from inclusive phase dates, while freshness labels make unverified or overdue records explicit. A platform listing is not enough to mark a challenge as open: the relevant organizer or host page must confirm an active participation phase. Always confirm details on each official page before relying on them—registration windows and deadlines shift.
 
 ## License
 

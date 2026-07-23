@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://medical-image-challenges.github.io/schema/challenges-v2.json",
+  "title": "Medical image challenge catalogue v2",
+  "type": "array",
+  "minItems": 1,
+  "items": { "$ref": "#/$defs/challenge" },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "url", "type", "lastCheckedISO"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https://" },
+        "type": {
+          "enum": ["organizer", "platform", "registry", "publication", "dataset"]
+        },
+        "lastCheckedISO": {
+          "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+        }
+      }
+    },
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "type", "label", "startISO", "endISO",
+        "startEstimated", "endEstimated", "participation",
+        "acceptingNewTeams", "rolling", "state", "sourceIds"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "type": {
+          "enum": [
+            "data-release", "registration", "application", "development",
+            "validation", "sanity-check", "test", "final-submission",
+            "paper", "results", "event", "leaderboard"
+          ]
+        },
+        "label": { "type": "string", "minLength": 1 },
+        "startISO": {
+          "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+        },
+        "endISO": {
+          "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+        },
+        "startEstimated": { "type": "boolean" },
+        "endEstimated": { "type": "boolean" },
+        "participation": { "type": "boolean" },
+        "acceptingNewTeams": { "type": "boolean" },
+        "rolling": { "type": "boolean" },
+        "state": {
+          "enum": ["active", "upcoming", "completed", "postponed", "cancelled"]
+        },
+        "sourceIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion", "id", "name", "shortName", "venue", "platform",
+        "url", "statusNote", "dataAvailable", "taskType", "modality",
+        "anatomy", "dimensionality", "numCases", "datasetSizeGB", "scale",
+        "prizes", "overview", "prizeType", "venueFamily", "venueType",
+        "lastVerifiedISO", "sources", "phases"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 2 },
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "shortName": { "type": "string", "minLength": 1 },
+        "venue": { "type": "string", "minLength": 1 },
+        "platform": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https://" },
+        "statusNote": { "type": "string", "minLength": 1 },
+        "dataAvailable": { "enum": ["public", "on-registration", "unknown"] },
+        "taskType": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "modality": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "anatomy": { "type": "string", "minLength": 1 },
+        "dimensionality": { "type": "string", "minLength": 1 },
+        "numCases": { "type": "string", "minLength": 1 },
+        "datasetSizeGB": { "type": ["number", "null"], "minimum": 0 },
+        "scale": { "type": "string", "minLength": 1 },
+        "prizes": { "type": "string", "minLength": 1 },
+        "overview": { "type": "string", "minLength": 1 },
+        "prizeType": { "enum": ["cash", "recognition", "none"] },
+        "venueFamily": { "type": "string", "minLength": 1 },
+        "venueType": { "enum": ["conference", "workshop", "platform"] },
+        "lastVerifiedISO": {
+          "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+        },
+        "sources": {
+          "type": "array", "minItems": 1,
+          "items": { "$ref": "#/$defs/source" }
+        },
+        "phases": {
+          "type": "array", "minItems": 1,
+          "items": { "$ref": "#/$defs/phase" }
+        }
+      }
+    }
+  }
+}
