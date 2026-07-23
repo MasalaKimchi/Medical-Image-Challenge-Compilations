@@ -36,5 +36,7 @@ This tracker is refreshed with a **source-first review**, not a general web sear
 - Added the **AAPM Grace Challenge** as `closed`: AAPM’s official schedule states that its 2026 competition phase ended 1 May.
 - Added **SynthOCT 2026** as `open`: the official SASHIMI/MICCAI challenge site reports an active platform and a 14 Aug final-submission deadline.
 - Added the MICCAI SIG Challenges catalogue to the mandatory sweep so smaller workshop and satellite challenges are reviewed alongside the main MICCAI list.
+- Added three active EndoVis/MICCAI sub-challenges after checking their individual official pages: **RARE26** (open development through 31 Aug), **iMED2026** (public validation; final Docker due 1 Sep), and **TREAT-MMTB** (applications and internal phase through 31 Jul).
+- Extended the individual-page sweep with three more active MICCAI challenges: **BIC-MAC** (Codabench registration and submissions through 15 Aug), **ORena SAVE FOCUS** (live pre-evaluation through 1 Sep; final Docker due 8 Sep), and **TopAneu** (Grand Challenge enrolment, sanity check from 1 Aug and test phase through 5 Sep).
 
 The review is intentionally conservative: a platform listing without an active official phase is not counted as a new live challenge.

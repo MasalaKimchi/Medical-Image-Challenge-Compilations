@@ -1177,6 +1177,249 @@
     "lastVerified": "2026-07-23"
   },
   {
+    "id": "rare26",
+    "name": "RARE26 — Early Neoplasia Recognition in Barrett’s Esophagus",
+    "shortName": "RARE26",
+    "venue": "MICCAI 2026 · EndoVis",
+    "platform": "grand-challenge.org",
+    "url": "https://rare26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Registration and open-development algorithm submissions are active through 31 Aug; closed testing follows 1–7 Sep.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "classification"
+    ],
+    "modality": [
+      "Endoscopy"
+    ],
+    "anatomy": "esophagus",
+    "dimensionality": "2D",
+    "numCases": "Not publicly stated; prevalence-balanced evaluation simulates ~1% early-neoplasia rate",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-08-31",
+    "keyDates": {
+      "registration": "Opened 1 May 2026",
+      "submissionDeadline": "Open development phase ends 31 Aug 2026",
+      "results": "Closed testing 1–7 Sep; report deadline 14 Sep; MICCAI presentation 4–8 Oct"
+    },
+    "prizes": "Not stated",
+    "overview": "Classify Barrett’s-esophagus endoscopy images for early neoplasia using PPV at 90% recall, a metric designed for the challenge’s very low real-world disease prevalence.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "startISO": "2026-05-01",
+    "endISO": "2026-09-14",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "imed26",
+    "name": "iMED Challenge 2026 — Multi-endoscope 3D Perception",
+    "shortName": "iMED2026",
+    "venue": "MICCAI 2026 · EndoVis",
+    "platform": "Synapse",
+    "url": "https://imed-challenge.github.io/",
+    "status": "open",
+    "statusNote": "Public validation is open; team registration closes 15 Aug and final Docker submission is due 1 Sep.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "registration",
+      "reconstruction"
+    ],
+    "modality": [
+      "Endoscopy"
+    ],
+    "anatomy": "minimally invasive surgical scenes",
+    "dimensionality": "mixed",
+    "numCases": "Task 1: 61 train / 19 test; Task 2: 20 synchronized multi-endoscope sequences",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-09-01",
+    "keyDates": {
+      "registration": "Opened 15 Apr 2026; team deadline 15 Aug",
+      "submissionDeadline": "Final Docker image: 1 Sep 2026; methods report: 8 Sep",
+      "results": "EndoVis challenge day at MICCAI 2026, 27 Sep"
+    },
+    "prizes": "Not stated",
+    "overview": "Estimate relative camera pose between two endoscopes and synthesize held-out endoscope views in deformable surgical environments for real-time guidance and digital-twin applications.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "startISO": "2026-04-15",
+    "endISO": "2026-09-08",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "treat-mmtb26",
+    "name": "TREAT-MMTB 2026 — Multimodal Tuberculosis Management",
+    "shortName": "TREAT-MMTB",
+    "venue": "MICCAI 2026",
+    "platform": "Self-hosted",
+    "url": "https://treat-mmtb.mi2rl.co/",
+    "status": "open",
+    "statusNote": "Participation applications and the internal competition phase are open through 31 Jul; selected teams enter the external phase 1–20 Aug.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "detection",
+      "segmentation",
+      "classification"
+    ],
+    "modality": [
+      "X-ray"
+    ],
+    "anatomy": "chest / lungs",
+    "dimensionality": "2D",
+    "numCases": "Multi-center chest X-ray cohorts from five international sites; exact case count not stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-07-31",
+    "keyDates": {
+      "registration": "Applications open 10 Apr – 31 Jul 2026",
+      "submissionDeadline": "Internal phase closes 31 Jul; external Docker phase 1–20 Aug",
+      "results": "Final rankings 1 Sep; MICCAI awards 27 Sep"
+    },
+    "prizes": "$1,400 / $700 / $350 for each of the cavity and TB-diagnosis tracks",
+    "overview": "Detect and segment TB cavities on chest X-ray and classify TB using CXR plus clinical metadata, with external validation across five international sites.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-10",
+    "endISO": "2026-08-20",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "bicmac26",
+    "name": "BIC-MAC 2026 — Cross-Modal PET Attenuation Correction",
+    "shortName": "BIC-MAC",
+    "venue": "MICCAI 2026",
+    "platform": "Codabench",
+    "url": "https://bic-mac-challenge.github.io/",
+    "status": "open",
+    "statusNote": "Registration, data access and both validation and final-evaluation paths are active; registration and submissions close 15 Aug 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "reconstruction"
+    ],
+    "modality": [
+      "PET",
+      "MRI",
+      "X-ray"
+    ],
+    "anatomy": "whole body",
+    "dimensionality": "mixed",
+    "numCases": "99 healthy volunteers; 75 training and 4 validation cases publicly described",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "deadlineISO": "2026-08-15",
+    "keyDates": {
+      "registration": "Opened 1 Apr 2026; closes 15 Aug",
+      "submissionDeadline": "Pre-evaluation and final Docker submissions close 15 Aug 2026",
+      "results": "Leaderboard and top-three winners: 1 Sep; MICCAI session: 27 Sep"
+    },
+    "prizes": "€1,000 prize pool",
+    "overview": "Generate a 3D pseudo-CT from non-attenuation-corrected PET, MRI and/or a topogram, then evaluate the resulting attenuation correction through reproducible PET reconstruction.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-04-01",
+    "endISO": "2026-08-15",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "orena-save-focus26",
+    "name": "ORena SAVE FOCUS — Surgical Video Understanding",
+    "shortName": "ORena SAVE FOCUS",
+    "venue": "MICCAI 2026",
+    "platform": "ORena / Grand Challenge",
+    "url": "https://orena-focus-challenge.org/",
+    "status": "open",
+    "statusNote": "Registration and a public pre-evaluation leaderboard are active; registration/pre-evaluation close 1 Sep and final Docker submissions are due 8 Sep.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "classification",
+      "detection"
+    ],
+    "modality": [
+      "Endoscopy"
+    ],
+    "anatomy": "minimally invasive surgical scenes",
+    "dimensionality": "video",
+    "numCases": "Three tracks: single frame, short segment (up to 5 min), and full procedure; case count not publicly stated",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-09-08",
+    "keyDates": {
+      "registration": "Opened 15 May 2026; registration and pre-evaluation close 1 Sep",
+      "submissionDeadline": "Final Docker container and method description: 8 Sep 2026",
+      "results": "1 Oct 2026 at MICCAI"
+    },
+    "prizes": "Cash prize pool stated by organizers; exact allocation is on the challenge platform",
+    "overview": "Benchmark vision-language models on tracking, counting and localizing foreign objects such as sponges and needles across single images, short clips and full laparoscopic procedures.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-05-15",
+    "endISO": "2026-09-08",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
+    "id": "topaneu26",
+    "name": "TopAneu 2026 — Vessel-Specific Aneurysm Analysis",
+    "shortName": "TopAneu",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://topaneu-26.grand-challenge.org/",
+    "status": "open",
+    "statusNote": "Training data are available and Grand Challenge enrolment is active; a sanity-check phase opens 1 Aug and final test submissions run 15 Aug–5 Sep.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "classification",
+      "segmentation",
+      "detection"
+    ],
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "anatomy": "brain vasculature",
+    "dimensionality": "3D",
+    "numCases": "~850 multi-centre CTA/MRA scans with 50+ vessel-specific location classes",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "deadlineISO": "2026-09-05",
+    "keyDates": {
+      "registration": "Training data released 15 Jun 2026; verified Grand Challenge account required",
+      "submissionDeadline": "Sanity check opens 1 Aug; test phase 15 Aug–5 Sep 2026",
+      "results": "MICCAI challenge event: 27 Sep 2026"
+    },
+    "prizes": "Not stated",
+    "overview": "Classify aneurysms at more than 50 vessel locations and produce vessel-specific voxel-level segmentations from CTA and MRA, with size-aware evaluation.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "startISO": "2026-06-15",
+    "endISO": "2026-09-05",
+    "endEstimated": false,
+    "startEstimated": false,
+    "rolling": false,
+    "lastVerified": "2026-07-23"
+  },
+  {
     "id": "cvpr26ctdx",
     "name": "CVPR 2026 — Foundation Models for CT Diagnosis",
     "shortName": "CVPR26 CT-Dx",

@@ -44,7 +44,7 @@ Both views share **one source of truth**: `data/challenges.js` (which sets `wind
 
 ## The Tracker
 
-The tracker presents 31 challenges as filterable cards. Highlights include:
+The tracker presents 37 challenges as filterable cards. Highlights include:
 
 - **Status filters** — live benchmarks, open competitions, upcoming calls, and closed events.
 - **Task & modality filters** — narrow by task type (segmentation, classification, registration, reconstruction, report generation, …) and imaging modality (MRI, CT, PET/CT, X-ray, histopathology, ultrasound, …).
