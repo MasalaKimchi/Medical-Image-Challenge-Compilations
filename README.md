@@ -11,6 +11,8 @@ The project ships two self-contained, interactive HTML views built on the same u
 
 A lightweight **[landing page](index.html)** links to both.
 
+Know a challenge we should track? [Suggest it](https://github.com/MasalaKimchi/Medical-Image-Challenge-Compilations/issues/new?template=suggest-challenge.yml).
+
 ## Coverage snapshot
 
 Last updated **23 July 2026**.

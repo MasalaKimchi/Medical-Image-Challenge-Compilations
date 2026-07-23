@@ -1,0 +1,21 @@
+name: Suggest a challenge
+description: Propose a medical-image challenge for the tracker.
+title: "[Challenge] "
+body:
+  - type: input
+    id: official_url
+    attributes:
+      label: Official organizer or platform URL
+      description: Link to the official challenge, organizer, or hosting page.
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: name_venue
+    attributes:
+      label: Challenge name and venue
+      description: Include the year and venue or workshop where possible.
+      placeholder: "Example: SynthOCT 2026 — MICCAI / SASHIMI"
+    validations:
+      required: true
