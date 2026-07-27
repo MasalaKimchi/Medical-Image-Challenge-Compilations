@@ -104,6 +104,15 @@ test("landing page derives totals without console errors", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#challengeCount")).toHaveText("43");
   await expect(page.locator("#verifiedCount")).toHaveText("41");
+  await expect(page.locator(".tracker-preview .preview-title")).toHaveText("Medical Image Challenge Tracker");
+  await expect(page.locator(".preview")).toHaveCount(2);
+  expect(await page.locator(".preview").evaluateAll((previews) => previews.map((preview) => ({
+    clippedHorizontally: preview.scrollWidth > preview.clientWidth,
+    clippedVertically: preview.scrollHeight > preview.clientHeight
+  })))).toEqual([
+    { clippedHorizontally: false, clippedVertically: false },
+    { clippedHorizontally: false, clippedVertically: false }
+  ]);
   expect(errors).toEqual([]);
 });
 
