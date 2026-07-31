@@ -46,3 +46,22 @@ The following records were added from official sources during the same 23 July U
 | ReXGrounding 2026 | Verified; added | The [official challenge site](https://rexrank.ai/ReXGroundingCT/challenge.html) explicitly reports open registration, submissions, and a live public leaderboard without publishing a closing date. |
 | MAMA-Synth 2026 | Verified; added closed | The [official organizer timeline](https://www.ub.edu/mama-synth/mama-synth.html) gives a 25 Jun–10 Jul final test phase, 1 Aug results release, and 27 Sep winners announcement. |
 | FETUS 2026 | Verified; added closed | The [official ISBI programme](https://biomedicalimaging.org/2026/challenges/) lists FETUS and the completed 11 Apr ISBI challenge session. |
+
+## 2026-07-31 refresh
+
+The bi-weekly sweep on 31 July 2026 re-verified time-sensitive and active records against their official pages. **36 of 44** records were re-confirmed and re-stamped `2026-07-31`; **8 retained their `2026-07-23` stamp** because their official pages could not be re-read this cycle (BraTS on Synapse; the FLARE AutoMSC, BiomedSegFM Interactive/Text, CVPR CT-Dx and FMC-UIA Codabench single-page apps; and the CXR-LT and EndoUC GitHub sites, which now return 404).
+
+| Challenge | Result | Official evidence / change |
+|---|---|---|
+| RSNA Aneurysm | Cleared; verified | [RSNA](https://www.rsna.org/artificial-intelligence/ai-image-challenge/intracranial-aneurysm-detection-ai-challenge) confirms the Kaggle competition closed 14 Oct 2025; dataset gated via RSNA MIRA (non-commercial). No longer unverified; `dataAvailable` set to on-registration. |
+| RSNA Knee MRI | Cleared; verified | [RSNA](https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge) still lists a spring-2026 launch and October 2026 conclusion with no active registration; remains `upcoming`, now stamped rather than blocked. |
+| DoseRAD 2026 | Verified; corrected | The [Grand Challenge timeline](https://doserad2026.grand-challenge.org/timeline-and-rules/) now shows training/validation and final testing ending 15 Aug (final test opened 16 Jul) and posts a delay on the preliminary validation phase. |
+| TREAT-MMTB | Verified; corrected | The [official site](https://treat-mmtb.mi2rl.co/) shows the internal-phase submission closed 24 Jul; only the application window runs to 31 Jul, with the external Docker phase 1–20 Aug. |
+| ATM26 | Verified | [Grand Challenge](https://atm26.grand-challenge.org/timeline/) confirms the final test phase opened 30 Jul and runs to 10 Sep. |
+| BraTS | Not re-read; state refreshed | The Synapse timeline was not machine-readable on 31 Jul; the record keeps its 23 Jul verification, and passed phases (final Docker 30 Jul) were marked complete from the already-verified dates. |
+| HECKTOR / AIMS-TBI26 | Verified | Testing (25 Jul) and final submission/paper (23 Jul) confirmed closed on the official Grand Challenge pages. |
+| CMRxRecon | Verified; expanded | The [official site](https://cmrx.chihucloud.com/2026/) lists a workshop-paper deadline of 30 Jul, added as a completed phase. |
+| CLEAR-EC | Verified; added | The [official page](https://clear-ec.grand-challenge.org/) reports open registration with Phase I submissions due 14 Sep 2026 and Phase I evaluation 30 Sep; added as a standalone Grand Challenge. |
+| LUNOVO26 | Identified; deferred | [Lung Nodule Volumetry 2026](https://lunovo26.grand-challenge.org/) shows an open debug leaderboard but publishes no participation schedule; held back pending an official timeline. |
+
+The two GitHub sites that now 404 (**CXR-LT**, **EndoUC**) remain in the catalogue as completed challenges; their primary URLs should be reviewed at the next sweep since the official pages are no longer reachable.

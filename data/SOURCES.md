@@ -29,6 +29,17 @@ This tracker is refreshed with a **source-first review**, not a general web sear
 
 ## Review log
 
+### 2026-07-31
+
+- Re-swept MICCAI, MICCAI SIG, Grand Challenge, Codabench, AAPM, RSNA, Kaggle, ISBI and Synapse sources. **36 of 44** records were re-confirmed against their official pages; **8 retained their 23 July stamp** because their pages could not be re-read this cycle (BraTS on Synapse, five Codabench single-page apps, and the **CXR-LT** and **EndoUC** GitHub sites, which now return 404).
+- Cleared both previously-blocked **RSNA** records: RSNA's official pages confirm the **Intracranial Aneurysm** challenge closed 14 Oct 2025 (dataset now gated via RSNA MIRA under a non-commercial licence) and that the **Knee MRI** challenge has still not launched with no active registration, so it stays `upcoming`.
+- Corrected **DoseRAD**: the official timeline shows training/validation and final testing ending **15 Aug** (not 24 Aug), final testing opened 16 Jul, and posts a delay on the preliminary validation phase.
+- Corrected **TREAT-MMTB**: the internal-phase submission closed **24 Jul**; only the application window runs to 31 Jul, with the external Docker phase 1–20 Aug.
+- Marked passed phases complete for **BraTS** (final Docker closed 30 Jul), **HECKTOR** (testing closed 25 Jul) and **AIMS-TBI26** (submissions and paper closed 23 Jul); **ATM26**'s final test phase opened 30 Jul.
+- Added a **CMRxRecon** workshop-paper deadline (30 Jul) surfaced on the official page.
+- Added **CLEAR-EC** (corneal-endothelium regression, standalone Grand Challenge) as `open`: registration is open and Phase I submissions are due 14 Sep 2026.
+- Identified **Lung Nodule Volumetry 2026 (LUNOVO26)** as a Grand Challenge candidate with an open debug leaderboard, but held it back because no participation schedule is published yet.
+
 ### 2026-07-23
 
 - Checked MICCAI, Grand Challenge, Codabench, AAPM, CVPR-related Codabench pages, RSNA, Kaggle, ISBI and Synapse sources.

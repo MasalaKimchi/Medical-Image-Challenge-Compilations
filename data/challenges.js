@@ -8,7 +8,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "Synapse",
     "url": "https://www.synapse.org/Synapse:syn74274097/wiki/",
-    "statusNote": "15th BraTS cluster (5 sub-challenges). Standard-track final Docker submission deadline extended to 30 Jul 2026.",
+    "statusNote": "15th BraTS cluster (5 sub-challenges). Standard-track final Docker submissions closed 30 Jul 2026; acceptance announcements expected 24 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -67,7 +67,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -83,7 +83,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -255,14 +255,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "FOMO26 official page",
         "url": "https://fomo26.github.io/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -326,14 +326,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "CMRxRecon official page",
         "url": "https://cmrx.chihucloud.com/2026/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -370,6 +370,22 @@ window.CHALLENGES = [
         ]
       },
       {
+        "id": "paper",
+        "type": "paper",
+        "label": "Workshop paper deadline",
+        "startISO": null,
+        "endISO": "2026-07-30",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
         "id": "event",
         "type": "event",
         "label": "MICCAI presentation",
@@ -395,7 +411,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://hecktor26.grand-challenge.org/",
-    "statusNote": "Testing submission open 15–25 Jul 2026 (closing very soon); final report 8 Aug.",
+    "statusNote": "Testing submissions closed 25 Jul 2026; final report due 8 Aug and top-five announced 20 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -415,14 +431,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "HECKTOR official page",
         "url": "https://hecktor26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -453,7 +469,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -519,14 +535,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "PENGWIN official page",
         "url": "https://pengwin2026.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -639,14 +655,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "Learn2Reg official page",
         "url": "https://learn2reg.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -712,14 +728,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ODIN official page",
         "url": "https://odin2026.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -800,14 +816,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "autoPET V official page",
         "url": "https://autopet-v.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -887,14 +903,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ISLES'26 official page",
         "url": "https://isles-26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -924,7 +940,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://aims-tbi26.grand-challenge.org/",
-    "statusNote": "Closed to new registrations; registered teams may submit final models through 23 Jul 2026.",
+    "statusNote": "Closed to new registrations; final model submissions and paper closed 23 Jul 2026; results presented at the MICCAI workshop.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -943,14 +959,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "AIMS-TBI26 official page",
         "url": "https://aims-tbi26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -965,7 +981,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -981,7 +997,7 @@ window.CHALLENGES = [
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -1012,7 +1028,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://atm26.grand-challenge.org/",
-    "statusNote": "Registration and training data opened 15 Jun; validation opened 15 Jul; final test runs 30 Jul–10 Sep 2026.",
+    "statusNote": "Final test phase opened 30 Jul and runs to 10 Sep 2026; registration and validation remain open.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -1031,14 +1047,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ATM26 official page",
         "url": "https://atm26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1085,7 +1101,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -1118,14 +1134,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "HEADLINE26 official page",
         "url": "https://headline26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1173,14 +1189,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "Standalone",
     "venueType": "platform",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "BEETLE official page",
         "url": "https://beetle.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1228,14 +1244,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "REG² official page",
         "url": "https://reg2026.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1459,14 +1475,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "ISBI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "LCR-MPI official page",
         "url": "https://www.mpilab.net/LCR-MPI-Challenge/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1515,14 +1531,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "ISBI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "RIVA official page",
         "url": "https://lia-ditella.github.io/rivachallenge/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1570,14 +1586,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "ISBI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "WBCBench official page",
         "url": "https://xudong-ma.github.io/WBCBench2026-Robust-White-Blood-Cell-Classification/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1698,14 +1714,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "ISBI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "CSV official page",
         "url": "https://biomedicalimaging.org/2026/challenges/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1735,8 +1751,8 @@ window.CHALLENGES = [
     "venue": "Kaggle / RSNA 2025",
     "platform": "Kaggle",
     "url": "https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection",
-    "statusNote": "Submissions closed 14 Oct 2025; dataset remains public on Kaggle.",
-    "dataAvailable": "public",
+    "statusNote": "Kaggle competition closed 14 Oct 2025 (winners announced Nov 2025); dataset available to researchers via RSNA MIRA under a non-commercial research license.",
+    "dataAvailable": "on-registration",
     "taskType": [
       "detection",
       "segmentation"
@@ -1756,7 +1772,7 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "RSNA",
     "venueType": "conference",
-    "lastVerifiedISO": null,
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
@@ -1764,6 +1780,13 @@ window.CHALLENGES = [
         "url": "https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection",
         "type": "platform",
         "lastCheckedISO": null
+      },
+      {
+        "id": "rsna",
+        "label": "RSNA AI Challenge results page",
+        "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/intracranial-aneurysm-detection-ai-challenge",
+        "type": "organizer",
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1780,7 +1803,8 @@ window.CHALLENGES = [
         "rolling": false,
         "state": "completed",
         "sourceIds": [
-          "official"
+          "official",
+          "rsna"
         ]
       }
     ]
@@ -1793,7 +1817,7 @@ window.CHALLENGES = [
     "venue": "Kaggle / RSNA 2026",
     "platform": "Kaggle / RSNA",
     "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge",
-    "statusNote": "Launching Spring 2026, concluding October 2026; first RSNA challenge to use both images and report text.",
+    "statusNote": "Not yet launched as of 31 Jul 2026: RSNA lists a spring-2026 launch and October 2026 conclusion but no active registration or competition link; the window remains upcoming and not joinable.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -1812,14 +1836,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "RSNA",
     "venueType": "conference",
-    "lastVerifiedISO": null,
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "RSNA Knee MRI official page",
         "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge",
         "type": "platform",
-        "lastCheckedISO": null
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -1868,14 +1892,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "Standalone",
     "venueType": "platform",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "PANORAMA official page",
         "url": "https://panorama.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2057,14 +2081,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "Standalone",
     "venueType": "platform",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "SELMA3D 2026 official page",
         "url": "https://selma3d2026.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2144,14 +2168,14 @@ window.CHALLENGES = [
     "prizeType": "recognition",
     "venueFamily": "Standalone",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "AAPM Grace Challenge official page",
         "url": "https://www.aapm.org/GrandChallenge/Grace/Default.asp",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2231,14 +2255,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "SynthOCT official page",
         "url": "https://synthoct.com/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2318,14 +2342,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "RARE26 official page",
         "url": "https://rare26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2422,14 +2446,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "iMED2026 official page",
         "url": "https://imed-challenge.github.io/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2453,7 +2477,7 @@ window.CHALLENGES = [
         "id": "validation",
         "type": "validation",
         "label": "Public validation",
-        "startISO": "2026-04-15",
+        "startISO": "2026-06-30",
         "endISO": "2026-09-01",
         "startEstimated": false,
         "endEstimated": false,
@@ -2523,7 +2547,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "Self-hosted",
     "url": "https://treat-mmtb.mi2rl.co/",
-    "statusNote": "Participation applications and the internal competition phase are open through 31 Jul; selected teams enter the external phase 1–20 Aug.",
+    "statusNote": "Applications close 31 Jul (internal-phase submissions closed 24 Jul); external Docker phase runs 1–20 Aug 2026; final rankings 1 Sep.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -2543,14 +2567,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "TREAT-MMTB official page",
         "url": "https://treat-mmtb.mi2rl.co/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2575,13 +2599,13 @@ window.CHALLENGES = [
         "type": "development",
         "label": "Internal competition phase",
         "startISO": "2026-04-10",
-        "endISO": "2026-07-31",
+        "endISO": "2026-07-24",
         "startEstimated": false,
         "endEstimated": false,
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -2664,14 +2688,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "BIC-MAC official page",
         "url": "https://bic-mac-challenge.github.io/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2784,14 +2808,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ORena SAVE FOCUS official page",
         "url": "https://orena-focus-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -2890,14 +2914,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "TopAneu official page",
         "url": "https://topaneu-26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3097,21 +3121,21 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "MRIxFields 2026 official page",
         "url": "https://mrixfields.chihucloud.com/2026/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       },
       {
         "id": "registry",
         "label": "MICCAI registered challenge design",
         "url": "https://zenodo.org/records/19847223",
         "type": "registry",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3193,21 +3217,21 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "EchoRisk official page",
         "url": "https://echorisk-miccai.github.io/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       },
       {
         "id": "submission",
         "label": "EchoRisk Docker submission guide",
         "url": "https://echorisk-miccai.github.io/submission-guide.html",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3270,7 +3294,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://doserad2026.grand-challenge.org/",
-    "statusNote": "Training and validation remain open through 24 Aug; final testing runs 23 Jul–24 Aug 2026.",
+    "statusNote": "Training/validation and final testing run through 15 Aug 2026 (final test opened 16 Jul); the preliminary validation phase is delayed per the organizers; a post-challenge leaderboard follows.",
     "dataAvailable": "on-registration",
     "taskType": [
       "regression",
@@ -3290,14 +3314,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "DoseRAD official challenge page",
         "url": "https://doserad2026.grand-challenge.org/timeline-and-rules/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3306,7 +3330,7 @@ window.CHALLENGES = [
         "type": "development",
         "label": "Training and validation",
         "startISO": "2026-04-10",
-        "endISO": "2026-08-24",
+        "endISO": "2026-08-15",
         "startEstimated": false,
         "endEstimated": false,
         "participation": true,
@@ -3321,8 +3345,8 @@ window.CHALLENGES = [
         "id": "test",
         "type": "test",
         "label": "Final test phase",
-        "startISO": "2026-07-23",
-        "endISO": "2026-08-24",
+        "startISO": "2026-07-16",
+        "endISO": "2026-08-15",
         "startEstimated": false,
         "endEstimated": false,
         "participation": true,
@@ -3337,7 +3361,7 @@ window.CHALLENGES = [
         "id": "post-challenge",
         "type": "leaderboard",
         "label": "Post-challenge phase",
-        "startISO": "2026-08-24",
+        "startISO": "2026-08-15",
         "endISO": "2026-12-31",
         "startEstimated": false,
         "endEstimated": false,
@@ -3394,21 +3418,21 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ReXGrounding official challenge page",
         "url": "https://rexrank.ai/ReXGroundingCT/challenge.html",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       },
       {
         "id": "registry",
         "label": "MICCAI registered challenge design",
         "url": "https://zenodo.org/records/19737020",
         "type": "registry",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3489,21 +3513,21 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "MAMA-Synth official organizer page",
         "url": "https://www.ub.edu/mama-synth/mama-synth.html",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       },
       {
         "id": "platform",
         "label": "MAMA-Synth Grand Challenge timeline",
         "url": "https://mamasynth.grand-challenge.org/timeline/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3621,14 +3645,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "ISBI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-23",
+    "lastVerifiedISO": "2026-07-31",
     "sources": [
       {
         "id": "official",
         "label": "ISBI 2026 official challenge listing",
         "url": "https://biomedicalimaging.org/2026/challenges/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-23"
+        "lastCheckedISO": "2026-07-31"
       }
     ],
     "phases": [
@@ -3644,6 +3668,93 @@ window.CHALLENGES = [
         "acceptingNewTeams": false,
         "rolling": false,
         "state": "completed",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "clearec26",
+    "name": "CLEAR-EC — Corneal Endothelium Cell Assessment",
+    "shortName": "CLEAR-EC",
+    "venue": "Grand Challenge",
+    "platform": "grand-challenge.org",
+    "url": "https://clear-ec.grand-challenge.org/",
+    "statusNote": "Registration open (from 15 Jul); Phase I submissions due 14 Sep 2026, Phase I evaluation 30 Sep, then final Phase II.",
+    "dataAvailable": "public",
+    "taskType": [
+      "regression"
+    ],
+    "modality": [
+      "Specular-microscopy"
+    ],
+    "anatomy": "corneal endothelium",
+    "dimensionality": "2D",
+    "numCases": "Not publicly stated (training data on Zenodo)",
+    "datasetSizeGB": null,
+    "scale": "small",
+    "prizes": "Not stated",
+    "overview": "Predict corneal endothelial graft-quality metrics — endothelial cell density, coefficient of variation and hexagonality — from specular-microscopy images to support corneal transplant assessment.",
+    "prizeType": "none",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "lastVerifiedISO": "2026-07-31",
+    "sources": [
+      {
+        "id": "official",
+        "label": "CLEAR-EC official page",
+        "url": "https://clear-ec.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-07-31"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Registration & Phase I submissions",
+        "startISO": "2026-07-15",
+        "endISO": "2026-09-14",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "results-1",
+        "type": "results",
+        "label": "Phase I evaluation",
+        "startISO": "2026-09-14",
+        "endISO": "2026-09-30",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Phase II final evaluation",
+        "startISO": "2026-09-30",
+        "endISO": null,
+        "startEstimated": true,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
         "sourceIds": [
           "official"
         ]
