@@ -10,18 +10,18 @@ async function expectNoSeriousAccessibilityIssues(page) {
 test.describe("challenge tracker", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/tracker/");
-    await expect(page.getByText("Showing 44 of 44 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 54 of 54 challenges.")).toBeVisible();
   });
 
   test("search, URL state, views, shortlist and comparison work", async ({ page }) => {
     const search = page.getByRole("searchbox", { name: "Search challenges" });
     await search.fill("SynthOCT");
-    await expect(page.getByText("Showing 1 of 44 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 1 of 54 challenges.")).toBeVisible();
     await expect(page).toHaveURL(/search=SynthOCT/);
     await page.getByRole("button", { name: "Table", exact: true }).click();
     await expect(page).toHaveURL(/view=table/);
     await page.getByRole("button", { name: "Cards", exact: true }).click();
-    await expect(page.getByText("Fresh · Jul 31, 2026", { exact: true })).toBeVisible();
+    await expect(page.getByText("Fresh · Aug 15, 2026", { exact: true })).toBeVisible();
     const saves = page.getByRole("button", { name: "Save", exact: true });
     expect(await saves.count()).toBe(1);
     await saves.click();
@@ -35,7 +35,7 @@ test.describe("challenge tracker", () => {
     const modality = page.getByRole("combobox", { name: "Filter by modality" });
     await modality.selectOption("OCT");
     await expect(modality).toHaveValue("OCT");
-    await expect(page.getByText("Showing 1 of 44 challenges.")).toBeVisible();
+    await expect(page.getByText("Showing 1 of 54 challenges.")).toBeVisible();
     await expectNoSeriousAccessibilityIssues(page);
   });
 
@@ -102,8 +102,8 @@ test("landing page derives totals without console errors", async ({ page }) => {
   const errors = [];
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.locator("#challengeCount")).toHaveText("44");
-  await expect(page.locator("#verifiedCount")).toHaveText("44");
+  await expect(page.locator("#challengeCount")).toHaveText("54");
+  await expect(page.locator("#verifiedCount")).toHaveText("54");
   await expect(page.locator(".tracker-preview .preview-title")).toHaveText("Medical Image Challenge Tracker");
   await expect(page.locator(".preview")).toHaveCount(2);
   expect(await page.locator(".preview").evaluateAll((previews) => previews.map((preview) => ({

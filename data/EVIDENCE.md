@@ -65,3 +65,25 @@ The bi-weekly sweep on 31 July 2026 re-verified time-sensitive and active record
 | LUNOVO26 | Identified; deferred | [Lung Nodule Volumetry 2026](https://lunovo26.grand-challenge.org/) shows an open debug leaderboard but publishes no participation schedule; held back pending an official timeline. |
 
 The two GitHub sites that now 404 (**CXR-LT**, **EndoUC**) remain in the catalogue as completed challenges; their primary URLs should be reviewed at the next sweep since the official pages are no longer reachable.
+
+## 2026-08-15 refresh
+
+This sweep added ten records only after confirming an organizer page or the public API behind the official hosting platform. It also re-verified six existing records whose dates or phase states changed. The catalogue contains **54 verified records**: 16 stamped `2026-08-15`, 30 stamped `2026-07-31`, and 8 stamped `2026-07-23`.
+
+| Challenge | Result | Official evidence / change |
+|---|---|---|
+| FoundUS | Verified; added | The [official Codabench competition](https://www.codabench.org/competitions/15590/) and its [final-test phase](https://www.codabench.org/competitions/17560/) show validation through 10 Aug and hidden-test submissions through 15 Aug 2026. |
+| UUSIVC | Verified; added | The [organizer site](https://uusivc2026-sudo.github.io/uusivc2026.github.io/) lists registration and validation from 29 Jun, a 25 Aug Docker/short-paper deadline, and testing from 26 Aug. |
+| AMPLIFAI | Verified; added | The [organizer timeline](https://um-ihc-ca2i.github.io/amplifai-challenge/) lists registration through 1 Sep and testing through 15 Sep; the [official Codabench page](https://www.codabench.org/competitions/14290/) confirms the hosted phases. |
+| CATHACTION | Verified; added | The [official challenge site](https://endomiccai.github.io/cathation/) lists a 10–15 Aug submission window, 20 Aug report deadline, and 1 Oct EndoVis event. |
+| CHIMERA-Agent | Verified; added | The [official Grand Challenge site](https://chimera-agent.grand-challenge.org/) and [timeline](https://chimera-agent.grand-challenge.org/challenge-timeline/) confirm open participation and a 10 Sep final deadline. |
+| MultiSAT | Verified; added | The [official organizer page](https://camma-public.github.io/mbt40_challenge/) lists a closed 2 Jul registration deadline and a 3 Sep final Docker, presentation, and report deadline for registered teams. |
+| SurgVU26 | Verified; added | The [official Grand Challenge timeline](https://surgvu26.grand-challenge.org/important-dates/) lists registration through 15 Aug, preliminary submissions through 2 Sep, and final testing through 6 Sep. |
+| COBRA2026 | Verified; added | The [official timetable](https://cobra2026.grand-challenge.org/timetablerules/) announces the MIDL 2027 benchmark, with registration and development from 13 Jul 2026 through 15 Feb 2027. |
+| DALPHIN | Verified; added rolling | The [official Grand Challenge page](https://dalphin.grand-challenge.org/) describes a long-term visual-question-answering benchmark with no submission deadline. |
+| Light My Cells 2 | Verified; added upcoming | The [official Grand Challenge page](https://lightmycells2.grand-challenge.org/) publishes a 31 Jul data release, 21 Sep challenge launch, 1 Dec test opening, and 13 Dec final deadline. |
+| RSNA Knee | Verified; opened | [RSNA](https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge) now links the live Kaggle competition and reports more than 5,000 examinations, 19 sites, 12 report languages, and $77,000 in prizes. |
+| FOMO26 / ODIN | Verified; corrected | [FOMO26](https://fomo26.github.io/) now distinguishes its 21 Aug validation and 30 Aug test deadlines. [ODIN's official dates](https://odin-workshops.org/2026/dates/) give a 17 Aug test close and 15 Sep results date. |
+| SynthOCT / TREAT-MMTB / TopAneu | State refreshed | Their already-published phase dates place SynthOCT's submission, TREAT-MMTB's application, and TopAneu's sanity-check opening on the appropriate side of the 15 Aug review date. |
+
+Watchlist-only candidates were intentionally not added: **LUNOVO26** still lacks a participation schedule; **TopBrain2026** is under construction; **BIG-MRI** reports a delayed dataset without an operational participation phase; and several accepted MICCAI/EndoVis pages still promise details later.

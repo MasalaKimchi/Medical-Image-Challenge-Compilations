@@ -15,22 +15,23 @@ Know a challenge we should track? [Suggest it](https://github.com/MasalaKimchi/M
 
 ## Coverage snapshot
 
-Last updated **31 July 2026**.
+Last updated **15 August 2026**.
 
 | Venue family | Challenges tracked |
 |---|---:|
-| MICCAI | 26 |
+| MICCAI | 33 |
 | ISBI | 8 |
-| Standalone | 5 |
+| Standalone | 7 |
 | CVPR | 3 |
 | RSNA | 2 |
-| **Total** | **44** |
+| MIDL | 1 |
+| **Total** | **54** |
 
-As of 31 July 2026, all **44 of 44** records carry official-source verification: **36 were re-confirmed** in this sweep and **8 retain their 23 July stamp** because their official pages could not be re-read this cycle (BraTS on Synapse, five Codabench single-page apps, and the CXR-LT and EndoUC GitHub sites, which now return 404). Both previously-blocked RSNA records were confirmed against RSNA's official pages and are no longer unverified. Derived status at this review date: **1 live, 22 open, 2 upcoming, and 19 closed**.
+As of 15 August 2026, all **54 of 54** records carry official-source verification. This sweep added **10 verified challenges** and refreshed **6 existing records** with newly published dates or phase states; older records retain their previous verification stamps where no status-driving evidence changed. Derived status at this review date: **2 live, 30 open, 2 upcoming, and 20 closed**.
 
 ## The Tracker
 
-The tracker presents 44 challenges as filterable cards. Highlights include:
+The tracker presents 54 challenges as filterable cards. Highlights include:
 
 - **Derived status filters** — live benchmarks, active phases, upcoming calls, and closed events, calculated from structured phase dates.
 - **Task & modality filters** — narrow by task type (segmentation, classification, registration, reconstruction, report generation, …) and imaging modality (MRI, CT, PET/CT, X-ray, histopathology, ultrasound, …).

@@ -15,6 +15,7 @@ This tracker is refreshed with a **source-first review**, not a general web sear
 | RSNA | Current RSNA AI Challenge status and its registration host | https://www.rsna.org/artificial-intelligence/ai-image-challenge |
 | Kaggle | Official competition pages linked by organizers such as RSNA | https://www.kaggle.com/competitions |
 | ISBI | Current challenge programme and official organizer links | https://biomedicalimaging.org/ |
+| MIDL | Current and upcoming challenge announcements and linked organizer pages | https://2027.midl.io/ |
 | Synapse | Official challenge workspaces and leaderboard phases | https://www.synapse.org/ |
 
 ## Review procedure
@@ -28,6 +29,15 @@ This tracker is refreshed with a **source-first review**, not a general web sear
 7. Regenerate `data/challenges.js`, validate `data/challenges.json` against `data/challenges.schema.json`, update the visible last-updated count/date, preview the tracker and timeline, then commit the dataset, documentation, and generated copy together.
 
 ## Review log
+
+### 2026-08-15
+
+- Re-swept the official MICCAI, MICCAI SIG, Grand Challenge, Codabench, AAPM, CVPR, RSNA, Kaggle, ISBI and Synapse sources, and added MIDL to the recurring sweep after finding an announced 2027 challenge.
+- Added **10 official-source records**: **FoundUS**, **UUSIVC**, **AMPLIFAI**, **CATHACTION**, **CHIMERA-Agent**, **MultiSAT**, **SurgVU26**, **COBRA2026**, **DALPHIN**, and **Light My Cells 2**. Eight are open as of this review, DALPHIN is a rolling benchmark, and Light My Cells 2 is announced for a 21 Sep launch.
+- Confirmed that the **RSNA Knee Abnormality Detection AI Challenge** is now live on Kaggle, with entry/team formation through 15 Oct and final submissions due 22 Oct; updated its scope to more than 5,000 MRI exams from 19 sites and its $77,000 prize pool.
+- Expanded **FOMO26** with separate validation (21 Aug) and final-test submission (30 Aug) deadlines, and corrected **ODIN** to its official 17 Aug testing deadline and published per-track prizes.
+- Rolled passed phases forward for **SynthOCT**, **TREAT-MMTB**, and **TopAneu**. Derived catalogue status is now **2 live, 30 open, 2 upcoming, and 20 closed**.
+- Rechecked but deferred **LUNOVO26**, **TopBrain2026**, **BIG-MRI**, and schedule-less MICCAI/EndoVis announcements. Their official pages still do not publish a sufficiently actionable participation schedule, so they remain watchlist candidates rather than catalogue entries.
 
 ### 2026-07-31
 

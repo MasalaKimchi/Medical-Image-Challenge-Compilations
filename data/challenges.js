@@ -236,11 +236,12 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "Synapse",
     "url": "https://fomo26.github.io/",
-    "statusNote": "Two tracks (methods-only, open-data). Submissions accepted until 21 Aug 2026.",
+    "statusNote": "Registration and model submission remain open; validation closes 21 Aug and the final test submission deadline is 30 Aug 2026.",
     "dataAvailable": "public",
     "taskType": [
       "classification",
-      "segmentation"
+      "segmentation",
+      "regression"
     ],
     "modality": [
       "MRI"
@@ -255,23 +256,55 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "FOMO26 official page",
         "url": "https://fomo26.github.io/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
       {
         "id": "development",
         "type": "development",
-        "label": "Model development and submissions",
+        "label": "Registration and model development",
         "startISO": "2026-04-20",
+        "endISO": "2026-08-30",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation submissions",
+        "startISO": "2026-06-15",
         "endISO": "2026-08-21",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Final test submission",
+        "startISO": "2026-06-15",
+        "endISO": "2026-08-30",
         "startEstimated": false,
         "endEstimated": false,
         "participation": true,
@@ -708,7 +741,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://odin2026.grand-challenge.org/",
-    "statusNote": "Site launched 25 May; training data released May 2026. Submission deadline TBA.",
+    "statusNote": "ToothFairy4 and Bite2Text debugging and final-test phases are open through 17 Aug 2026; results follow 15 Sep.",
     "dataAvailable": "public",
     "taskType": [
       "report-generation"
@@ -723,19 +756,26 @@ window.CHALLENGES = [
     "numCases": "Bite2Text 1,000 cases; ToothFairy4 (n/s)",
     "datasetSizeGB": null,
     "scale": "medium",
-    "prizes": "None stated",
+    "prizes": "€1,500 / €1,000 / €500 per report-generation track",
     "overview": "Generate structured clinical reports from dental imaging: maxillofacial reports from 3D CBCT, and orthodontic reports from 3D intraoral scans plus 2D photos.",
-    "prizeType": "none",
+    "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "ODIN official page",
         "url": "https://odin2026.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "organizer",
+        "label": "ODIN 2026 dates",
+        "url": "https://odin-workshops.org/2026/dates/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
@@ -758,9 +798,9 @@ window.CHALLENGES = [
       {
         "id": "development",
         "type": "development",
-        "label": "Challenge participation",
-        "startISO": null,
-        "endISO": null,
+        "label": "Debugging submissions",
+        "startISO": "2026-07-01",
+        "endISO": "2026-08-17",
         "startEstimated": false,
         "endEstimated": false,
         "participation": true,
@@ -768,7 +808,25 @@ window.CHALLENGES = [
         "rolling": false,
         "state": "active",
         "sourceIds": [
-          "official"
+          "official",
+          "organizer"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test submissions",
+        "startISO": "2026-08-03",
+        "endISO": "2026-08-17",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "organizer"
         ]
       },
       {
@@ -784,7 +842,8 @@ window.CHALLENGES = [
         "rolling": false,
         "state": "upcoming",
         "sourceIds": [
-          "official"
+          "official",
+          "organizer"
         ]
       }
     ]
@@ -1812,12 +1871,12 @@ window.CHALLENGES = [
   {
     "schemaVersion": 2,
     "id": "rsnaknee26",
-    "name": "RSNA Knee MRI AI Challenge",
+    "name": "RSNA Knee Abnormality Detection AI Challenge",
     "shortName": "RSNA Knee MRI",
     "venue": "Kaggle / RSNA 2026",
     "platform": "Kaggle / RSNA",
     "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge",
-    "statusNote": "Not yet launched as of 31 Jul 2026: RSNA lists a spring-2026 launch and October 2026 conclusion but no active registration or competition link; the window remains upcoming and not joinable.",
+    "statusNote": "Competition is open on Kaggle; entry and team merges close 15 Oct and final submissions close 22 Oct 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -1828,39 +1887,64 @@ window.CHALLENGES = [
     ],
     "anatomy": "knee",
     "dimensionality": "3D",
-    "numCases": ">5,000 knee MRI exams from 16 institutions (reports in 9 languages)",
+    "numCases": ">5,000 knee MRI exams from 19 sites (reports in 12 languages)",
     "datasetSizeGB": null,
     "scale": "large",
-    "prizes": "Not stated",
+    "prizes": "$77,000 total",
     "overview": "Detect a range of knee abnormalities (ligament/meniscus tears, cartilage loss, effusion, synovitis) on MRI, using both images and radiology-report text.",
-    "prizeType": "none",
+    "prizeType": "cash",
     "venueFamily": "RSNA",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "RSNA Knee MRI official page",
         "url": "https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "platform",
+        "label": "RSNA Knee Abnormality Detection on Kaggle",
+        "url": "https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/overview",
         "type": "platform",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
       {
+        "id": "registration",
+        "type": "registration",
+        "label": "Entry and team formation",
+        "startISO": "2026-07-30",
+        "endISO": "2026-10-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
         "id": "development",
         "type": "development",
-        "label": "Challenge competition",
-        "startISO": "2026-04-01",
-        "endISO": "2026-10-31",
-        "startEstimated": true,
-        "endEstimated": true,
+        "label": "Competition submissions",
+        "startISO": "2026-07-30",
+        "endISO": "2026-10-22",
+        "startEstimated": false,
+        "endEstimated": false,
         "participation": true,
-        "acceptingNewTeams": false,
+        "acceptingNewTeams": true,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
-          "official"
+          "official",
+          "platform"
         ]
       }
     ]
@@ -2237,7 +2321,7 @@ window.CHALLENGES = [
     "venue": "MICCAI 2026 · SASHIMI workshop",
     "platform": "synthoct.com",
     "url": "https://synthoct.com/",
-    "statusNote": "The official platform is active; final code/model and camera-ready submissions are due 14 Aug 2026 after an outage-related schedule extension.",
+    "statusNote": "Final code/model and camera-ready submissions closed 14 Aug 2026 after an outage-related extension.",
     "dataAvailable": "public",
     "taskType": [
       "reconstruction"
@@ -2255,14 +2339,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "workshop",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "SynthOCT official page",
         "url": "https://synthoct.com/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
@@ -2277,7 +2361,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -2293,7 +2377,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -2309,7 +2393,7 @@ window.CHALLENGES = [
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -2567,14 +2651,14 @@ window.CHALLENGES = [
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "TREAT-MMTB official page",
         "url": "https://treat-mmtb.mi2rl.co/",
         "type": "organizer",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
@@ -2589,7 +2673,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": true,
         "rolling": false,
-        "state": "active",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -2621,7 +2705,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -2914,14 +2998,14 @@ window.CHALLENGES = [
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerifiedISO": "2026-08-15",
     "sources": [
       {
         "id": "official",
         "label": "TopAneu official page",
         "url": "https://topaneu-26.grand-challenge.org/",
         "type": "platform",
-        "lastCheckedISO": "2026-07-31"
+        "lastCheckedISO": "2026-08-15"
       }
     ],
     "phases": [
@@ -2968,7 +3052,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -2984,7 +3068,7 @@ window.CHALLENGES = [
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -3757,6 +3841,1015 @@ window.CHALLENGES = [
         "state": "upcoming",
         "sourceIds": [
           "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "foundus26",
+    "name": "FoundUS 2026 — Foundation Model for Ultrasound Biometry",
+    "shortName": "FoundUS",
+    "venue": "MICCAI 2026 · Medical World Model workshop",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/15590/",
+    "statusNote": "Validation closed 10 Aug; the organizer-run final Docker test remains open through 15 Aug 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "landmark-detection",
+      "regression"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "prenatal, intrapartum & cardiac",
+    "dimensionality": "2D",
+    "numCases": "Nine ultrasound task families covering more than 20 clinical parameters",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "prizes": "Cash awards and certificates (amounts not stated)",
+    "overview": "Detect ultrasound landmarks and derive clinical biometric measurements across prenatal, intrapartum and adult cardiac imaging, with cross-device and cross-center evaluation.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "platform",
+        "label": "FoundUS Codabench competition",
+        "url": "https://www.codabench.org/competitions/15590/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "final-platform",
+        "label": "FoundUS final-test competition",
+        "url": "https://www.codabench.org/competitions/17560/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "data-release",
+        "type": "data-release",
+        "label": "Training data release",
+        "startISO": "2026-04-15",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "platform"
+        ]
+      },
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation submissions",
+        "startISO": "2026-06-01",
+        "endISO": "2026-08-10",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "platform"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Final Docker test",
+        "startISO": "2026-08-01",
+        "endISO": "2026-08-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "platform",
+          "final-platform"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "uusivc26",
+    "name": "UUSIVC 2026 — Universal Ultrasound Image & Video Analysis",
+    "shortName": "UUSIVC2026",
+    "venue": "MICCAI 2026",
+    "platform": "Codabench",
+    "url": "https://uusivc2026-sudo.github.io/uusivc2026.github.io/",
+    "statusNote": "Registration, training data and validation submissions are open; short-paper and Docker submissions are due 25 Aug 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification",
+      "segmentation"
+    ],
+    "modality": [
+      "Ultrasound"
+    ],
+    "anatomy": "multi-organ",
+    "dimensionality": "mixed",
+    "numCases": "Multi-organ B-mode and contrast-enhanced ultrasound images and videos; count not stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Not stated",
+    "overview": "Build universal models for multi-organ classification and segmentation across B-mode and contrast-enhanced ultrasound images and videos.",
+    "prizeType": "none",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "UUSIVC2026 official page",
+        "url": "https://uusivc2026-sudo.github.io/uusivc2026.github.io/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "platform",
+        "label": "UUSIVC2026 Codabench competition",
+        "url": "https://www.codabench.org/competitions/17263/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "development",
+        "type": "development",
+        "label": "Registration and validation submissions",
+        "startISO": "2026-06-29",
+        "endISO": "2026-08-25",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Short paper and Docker submission",
+        "startISO": null,
+        "endISO": "2026-08-25",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI results presentation",
+        "startISO": "2026-09-27",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "amplifai26",
+    "name": "AMPLIFAI 2026 — Multi-Phase Liver Imaging for AI",
+    "shortName": "AMPLIFAI",
+    "venue": "MICCAI 2026",
+    "platform": "Codabench",
+    "url": "https://www.codabench.org/competitions/14290/",
+    "statusNote": "The test phase is active; team registration closes 1 Sep and final submissions close 15 Sep 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "classification"
+    ],
+    "modality": [
+      "CT"
+    ],
+    "anatomy": "liver",
+    "dimensionality": "3D",
+    "numCases": "59 validation and 174 hidden test cases; multi-phase training set on Hugging Face",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "$1,750 total ($1,000 / $500 / $250)",
+    "overview": "Classify hepatocellular-carcinoma lesions into standardized LI-RADS categories from multi-phase abdominal CT in a secure organizer-run evaluation environment.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "platform",
+        "label": "AMPLIFAI Codabench competition",
+        "url": "https://www.codabench.org/competitions/14290/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "organizer",
+        "label": "AMPLIFAI official site",
+        "url": "https://um-ihc-ca2i.github.io/amplifai-challenge/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Team registration",
+        "startISO": "2026-04-01",
+        "endISO": "2026-09-01",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "platform",
+          "organizer"
+        ]
+      },
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation submissions",
+        "startISO": "2026-07-17",
+        "endISO": "2026-07-31",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "platform"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test submissions",
+        "startISO": "2026-08-01",
+        "endISO": "2026-09-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "platform",
+          "organizer"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI challenge day",
+        "startISO": "2026-10-01",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "platform"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "cathaction26",
+    "name": "CATHACTION 2026 — Endovascular Tool & Collision Analysis",
+    "shortName": "CATHACTION",
+    "venue": "MICCAI 2026",
+    "platform": "Self-hosted",
+    "url": "https://endomiccai.github.io/cathation/",
+    "statusNote": "The final submission portal opened 10 Aug; challenge submissions close 15 Aug and technical reports close 20 Aug 2026.",
+    "dataAvailable": "public",
+    "taskType": [
+      "segmentation",
+      "detection"
+    ],
+    "modality": [
+      "X-ray",
+      "Video"
+    ],
+    "anatomy": "vasculature",
+    "dimensionality": "2D",
+    "numCases": ">600,000 frames across phantom, animal fluoroscopy and human procedures",
+    "datasetSizeGB": null,
+    "scale": "large",
+    "prizes": "Recognition and joint challenge-publication eligibility",
+    "overview": "Segment endovascular tools and detect tool–vessel collisions across phantom, animal and human X-ray fluoroscopy domains.",
+    "prizeType": "recognition",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "CATHACTION official page",
+        "url": "https://endomiccai.github.io/cathation/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Challenge submission",
+        "startISO": "2026-08-10",
+        "endISO": "2026-08-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "paper",
+        "type": "paper",
+        "label": "Technical report",
+        "startISO": null,
+        "endISO": "2026-08-20",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI workshop",
+        "startISO": "2026-10-01",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "chimera-agent26",
+    "name": "CHIMERA-Agent 2026 — Prostate Cancer Decision Reasoning",
+    "shortName": "CHIMERA-Agent",
+    "venue": "MICCAI 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://chimera-agent.grand-challenge.org/",
+    "statusNote": "Registration and training-data access are open on Grand Challenge; final test submissions are due 10 Sep 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "classification",
+      "prognosis",
+      "reasoning"
+    ],
+    "modality": [
+      "MRI",
+      "Histopathology",
+      "Clinical-data"
+    ],
+    "anatomy": "prostate",
+    "dimensionality": "mixed",
+    "numCases": "Longitudinal multimodal prostate-cancer records; count not stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Prize incentives for eligible open-source submissions (amounts not stated)",
+    "overview": "Build an agent that integrates imaging, pathology and longitudinal clinical data for biopsy, treatment and recurrence decisions while producing clinically grounded reasoning traces.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "CHIMERA-Agent official page",
+        "url": "https://chimera-agent.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "timeline",
+        "label": "CHIMERA-Agent timeline and rules",
+        "url": "https://chimera-agent.grand-challenge.org/challenge-timeline/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Registration and training-data access",
+        "startISO": "2026-06-15",
+        "endISO": "2026-09-10",
+        "startEstimated": true,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "timeline"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Final test submission",
+        "startISO": "2026-06-15",
+        "endISO": "2026-09-10",
+        "startEstimated": true,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "timeline"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI challenge event",
+        "startISO": "2026-09-27",
+        "endISO": "2026-10-01",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "multisat26",
+    "name": "MultiSAT 2026 — MultiBypass Surgical Action Triplets",
+    "shortName": "MultiSAT",
+    "venue": "MICCAI 2026 · EndoVis",
+    "platform": "Self-hosted",
+    "url": "https://camma-public.github.io/mbt40_challenge/",
+    "statusNote": "Registration closed 2 Jul; registered teams can submit the final Docker, presentation and report through 3 Sep 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "action-recognition",
+      "classification"
+    ],
+    "modality": [
+      "Surgical-video"
+    ],
+    "anatomy": "cardiothoracic surgery",
+    "dimensionality": "2D+time",
+    "numCases": "MultiBypass-4C-T40 surgical-video dataset; exact case count not stated on the site",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Recognition and challenge-publication eligibility",
+    "overview": "Recognize instrument–verb–target action triplets in multi-center coronary-bypass surgical video using containerized models.",
+    "prizeType": "recognition",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "MultiSAT official page",
+        "url": "https://camma-public.github.io/mbt40_challenge/",
+        "type": "organizer",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Team registration",
+        "startISO": "2026-04-01",
+        "endISO": "2026-07-02",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "final",
+        "type": "final-submission",
+        "label": "Final Docker, presentation and report",
+        "startISO": "2026-06-18",
+        "endISO": "2026-09-03",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "MICCAI challenge week",
+        "startISO": "2026-09-27",
+        "endISO": "2026-10-01",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "surgvu26",
+    "name": "SurgVU26 — Surgical Visual Understanding",
+    "shortName": "SurgVU26",
+    "venue": "MICCAI 2026 · EndoVis",
+    "platform": "grand-challenge.org",
+    "url": "https://surgvu26.grand-challenge.org/",
+    "statusNote": "New-team registration closes 15 Aug; preliminary testing runs through 2 Sep and final testing runs 21 Aug–6 Sep 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "detection",
+      "localization",
+      "classification"
+    ],
+    "modality": [
+      "Surgical-video"
+    ],
+    "anatomy": "robot-assisted surgery",
+    "dimensionality": "2D+time",
+    "numCases": "Da Vinci endoscopic video; exact case count not stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Cash prizes and NVIDIA GPUs for top teams",
+    "overview": "Detect, localize and understand robotic surgical instruments and actions in da Vinci endoscopic video across two challenge categories.",
+    "prizeType": "cash",
+    "venueFamily": "MICCAI",
+    "venueType": "workshop",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "SurgVU26 official page",
+        "url": "https://surgvu26.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "dates",
+        "label": "SurgVU26 important dates",
+        "url": "https://surgvu26.grand-challenge.org/important-dates/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "New-team registration",
+        "startISO": "2026-05-08",
+        "endISO": "2026-08-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "dates"
+        ]
+      },
+      {
+        "id": "preliminary",
+        "type": "validation",
+        "label": "Preliminary testing",
+        "startISO": "2026-07-20",
+        "endISO": "2026-09-02",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "dates"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test phase",
+        "startISO": "2026-08-21",
+        "endISO": "2026-09-06",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "official",
+          "dates"
+        ]
+      },
+      {
+        "id": "paper",
+        "type": "paper",
+        "label": "Methodology report",
+        "startISO": null,
+        "endISO": "2026-09-13",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "dates"
+        ]
+      },
+      {
+        "id": "event",
+        "type": "event",
+        "label": "EndoVis challenge day",
+        "startISO": "2026-09-27",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "dates"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "cobra26",
+    "name": "COBRA2026 — Cone-Beam CT Reconstruction for Radiotherapy",
+    "shortName": "COBRA2026",
+    "venue": "MIDL 2027",
+    "platform": "grand-challenge.org",
+    "url": "https://cobra2026.grand-challenge.org/",
+    "statusNote": "Registration, training data and the unrestricted training phase are open; scored phases begin 1 Dec and the competition closes 15 Feb 2027.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "reconstruction"
+    ],
+    "modality": [
+      "CBCT",
+      "CT"
+    ],
+    "anatomy": "pelvis",
+    "dimensionality": "3D",
+    "numCases": "867 clinical cases plus matched simulations from six centers (about 950 GB)",
+    "datasetSizeGB": 950,
+    "scale": "large",
+    "prizes": "Cash prizes may be awarded subject to funding",
+    "overview": "Reconstruct planning-quality pelvic CBCT volumes from raw radiotherapy projections and acquisition geometry across Elekta and Varian systems.",
+    "prizeType": "cash",
+    "venueFamily": "MIDL",
+    "venueType": "conference",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "COBRA2026 official page",
+        "url": "https://cobra2026.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "timeline",
+        "label": "COBRA2026 timetable and rules",
+        "url": "https://cobra2026.grand-challenge.org/timetablerules/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "registration",
+        "type": "registration",
+        "label": "Registration and training phase",
+        "startISO": "2026-07-13",
+        "endISO": "2027-02-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": [
+          "official",
+          "timeline"
+        ]
+      },
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation phase",
+        "startISO": "2026-12-01",
+        "endISO": "2027-02-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "preliminary",
+        "type": "sanity-check",
+        "label": "Preliminary test phase",
+        "startISO": "2026-12-01",
+        "endISO": "2027-02-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Final test phase",
+        "startISO": "2027-01-29",
+        "endISO": "2027-02-15",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Results announcement",
+        "startISO": "2027-03-22",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "dalphin",
+    "name": "DALPHIN — Digital Pathology AI Copilot Benchmark",
+    "shortName": "DALPHIN",
+    "venue": "Grand Challenge",
+    "platform": "grand-challenge.org",
+    "url": "https://dalphin.grand-challenge.org/",
+    "statusNote": "Long-term benchmark with public data and rolling submissions; no deadline or formal competition prizes.",
+    "dataAvailable": "public",
+    "taskType": [
+      "visual-question-answering",
+      "classification"
+    ],
+    "modality": [
+      "Histopathology"
+    ],
+    "anatomy": "multi-organ pathology",
+    "dimensionality": "2D",
+    "numCases": "300 cases, 1,236 images and 1,757 questions across 14 pathology subspecialties",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "None — continuous research benchmark",
+    "overview": "Evaluate pathology vision-language copilots on tissue recognition, neoplastic status, behavior, diagnosis and case-specific clinical questions against sequestered reference labels.",
+    "prizeType": "none",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "DALPHIN official benchmark",
+        "url": "https://dalphin.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "leaderboard",
+        "type": "leaderboard",
+        "label": "Continuous benchmark submissions",
+        "startISO": "2026-05-01",
+        "endISO": null,
+        "startEstimated": true,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": true,
+        "rolling": true,
+        "state": "active",
+        "sourceIds": [
+          "official"
+        ]
+      }
+    ]
+  },
+  {
+    "schemaVersion": 2,
+    "id": "lightmycells2",
+    "name": "Light My Cells 2 — Transmitted Light to Fluorescence",
+    "shortName": "Light My Cells 2",
+    "venue": "Grand Challenge 2026",
+    "platform": "grand-challenge.org",
+    "url": "https://lightmycells2.grand-challenge.org/",
+    "statusNote": "Training data were released 31 Jul; the official timeline places the challenge start on 21 Sep and test evaluation on 1–13 Dec 2026.",
+    "dataAvailable": "on-registration",
+    "taskType": [
+      "image translation",
+      "reconstruction"
+    ],
+    "modality": [
+      "Microscopy"
+    ],
+    "anatomy": "cells and organelles",
+    "dimensionality": "mixed",
+    "numCases": "Multi-center bright-field, phase-contrast and DIC microscopy; count not stated",
+    "datasetSizeGB": null,
+    "scale": "medium",
+    "prizes": "Awards for performance, efficiency, accessibility and sustainable modeling",
+    "overview": "Predict fluorescence channels for nuclei, mitochondria, tubulin and actin from label-free transmitted-light microscopy, including a new stack-to-MIP task.",
+    "prizeType": "recognition",
+    "venueFamily": "Standalone",
+    "venueType": "platform",
+    "lastVerifiedISO": "2026-08-15",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Light My Cells 2 official page",
+        "url": "https://lightmycells2.grand-challenge.org/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      },
+      {
+        "id": "timeline",
+        "label": "Light My Cells 2 timeline",
+        "url": "https://lightmycells2.grand-challenge.org/timeline/",
+        "type": "platform",
+        "lastCheckedISO": "2026-08-15"
+      }
+    ],
+    "phases": [
+      {
+        "id": "data-release",
+        "type": "data-release",
+        "label": "Training database release",
+        "startISO": "2026-07-31",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "completed",
+        "sourceIds": [
+          "official",
+          "timeline"
+        ]
+      },
+      {
+        "id": "validation",
+        "type": "validation",
+        "label": "Validation challenge",
+        "startISO": "2026-09-21",
+        "endISO": "2026-12-01",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Test evaluation",
+        "startISO": "2026-12-01",
+        "endISO": "2026-12-13",
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "results",
+        "type": "results",
+        "label": "Results release",
+        "startISO": "2026-12-18",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": false,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "upcoming",
+        "sourceIds": [
+          "timeline"
         ]
       }
     ]

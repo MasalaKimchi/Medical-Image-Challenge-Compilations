@@ -82,6 +82,6 @@ test("calendar excludes estimated and TBA phases", () => {
 test("schema migration preserves the reviewed fixture-date status distribution", async () => {
   const data = JSON.parse(await readFile(new URL("../data/challenges.json", import.meta.url), "utf8"));
   const counts = { live: 0, open: 0, upcoming: 0, closed: 0 };
-  for (const item of data) counts[deriveChallengeState(item, "2026-07-31").status] += 1;
-  assert.deepEqual(counts, { live: 1, open: 22, upcoming: 2, closed: 19 });
+  for (const item of data) counts[deriveChallengeState(item, "2026-08-15").status] += 1;
+  assert.deepEqual(counts, { live: 2, open: 30, upcoming: 2, closed: 20 });
 });
