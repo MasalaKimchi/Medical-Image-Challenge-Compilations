@@ -77,7 +77,7 @@ test.describe("challenge schedule", () => {
     await page.goto("/timeline/");
     await expect(page.getByRole("button", { name: "Timeline", exact: true })).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator(".phase")).not.toHaveCount(0);
-    await expect(page.locator('[data-phase-id="flare26-test"]')).toHaveAttribute("data-status", "upcoming");
+    await expect(page.locator('[data-phase-id="flare26-test"]')).toHaveAttribute("data-status", "open");
     await expect(page.locator(".today-line")).toBeVisible();
     await expectNoSeriousAccessibilityIssues(page);
   });

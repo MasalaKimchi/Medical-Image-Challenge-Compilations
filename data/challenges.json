@@ -7,7 +7,7 @@
     "venue": "MICCAI 2026",
     "platform": "Synapse",
     "url": "https://www.synapse.org/Synapse:syn74274097/wiki/",
-    "statusNote": "15th BraTS cluster (5 sub-challenges). Standard-track final Docker submissions closed 30 Jul 2026; acceptance announcements expected 24 Aug 2026.",
+    "statusNote": "15th BraTS cluster (5 sub-challenges). Standard-track final Docker submissions closed 30 Jul 2026; acceptance announcements were scheduled for 24 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -98,7 +98,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -129,7 +129,7 @@
     "venue": "MICCAI 2026",
     "platform": "Codabench",
     "url": "https://www.codabench.org/competitions/15553/",
-    "statusNote": "Validation submissions open through 20 Aug; Docker testing 20–31 Aug 2026.",
+    "statusNote": "Validation submissions closed 20 Aug; Docker testing runs 20–31 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -204,7 +204,7 @@
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -235,7 +235,7 @@
     "venue": "MICCAI 2026",
     "platform": "Synapse",
     "url": "https://fomo26.github.io/",
-    "statusNote": "Registration and model submission remain open; validation closes 21 Aug and the final test submission deadline is 30 Aug 2026.",
+    "statusNote": "Registration and final-test submissions remain open through 30 Aug 2026; validation closed 21 Aug.",
     "dataAvailable": "public",
     "taskType": [
       "classification",
@@ -255,14 +255,14 @@
     "prizeType": "cash",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-08-15",
+    "lastVerifiedISO": "2026-08-29",
     "sources": [
       {
         "id": "official",
         "label": "FOMO26 official page",
         "url": "https://fomo26.github.io/",
         "type": "platform",
-        "lastCheckedISO": "2026-08-15"
+        "lastCheckedISO": "2026-08-29"
       }
     ],
     "phases": [
@@ -340,7 +340,7 @@
     "venue": "MICCAI 2026",
     "platform": "Self-hosted",
     "url": "https://cmrx.chihucloud.com/2026/",
-    "statusNote": "Testing submission open 1 Jul – 20 Aug 2026.",
+    "statusNote": "Testing submissions ran 1 Jul–20 Aug 2026; model development remains available without a published close date.",
     "dataAvailable": "on-registration",
     "taskType": [
       "reconstruction"
@@ -443,7 +443,7 @@
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://hecktor26.grand-challenge.org/",
-    "statusNote": "Testing submissions closed 25 Jul 2026; final report due 8 Aug and top-five announced 20 Aug 2026.",
+    "statusNote": "Testing submissions closed 25 Jul and the final report was due 8 Aug; the top-five announcement was scheduled for 20 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -517,7 +517,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "completed",
         "sourceIds": [
           "official"
         ]
@@ -533,7 +533,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -548,7 +548,7 @@
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://pengwin2026.grand-challenge.org/",
-    "statusNote": "Preliminary submissions opened 22 May; final test phase runs 17 Jul–19 Aug 2026, with results due 24 Aug.",
+    "statusNote": "Preliminary submissions remain open; final testing closed 19 Aug and results were scheduled for 24 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation",
@@ -637,7 +637,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -740,7 +740,7 @@
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://odin2026.grand-challenge.org/",
-    "statusNote": "ToothFairy4 and Bite2Text debugging and final-test phases are open through 17 Aug 2026; results follow 15 Sep.",
+    "statusNote": "ToothFairy4 and Bite2Text debugging and final-test submissions closed 17 Aug 2026; results follow 15 Sep.",
     "dataAvailable": "public",
     "taskType": [
       "report-generation"
@@ -943,7 +943,7 @@
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://isles-26.grand-challenge.org/",
-    "statusNote": "Submission system opened 15 Jul; Docker submission deadline 15 Aug 2026.",
+    "statusNote": "The submission system opened 15 Jul and Docker submissions closed 15 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "segmentation"
@@ -2510,7 +2510,7 @@
     "venue": "MICCAI 2026 · EndoVis",
     "platform": "Synapse",
     "url": "https://imed-challenge.github.io/",
-    "statusNote": "Public validation is open; team registration closes 15 Aug and final Docker submission is due 1 Sep.",
+    "statusNote": "Public validation remains open; team registration closed 15 Aug and the final Docker submission is due 1 Sep.",
     "dataAvailable": "on-registration",
     "taskType": [
       "registration",
@@ -2630,7 +2630,7 @@
     "venue": "MICCAI 2026",
     "platform": "Self-hosted",
     "url": "https://treat-mmtb.mi2rl.co/",
-    "statusNote": "Applications close 31 Jul (internal-phase submissions closed 24 Jul); external Docker phase runs 1–20 Aug 2026; final rankings 1 Sep.",
+    "statusNote": "Applications and the external Docker phase closed 31 Jul and 20 Aug respectively; final rankings are scheduled for 1 Sep 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -2751,7 +2751,7 @@
     "venue": "MICCAI 2026",
     "platform": "Codabench",
     "url": "https://bic-mac-challenge.github.io/",
-    "statusNote": "Registration, data access and both validation and final-evaluation paths are active; registration and submissions close 15 Aug 2026.",
+    "statusNote": "Registration, validation and final-evaluation submissions closed 15 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "reconstruction"
@@ -3280,7 +3280,7 @@
     "venue": "MICCAI 2026 · STACOM",
     "platform": "Synapse",
     "url": "https://echorisk-miccai.github.io/",
-    "statusNote": "Registration is available through the official Synapse workflow; final Docker submissions are due 20 Aug 2026.",
+    "statusNote": "Registration and final Docker submissions closed 20 Aug 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "classification",
@@ -3377,7 +3377,7 @@
     "venue": "MICCAI 2026",
     "platform": "grand-challenge.org",
     "url": "https://doserad2026.grand-challenge.org/",
-    "statusNote": "Training/validation and final testing run through 15 Aug 2026 (final test opened 16 Jul); the preliminary validation phase is delayed per the organizers; a post-challenge leaderboard follows.",
+    "statusNote": "Training/validation and final testing closed 15 Aug 2026; the post-challenge phase runs through 31 Dec while preliminary validation remains delayed.",
     "dataAvailable": "on-registration",
     "taskType": [
       "regression",
@@ -3451,7 +3451,7 @@
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official"
         ]
@@ -3577,7 +3577,7 @@
     "venue": "MICCAI 2026 · Deep-Breath workshop",
     "platform": "grand-challenge.org",
     "url": "https://mamasynth.grand-challenge.org/",
-    "statusNote": "Final testing closed 10 Jul 2026; official results are scheduled for 1 Aug and winners for 27 Sep.",
+    "statusNote": "Final testing closed 10 Jul 2026; the official results date was 1 Aug and winners are scheduled for 27 Sep.",
     "dataAvailable": "on-registration",
     "taskType": [
       "image translation",
@@ -3676,7 +3676,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": [
           "official",
           "platform"
@@ -3852,7 +3852,7 @@
     "venue": "MICCAI 2026 · Medical World Model workshop",
     "platform": "Codabench",
     "url": "https://www.codabench.org/competitions/15590/",
-    "statusNote": "Validation closed 10 Aug; the organizer-run final Docker test remains open through 15 Aug 2026.",
+    "statusNote": "Validation closed 10 Aug and the organizer-run final Docker test closed 15 Aug 2026.",
     "dataAvailable": "public",
     "taskType": [
       "landmark-detection",
@@ -3941,7 +3941,7 @@
     "venue": "MICCAI 2026",
     "platform": "Codabench",
     "url": "https://uusivc2026-sudo.github.io/uusivc2026.github.io/",
-    "statusNote": "Registration, training data and validation submissions are open; short-paper and Docker submissions are due 25 Aug 2026.",
+    "statusNote": "Registration, validation, short-paper and Docker submissions closed 25 Aug; organizer-run test submissions opened 26 Aug 2026.",
     "dataAvailable": "public",
     "taskType": [
       "classification",
@@ -3960,14 +3960,14 @@
     "prizeType": "none",
     "venueFamily": "MICCAI",
     "venueType": "conference",
-    "lastVerifiedISO": "2026-08-15",
+    "lastVerifiedISO": "2026-08-29",
     "sources": [
       {
         "id": "official",
         "label": "UUSIVC2026 official page",
         "url": "https://uusivc2026-sudo.github.io/uusivc2026.github.io/",
         "type": "organizer",
-        "lastCheckedISO": "2026-08-15"
+        "lastCheckedISO": "2026-08-29"
       },
       {
         "id": "platform",
@@ -4005,6 +4005,20 @@
         "rolling": false,
         "state": "active",
         "sourceIds": ["official", "platform"]
+      },
+      {
+        "id": "test",
+        "type": "test",
+        "label": "Test submissions",
+        "startISO": "2026-08-26",
+        "endISO": null,
+        "startEstimated": false,
+        "endEstimated": false,
+        "participation": true,
+        "acceptingNewTeams": false,
+        "rolling": false,
+        "state": "active",
+        "sourceIds": ["official"]
       },
       {
         "id": "event",
@@ -4132,7 +4146,7 @@
     "venue": "MICCAI 2026",
     "platform": "Self-hosted",
     "url": "https://endomiccai.github.io/cathation/",
-    "statusNote": "The final submission portal opened 10 Aug; challenge submissions close 15 Aug and technical reports close 20 Aug 2026.",
+    "statusNote": "Challenge submissions closed 15 Aug and technical reports closed 20 Aug 2026; the MICCAI workshop follows 1 Oct.",
     "dataAvailable": "public",
     "taskType": [
       "segmentation",
@@ -4188,7 +4202,7 @@
         "participation": false,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "completed",
         "sourceIds": ["official"]
       },
       {
@@ -4389,7 +4403,7 @@
     "venue": "MICCAI 2026 · EndoVis",
     "platform": "grand-challenge.org",
     "url": "https://surgvu26.grand-challenge.org/",
-    "statusNote": "New-team registration closes 15 Aug; preliminary testing runs through 2 Sep and final testing runs 21 Aug–6 Sep 2026.",
+    "statusNote": "New-team registration closed 15 Aug; preliminary testing runs through 2 Sep and final testing runs 21 Aug–6 Sep 2026.",
     "dataAvailable": "on-registration",
     "taskType": [
       "detection",
@@ -4466,7 +4480,7 @@
         "participation": true,
         "acceptingNewTeams": false,
         "rolling": false,
-        "state": "upcoming",
+        "state": "active",
         "sourceIds": ["official", "dates"]
       },
       {

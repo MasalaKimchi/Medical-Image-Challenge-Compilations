@@ -15,7 +15,7 @@ Know a challenge we should track? [Suggest it](https://github.com/MasalaKimchi/M
 
 ## Coverage snapshot
 
-Last updated **15 August 2026**.
+Status snapshot updated **29 August 2026**.
 
 | Venue family | Challenges tracked |
 |---|---:|
@@ -27,7 +27,7 @@ Last updated **15 August 2026**.
 | MIDL | 1 |
 | **Total** | **54** |
 
-As of 15 August 2026, all **54 of 54** records carry official-source verification. This sweep added **10 verified challenges** and refreshed **6 existing records** with newly published dates or phase states; older records retain their previous verification stamps where no status-driving evidence changed. Derived status at this review date: **2 live, 30 open, 2 upcoming, and 20 closed**.
+As of 29 August 2026, all **54 of 54** records carry official-source verification. This quick rollover rechecked the nearest published deadlines, advanced scheduled phases that have opened, and added UUSIVC's organizer-published test-submission phase. Older records retain their previous verification stamps where no source fact changed. Derived status at this review date: **2 live, 23 open, 2 upcoming, and 27 closed**.
 
 ## The Tracker
 
