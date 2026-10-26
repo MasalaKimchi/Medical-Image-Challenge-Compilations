@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const pages = ["index.html", "tracker/index.html", "timeline/index.html"];
+const pages = ["index.html", "classic/index.html", "tracker/index.html", "timeline/index.html", "v0.1/index.html", "v1/index.html"];
 const failures = [];
 
 for (const page of pages) {

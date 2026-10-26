@@ -2,14 +2,23 @@
 
 A curated, regularly refreshed compilation of **medical-image analysis challenges and competitions** — segmentation, classification, registration, reconstruction, report generation and beyond — spanning MICCAI, ISBI, CVPR, RSNA, Kaggle, Grand Challenge, AAPM and Codabench.
 
-The project ships two self-contained, interactive HTML views built on the same underlying dataset:
+The project ships a simple v1 interface and two detailed views built on the same underlying dataset:
 
 | View | What it does |
 |------|--------------|
+| **[Imaging challenges v1](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/v1/)** | Cards showing challenges accepting new teams, a shared-filter schedule, saved comparisons, and calendar export. |
 | **[Challenge Tracker](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/tracker/)** | A filterable catalog with derived live status, next actions, source freshness, a four-item shortlist, comparison, and calendar export. |
 | **[Challenge Schedule](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/timeline/)** | A reader-friendly agenda and phase timeline covering registration, development, validation, testing, submissions, results, and events. |
 
-A lightweight [**landing page**](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/) links to both.
+A lightweight [**original landing page**](https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/classic/) still links to the detailed views. The main site opens v1; old `/v0.1/` links retain their filters when redirected to `/v1/`.
+
+**V1** uses a Slate minimal palette with distinct entry-status colors, readable tags, and explicit details buttons. Browse, Schedule and Saved retain filters. Saves are shared with the original tracker and stay on the current device (up to four); if browser storage fails, they remain available for the current visit. The interface adds no dependencies or external services. Run `node scripts/static-server.mjs` and open `http://127.0.0.1:4173/` to try it locally.
+
+## Deployment
+
+GitHub Pages uses the **Verify and deploy site** workflow. Pull requests and pushes run data, internal-link, desktop/mobile, keyboard and automated accessibility checks. Only successful runs on `main` publish the curated static artifact; source tooling, dependencies and review reports are excluded. The deploy job has Pages and identity-token permissions, while verification has read-only repository access. HTTPS remains enabled.
+
+After deployment, `version.txt` identifies the exact deployed commit. Check it together with the live interface before claiming a release is complete. A failed verification leaves the previous site available. To roll back, restore the prior UI/routing and matching tests in a new commit, retain the deployment workflow, run verification and push to `main`. The original `/classic/`, `/tracker/` and `/timeline/` routes remain available for comparison.
 
 Know a challenge we should track? [Suggest it](https://github.com/MasalaKimchi/Medical-Image-Challenge-Compilations/issues/new?template=suggest-challenge.yml).
 

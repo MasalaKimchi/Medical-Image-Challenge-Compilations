@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Imaging challenges · v1</title>
+  <meta name="description" content="Find medical-imaging challenges accepting new teams, see upcoming deadlines, and save your shortlist.">
+  <meta property="og:title" content="Imaging challenges">
+  <meta property="og:description" content="Find medical-imaging challenges accepting new teams, see upcoming deadlines, and save your shortlist.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/og.png">
+  <link rel="canonical" href="https://masalakimchi.github.io/Medical-Image-Challenge-Compilations/v1/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try { const theme = localStorage.getItem("imagingPreviewTheme"); document.documentElement.dataset.theme = ["light", "dark"].includes(theme) ? theme : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); }
+    catch { document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to challenges</a>
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="wordmark" href="./" aria-label="Imaging challenges home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></svg>
+        <span>Imaging challenges</span><span class="version">v1</span>
+      </a>
+      <nav id="viewNav" class="view-nav" aria-label="Challenge views">
+        <button type="button" data-view="browse" aria-pressed="true">Browse</button>
+        <button type="button" data-view="schedule" aria-pressed="false">Schedule</button>
+        <button type="button" data-view="saved" aria-pressed="false">Saved <span id="savedLabel" class="saved-count">0</span></button>
+      </nav>
+      <div class="header-tools">
+        <a class="original-link" href="../classic/">Original site <span aria-hidden="true">↗</span></a>
+        <button type="button" class="icon-button" id="themeButton" aria-label="Switch color theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="main">
+    <section class="intro" aria-labelledby="pageTitle">
+      <p class="eyebrow">Medical imaging. Open opportunities.</p>
+      <h1 id="pageTitle">Find your next challenge.</h1>
+      <p class="intro-copy">See what you can join. Know what comes next.</p>
+    </section>
+    <section class="discovery" aria-label="Find challenges">
+      <div class="search-line">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+          <label for="search" class="sr-only">Search challenges</label>
+          <input type="search" id="search" maxlength="200" placeholder="Search a task, modality, or challenge" autocomplete="off">
+        </div>
+        <details id="filterDetails" class="filters">
+          <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 7h18M3 17h18"/><circle cx="9" cy="7" r="3" fill="var(--surface)"/><circle cx="15" cy="17" r="3" fill="var(--surface)"/></svg>Filters <span id="filterCount"></span></summary>
+          <div class="filter-fields">
+            <div class="field"><label for="taskFilter">Task</label><select id="taskFilter"><option value="">All tasks</option></select></div>
+            <div class="field"><label for="modalityFilter">Modality</label><select id="modalityFilter"><option value="">All modalities</option></select></div>
+            <button id="resetFilters" class="text-button" type="button">Reset filters</button>
+          </div>
+        </details>
+      </div>
+      <nav id="scopeNav" class="scope-nav" aria-label="Participation filter">
+        <button type="button" data-scope="join" aria-pressed="true">Join now</button>
+        <button type="button" data-scope="upcoming" aria-pressed="false">Upcoming</button>
+        <button type="button" data-scope="all" aria-pressed="false">All challenges</button>
+      </nav>
+    </section>
+    <section aria-label="Challenge results" class="results-section">
+      <div class="results-top"><p id="resultCount" role="status" aria-live="polite" aria-atomic="true">Loading challenges…</p><span class="sort-note">Nearest dates first</span></div>
+      <div id="savedTools" class="saved-tools" hidden>
+        <p id="savedHint">Saved on this device · up to 4 challenges.</p>
+        <div><button type="button" class="secondary-button" id="compareSaved">Compare</button><button type="button" class="secondary-button" id="exportSaved">Add to calendar</button></div>
+      </div>
+      <div id="results"></div>
+      <div id="emptyState" class="empty-state" hidden><h2>No matches here.</h2><p>Try a broader search or reset your filters.</p><button id="emptyReset" class="secondary-button" type="button">Reset filters</button></div>
+      <noscript><p>This directory needs JavaScript to filter challenges. You can also read the <a href="../README.md">challenge overview</a> and its official source links.</p></noscript>
+    </section>
+    <footer>
+      <p id="coverage">Loading source review coverage…</p>
+      <p id="sourceNote">Dates can change. Confirm eligibility and deadlines on the official page.</p>
+      <p class="footer-links"><a href="../tracker/">Full tracker</a><a href="../timeline/">Full timeline</a><a href="../classic/">Original site</a><a href="https://github.com/MasalaKimchi/Medical-Image-Challenge-Compilations/issues/new?template=suggest-challenge.yml" target="_blank" rel="noopener noreferrer">Suggest a challenge <span aria-hidden="true">↗</span></a></p>
+    </footer>
+  </main>
+  <dialog id="detailDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-header"><h2 id="dialogTitle">Challenge details</h2><button id="closeDialog" class="icon-button" type="button" aria-label="Close details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div id="dialogBody" class="dialog-body"></div>
+  </dialog>
+  <p id="notice" class="notice" role="status" aria-live="polite" aria-atomic="true"></p>
+  <script src="../data/challenges.js?v=20261026-1"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

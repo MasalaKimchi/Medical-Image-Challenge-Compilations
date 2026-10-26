@@ -106,10 +106,10 @@ test.describe("challenge schedule", () => {
   });
 });
 
-test("landing page derives totals without console errors", async ({ page }) => {
+test("classic landing page derives totals without console errors", async ({ page }) => {
   const errors = [];
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
-  await page.goto("/");
+  await page.goto("/classic/");
   await expect(page.locator("#challengeCount")).toHaveText(String(TOTAL));
   await expect(page.locator("#verifiedCount")).toHaveText(String(challenges.filter(c=>getFreshness(c,BASE_DATE).key==="fresh").length));
   await expect(page.locator(".tracker-preview .preview-title")).toHaveText("Medical Image Challenge Tracker");
@@ -164,7 +164,7 @@ test("October view puts current opportunities first and exposes source review co
   expect(firstClosed).toBeGreaterThan(0);
   expect(statuses.slice(firstClosed).every(status=>status==="closed")).toBe(true);
   const activeCount=challenges.filter(c=>["open","live"].includes(deriveChallengeState(c,today).status)).length;
-  await page.goto("/");
+  await page.goto("/classic/");
   await expect(page.locator("#activeCount")).toHaveText(String(activeCount));
   await expect(page.locator("#reviewSummary")).toContainText("2026");
   await expect(page.locator("#previewMeta")).toContainText(`${freshCount} checked in past 14 days`);
