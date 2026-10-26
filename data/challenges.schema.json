@@ -85,7 +85,7 @@
         "platform": { "type": "string", "minLength": 1 },
         "url": { "type": "string", "pattern": "^https://" },
         "statusNote": { "type": "string", "minLength": 1 },
-        "dataAvailable": { "enum": ["public", "on-registration", "unknown"] },
+        "dataAvailable": { "enum": ["public", "on-registration", "registration-closed", "not-yet-released", "evaluation-only", "unknown"] },
         "taskType": {
           "type": "array", "minItems": 1, "uniqueItems": true,
           "items": { "type": "string", "minLength": 1 }

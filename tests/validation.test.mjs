@@ -1,9 +1,16 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
 import { validateDataSemantics } from "../scripts/validate-data.mjs";
 
-const source = JSON.parse(await readFile(new URL("../data/challenges.json", import.meta.url), "utf8"));
+const source = [{
+  id: "demo", lastVerifiedISO: "2026-07-23",
+  sources: [{ id: "official", url: "https://example.com", type: "organizer", lastCheckedISO: "2026-07-23" }],
+  phases: [{
+    id: "registration", startISO: "2026-07-01", endISO: "2026-07-23",
+    participation: true, acceptingNewTeams: false, rolling: false,
+    state: "active", sourceIds: ["official"]
+  }]
+}];
 const fixture = () => structuredClone(source);
 
 test("semantic validation rejects impossible and reversed phase dates", () => {

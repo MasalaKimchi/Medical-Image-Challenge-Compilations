@@ -57,6 +57,29 @@ test("an explicitly upcoming phase is not active, even when its planned start ha
   assert.equal(derivePhaseStatus(item.phases[0], "2026-07-23"), "upcoming");
   const delayed = challenge([phase({ state: "upcoming", startISO: "2026-04-01", endISO: "2026-10-31", acceptingNewTeams: false })]);
   assert.equal(deriveChallengeState(delayed, "2026-07-23").status, "upcoming");
+  assert.equal(getNextAction(delayed, "2026-07-23").kind, "confirmation");
+  assert.equal(getNextAction(delayed, "2026-07-23").dateISO, null);
+  assert.match(getNextAction(delayed, "2026-07-23").label, /awaiting organizer confirmation/);
+});
+
+test("expired upcoming phases close while explicitly postponed schedules remain pending", () => {
+  const item = challenge([phase({ state: "upcoming" })]);
+  assert.equal(deriveChallengeState(item, "2026-07-23").status, "upcoming");
+  assert.equal(deriveChallengeState(item, "2026-07-24").status, "closed");
+  assert.equal(derivePhaseStatus(item.phases[0], "2026-07-24"), "closed");
+  assert.equal(getNextAction(item, "2026-07-24").dateISO, null);
+  assert.equal(deriveChallengeState(challenge([phase({ state: "postponed" })]), "2026-07-24").status, "upcoming");
+});
+
+test("next opening skips past planned dates and finds the next scheduled phase", () => {
+  const item = challenge([
+    phase({ state: "upcoming", endISO: null }),
+    phase({ id: "test", type: "test", state: "upcoming", startISO: "2026-08-01", endISO: "2026-08-15" })
+  ]);
+  const action = getNextAction(item, "2026-07-24");
+  assert.equal(action.kind, "opens");
+  assert.equal(action.dateISO, "2026-08-01");
+  assert.equal(action.days, 8);
 });
 
 test("freshness thresholds are stable", () => {
@@ -79,9 +102,10 @@ test("calendar excludes estimated and TBA phases", () => {
   assert.doesNotMatch(calendar, /tba@/);
 });
 
-test("schema migration preserves the reviewed fixture-date status distribution", async () => {
+test("catalogue actions never offer past dates at the review date", async () => {
   const data = JSON.parse(await readFile(new URL("../data/challenges.json", import.meta.url), "utf8"));
-  const counts = { live: 0, open: 0, upcoming: 0, closed: 0 };
-  for (const item of data) counts[deriveChallengeState(item, "2026-08-15").status] += 1;
-  assert.deepEqual(counts, { live: 2, open: 30, upcoming: 2, closed: 20 });
+  for (const item of data) {
+    const action = getNextAction(item, "2026-10-25");
+    assert.ok(action.days === null || action.days >= 0, `${item.id} offers a past action date`);
+  }
 });

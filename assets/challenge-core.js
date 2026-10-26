@@ -74,8 +74,11 @@ export function isPhaseActive(phase, todayISO = localTodayISO()) {
 
 export function isPhaseFuture(phase, todayISO = localTodayISO()) {
   if (!phase || isCancelled(phase) || phase.state === "completed") return false;
-  if (isPostponed(phase) || phase.state === "upcoming") return true;
+  if (isPostponed(phase)) return true;
   const today = isoDayNumber(todayISO);
+  const end = isoDayNumber(phase.endISO);
+  if (today !== null && end !== null && end < today) return false;
+  if (phase.state === "upcoming") return true;
   const start = isoDayNumber(phase.startISO);
   return today !== null && start !== null && start > today;
 }
@@ -149,7 +152,7 @@ export function getNextAction(challenge, todayISO = localTodayISO()) {
   let dateISO = phase?.endISO || null;
   if (!phase) {
     phase = state.futurePhases
-      .filter((item) => !isPostponed(item) && isoDayNumber(item.startISO) !== null)
+      .filter((item) => !isPostponed(item) && today !== null && isoDayNumber(item.startISO) !== null && isoDayNumber(item.startISO) >= today)
       .sort((a, b) => isoDayNumber(a.startISO) - isoDayNumber(b.startISO))[0] || null;
     kind = "opens";
     dateISO = phase?.startISO || null;
@@ -162,9 +165,13 @@ export function getNextAction(challenge, todayISO = localTodayISO()) {
     phase = state.futurePhases.find(isPostponed);
     kind = "postponed";
   }
+  if (!phase) {
+    phase = state.futurePhases.find((item) => item.state === "upcoming" && today !== null && isoDayNumber(item.startISO) !== null && isoDayNumber(item.startISO) <= today) || null;
+    if (phase) kind = "confirmation";
+  }
   return {
     phase,
-    label: phase?.label || (state.status === "closed" ? "Challenge completed" : "Schedule TBA"),
+    label: kind === "confirmation" ? "Schedule awaiting organizer confirmation" : phase?.label || (state.status === "closed" ? "Challenge completed" : "Schedule TBA"),
     kind,
     dateISO,
     days: dateISO && today !== null ? isoDayNumber(dateISO) - today : null,
